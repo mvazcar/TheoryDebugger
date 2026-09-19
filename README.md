@@ -169,6 +169,13 @@ projection and general nonlinear certificate work.
 
 ## Provenance and release boundary
 
+This project is inspired by **TheoryGuru**, developed by Casey B. Mulligan,
+James H. Davenport, and Matthew England. Their
+[2018 paper](https://arxiv.org/abs/1806.10925) describes the prior automated
+reasoning workflow. Our [comparison](docs/theoryguru-comparison.md) records the
+overlap, missing capabilities, and an executed Lean version of its tax-incidence
+example. TheoryDebugger is a working name for this independent prototype.
+
 All implementation and example code here was newly written. The private parent
 repository is a reference archive; its recovered software, notebooks, paper,
 and historical handoff are outside this directory and are not dependencies.

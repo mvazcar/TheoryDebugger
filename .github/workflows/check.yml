@@ -29,6 +29,7 @@ jobs:
           lake build
           lake env lean lean-tests/Native.lean
           lake env lean examples/Native.lean
+          lake env lean examples/Paper2018Tax.lean
       - name: Check Python boundaries and regenerate certificates
         env:
           THEORYDEBUGGER_TEST_LEAN: '1'

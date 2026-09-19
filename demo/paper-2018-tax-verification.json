@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-09-19T21:16:02.095934+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source": "examples/Paper2018Tax.lean",
+  "source_sha256": "9f9e50523d34d1f305efba94cb2d3ebbeef22d7e58462ce81d0c77356aaecc61",
+  "compiler_log": "demo/paper-2018-tax-output.txt",
+  "compiler_log_sha256": "a73f99416b62165f752ae7718268abe0ba6a458af4717268f71062cbfd1b0da4",
+  "exit_code": 0,
+  "universal_theorems": 3,
+  "ground_witness_theorems": 2,
+  "checked_diagnostic_refutations": 1,
+  "axioms": {
+    "seller_price_falls": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "seller_price_falls_less_than_tax": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "weak_supply_repairs_sign": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "satisfying_assignment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "refuting_assignment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "limits": [
+    "Derivative equation supplied manually",
+    "Bounds and sufficient restriction supplied manually",
+    "No general parameter projection or automatic repair discovery"
+  ]
+}
