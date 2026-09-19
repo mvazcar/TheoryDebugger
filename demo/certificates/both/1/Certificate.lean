@@ -14,7 +14,7 @@ theorem claim : original := by
   unfold original
   intro v0 h0 h1
   have square_0 : 0 ≤ v0 ^ 2 := sq_nonneg v0
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 #check claim
 #print axioms claim

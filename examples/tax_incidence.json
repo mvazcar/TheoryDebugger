@@ -1,0 +1,7 @@
+{
+  "name": "Paper tax incidence without a supply sign",
+  "variables": ["d", "s", "p"],
+  "assumptions": [["<", "d", 0], ["=", ["*", "d", ["+", "p", 1]], ["*", "s", "p"]]],
+  "goal": ["<=", "p", 0],
+  "witness": {"d": -1, "s": -2, "p": 1}
+}

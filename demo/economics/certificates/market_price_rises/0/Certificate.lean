@@ -26,6 +26,10 @@ theorem feasible : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ∃ (_v2 : ℝ), ∃ (_v3 :
   refine ⟨(-1 : ℝ), (1 : ℝ), ((1 : ℝ) / 2), ((-1 : ℝ) / 2), ?_⟩
   norm_num
 
+theorem refuting : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ∃ (_v2 : ℝ), ∃ (_v3 : ℝ), (((_v0 < (0 : ℝ)) ∧ (_v1 ≥ (0 : ℝ)) ∧ (((_v1 * _v2) - (1 : ℝ)) = _v3) ∧ ((_v0 * _v2) = _v3)) ∧ ¬ (_v3 > (0 : ℝ))) := by
+  refine ⟨(-1 : ℝ), (1 : ℝ), ((1 : ℝ) / 2), ((-1 : ℝ) / 2), ?_⟩
+  norm_num
+
 theorem sample_not_goal : ¬ (((-1 : ℝ) / 2) > (0 : ℝ)) := by
   norm_num
 
@@ -44,6 +48,8 @@ theorem refutation : ¬ original := by
 #print axioms sample_h3
 #check feasible
 #print axioms feasible
+#check refuting
+#print axioms refuting
 #check sample_not_goal
 #print axioms sample_not_goal
 #check refutation

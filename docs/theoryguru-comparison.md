@@ -1,6 +1,7 @@
 # TheoryGuru (2018) and the current TheoryDebugger prototype
 
-Comparison checked on 2026-09-19 against arXiv:1806.10925v1, including its TeX
+Paper comparison checked on 2026-09-19; implementation updated on 2026-09-20.
+The reference is arXiv:1806.10925v1, including its TeX
 source and embedded screenshots. Page references below use the nine-page arXiv
 PDF. The screenshots identify TheoryGuru 6.3; the separately recovered private
 reference implementation reports 6.6. Those versions must not be conflated.
@@ -19,10 +20,10 @@ original formal claim. It is not yet a replacement for TheoryGuru's full scope.
 | Topic | TheoryGuru described in the paper | Our implemented prototype |
 | --- | --- | --- |
 | Input and solver | Assumptions and hypothesis; Mathematica preprocessing and `Resolve` (§§1.2–2.1, pp.2–3) | Explicit real polynomial JSON or supported native Lean expressions; cvc5 discovers candidate answers |
-| Diagnostics | Four outcomes in Table 1, p.2 | Validity and feasibility are separate, but `refuted` does not distinguish mixed behavior from universal failure |
+| Diagnostics | Four outcomes in Table 1, p.2 | Checked true, mixed, false and inconsistent outcomes; unknown when either case lacks Lean evidence |
 | Witnesses | Dashboard can show instances and counterexamples (§2.1; Fig.3) | Rational assignments can be checked by exact substitution and Lean; algebraic witnesses remain uncertified |
 | Parameter ranges | `TheoryPossibilities` projects assumptions onto selected coordinates (p.5, Fig.4) | No general projection; supplied bounds can sometimes be proved |
-| Missing assumptions | `TheorySufficient` proposes sufficient restrictions from counterexample projections (p.6, Fig.5) | User-supplied repairs can be checked; automatic repair synthesis is absent |
+| Missing assumptions | `TheorySufficient` proposes sufficient restrictions from counterexample projections (p.6, Fig.5) | Explicit repair operation preserves the original claim and requires checked validity plus feasibility; automatic synthesis is absent |
 | Rich notation | Derivatives, integrals, vectors and Gram-matrix restrictions (§2.1; §§3.1–3.2) | Restricted scalar polynomial frontend; modeling reductions must be explicit |
 | Proof evidence | The described interface reports and interprets `Resolve` outcomes | Reconstructed Lean proofs/refutations, original-goal checks, axiom audits and saved certificates; incomplete proof search can return unknown |
 | Interface | Mathematica notebook dashboard (Fig.3) | Lean commands/tactics and a JSON CLI; no comparable interactive dashboard yet |
@@ -32,24 +33,24 @@ about this paper's interface, not a claim about every later solver or package
 version. Likewise, our evidence distinguishes a solver answer from a completed
 Lean proof; an unsuccessful reconstruction is not evidence against the theorem.
 
-## An important diagnostic difference
+## The four-way distinction
 
 Let `A` be the assumptions and `H` the conclusion. Table 1 classifies assignments
 by whether both types of witness exist:
 
 | There exists `A ∧ H` | There exists `A ∧ ¬H` | Paper's label | Current prototype |
 | --- | --- | --- | --- |
-| Yes | No | True | Consistent and valid |
-| Yes | Yes | Mixed | Consistent and refuted |
-| No | Yes | False | Consistent and refuted |
-| No | No | Contradictory Assumptions | Inconsistent; implication valid vacuously |
+| Yes | No | True | `true` |
+| Yes | Yes | Mixed | `mixed` |
+| No | Yes | False | `false` |
+| No | No | Contradictory Assumptions | `inconsistent`; implication valid vacuously |
 
-Our two queries are currently `∃v, A` and `∃v, A ∧ ¬H`. A refutation disproves
-the universal implication, but does not say that the conclusion fails at every
-admissible point. Adding a query for `∃v, A ∧ H`, with separately checked evidence,
-would recover this useful distinction. Solver timeouts and failed reconstruction
-must remain a separate unknown outcome. This comparison identifies the change;
-it does not implement the new classification.
+The prototype now queries both goal cases as well as feasibility. A refutation
+disproves the universal implication, but does not alone say the conclusion fails
+at every admissible point. Complete classification requires Lean evidence for
+both cases. Solver timeouts, algebraic witnesses without certificates, and failed
+reconstruction leave an `unknown` classification while retaining any checked
+partial results. See [the implemented schema](evidence-v2.md).
 
 ## Direct comparison: the paper's tax-incidence example
 
@@ -81,8 +82,8 @@ Actual executions with our native Lean frontend established:
    repair from Figure 5; our program did not synthesize it.
 4. Two explicit ground proofs certify a satisfying assignment
    `(d,s,p) = (-1,1,-1/2)` and a refuting assignment `(-1,-2,1)` when the supply
-   restriction is absent. Together they establish mixed behavior even though
-   the diagnostic currently prints only `refuted`.
+   restriction is absent. The diagnostic now also finds and checks both sides
+   independently and reports `mixed`.
 
 The three universal theorems and two ground proofs compiled successfully. Their
 axiom audits contain only `propext`, `Classical.choice`, and `Quot.sound`.
@@ -101,18 +102,19 @@ selected by `python`. This is the same setup as the other native examples.
 
 ## Priorities suggested by the comparison
 
-1. Add checked evidence for both satisfying and refuting assignments, so a
-   researcher can distinguish a conditional result from one that always fails.
-2. Make the repair loop explicit: preserve the original claim, show each proposed
-   assumption change, and require feasibility as well as a proof after every edit.
+1. Implemented: checked evidence for both satisfying and refuting assignments,
+   distinguishing a conditional result from one that always fails.
+2. Implemented: an explicit repair loop preserving the original claim, showing
+   each supplied assumption change, and requiring feasibility and validity.
 3. Add selected parameter projections only with a clear evidence policy. A solver
    projection is useful discovery output, but proving one direction of a proposed
    bound is not a proof that it describes the exact feasible region.
 4. Extend function and derivative support through explicit modeling lemmas before
    treating abstract derivative tuples as realizable economic counterexamples.
 
-These are development priorities inferred from the comparison. They are not new
-claims about the paper or features already present in the prototype. We have not
+These priorities are inferred from the comparison. The first two now have
+native and JSON implementations and regression checks; the others remain future
+work. They are not new claims about the paper. We have not
 replicated the gender-selection model or the historical performance table here.
 
 ## Attribution and naming

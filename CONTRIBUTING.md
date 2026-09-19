@@ -14,6 +14,11 @@ lake env lean lean-tests/Native.lean
 python -m unittest discover -s tests -v
 python scripts/run_demo.py
 python scripts/check_saved_evidence.py
+python scripts/run_economics.py
+python scripts/check_saved_evidence.py demo/economics/results.json
+python scripts/run_repairs.py
+python scripts/check_saved_evidence.py demo/repairs/results.json
+python scripts/verify_paper.py
 ```
 
 Set `THEORYDEBUGGER_TEST_LEAN=1` when running Python tests to include real Lean

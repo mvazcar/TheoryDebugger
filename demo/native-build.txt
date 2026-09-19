@@ -1,1 +1,4 @@
-Build completed successfully (974 jobs).
+✔ [973/976] Built TheoryDebugger.Tactic (4.9s)
+✔ [974/976] Built TheoryDebugger.Repair (4.4s)
+✔ [975/976] Built TheoryDebugger (4.3s)
+Build completed successfully (976 jobs).

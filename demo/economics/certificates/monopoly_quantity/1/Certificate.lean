@@ -19,7 +19,7 @@ theorem claim : original := by
   have square_3 : 0 ≤ v3 ^ 2 := sq_nonneg v3
   have positive_square_0 : 0 < v0 ^ 2 := by positivity
   have positive_square_1 : 0 < v1 ^ 2 := by positivity
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 #check claim
 #print axioms claim

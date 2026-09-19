@@ -91,7 +91,7 @@ def main():
     if log.count("Assumptions: feasible assignment checked by Lean") != 8:
         raise RuntimeError("Expected eight native feasibility certificates:\n" + log)
 
-    (output / "results.json").write_text(json.dumps(records, indent=2, default=str) + "\n", encoding="utf-8")
+    (output / "results.json").write_text(json.dumps(records, indent=2, default=str) + "\n", encoding="utf-8", newline="\n")
     import cvc5
     environment = {
         "checked_at_utc": datetime.now(timezone.utc).isoformat(),
@@ -104,7 +104,7 @@ def main():
         "native_source_sha256": native_hash, "native_axioms": audits,
         "native_exit_code": native.returncode,
     }
-    (output / "environment.json").write_text(json.dumps(environment, indent=2) + "\n", encoding="utf-8")
+    (output / "environment.json").write_text(json.dumps(environment, indent=2) + "\n", encoding="utf-8", newline="\n")
     print("Passed eight economic cases, five native theorems, and three native refutations.")
 
 

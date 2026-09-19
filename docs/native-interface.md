@@ -16,6 +16,7 @@ artifacts using the README instructions, then run:
 lake build
 lake env lean examples/Native.lean
 lake env lean lean-tests/Native.lean
+lake env lean examples/Repairs.lean
 ```
 
 Lean invokes `python -m theorydebugger.bridge` using a direct subprocess and JSON
@@ -88,3 +89,14 @@ Individual-removal certificates prove the original target under each smaller
 assumption set. They do not establish that all flagged hypotheses can be removed
 together. No minimization is performed. If the original assumptions contradict
 each other, that fact and vacuous validity are reported prominently.
+
+Four-way diagnosis checks both satisfying and refuting cases. Native witness
+certificates explicitly existentially quantify the real variables. Absence
+requires a checked universal implication or contradiction. The classification
+stays unknown when either case lacks evidence, even if validity is already proved.
+
+`#theory_repair original with predicate` and its `_json` variant append the
+candidate predicate in a separate context and check the original and revised
+claims independently. An inconsistent or refuted candidate is rejected;
+acceptance requires both validity and feasibility. See
+[schema 2 and repair syntax](evidence-v2.md) for examples and output fields.

@@ -17,8 +17,14 @@ theorem feasible : ∃ (_v0 : ℝ), ((_v0 ≥ (1 : ℝ))) := by
   refine ⟨(1 : ℝ), ?_⟩
   norm_num
 
+theorem satisfying : ∃ (_v0 : ℝ), (((_v0 ≥ (1 : ℝ))) ∧ (_v0 > (0 : ℝ))) := by
+  refine ⟨(1 : ℝ), ?_⟩
+  norm_num
+
 #check sample_h0
 #print axioms sample_h0
 #check feasible
 #print axioms feasible
+#check satisfying
+#print axioms satisfying
 end TheoryDebugger.Generated

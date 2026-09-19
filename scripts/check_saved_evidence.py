@@ -18,7 +18,8 @@ def main():
     bundle = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("demo/results.json")
     records = json.loads((ROOT / bundle).read_text(encoding="utf-8"))
     count = 0
-    for record in records:
+    claims = [claim for r in records for claim in ([r["original"], r["repaired"]] if r.get("operation") == "repair" else [r])]
+    for record in claims:
         p = parse(record["problem"])
         for cert in record["certificates"]:
             source = (ROOT / cert["source"]).read_bytes()

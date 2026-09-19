@@ -8,10 +8,12 @@ interface and a cvc5 implementation. Another backend can implement this interfac
 without changing the certificate language. No recovered TheoryGuru implementation
 was ported or imported.
 
-For assumptions A and goal G the two queries are `∃v, A` and `∃v, A ∧ ¬G`.
-The first checks feasibility; the second searches for a refutation of
+For assumptions A and goal G the queries are `∃v, A`, `∃v, A ∧ G`, and
+`∃v, A ∧ ¬G`. The first checks feasibility; the last searches for a refutation of
 `∀v, A → G`. SAT does not imply an available rational witness. UNSAT of the
-second query is only a solver diagnosis until a Lean proof succeeds. An internal
+last query is only a solver diagnosis until a Lean proof succeeds. The two goal
+cases distinguish true, mixed, false and inconsistent models when both are
+certified. See [schema 2](evidence-v2.md). An internal
 solver time limit and a separate Lean subprocess timeout produce inconclusive
 results rather than assumed success. The cvc5 time limit is its own internal
 limit, not an operating-system hard kill.
@@ -20,11 +22,12 @@ limit, not an operating-system hard kill.
 
 Every certificate includes an explicit `original : Prop` with the complete
 variable list, all assumptions in their original order, and the original target.
-The exported result is exactly `claim : original` or `refutation : ¬ original`.
+Validity and refutation results are exactly `claim : original` or `refutation : ¬ original`.
 It is never a proof of a weaker proxy target. For a contradiction the file also
 exports `contradiction : ∀v, A → False` and derives `original` by elimination of
 False. For a rational sample it proves each substituted assumption, existence
-of a feasible assignment, and (when appropriate) the negated conclusion.
+of a feasible assignment and the relevant goal case. A `no_satisfying` certificate
+proves `∀v, A → ¬G`; it is distinct from a single counterexample.
 
 Untrusted witnesses are re-evaluated with exact Python fractions before source
 generation and then checked independently by Lean over `ℝ`. Rational constants

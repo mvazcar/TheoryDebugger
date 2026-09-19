@@ -17,7 +17,7 @@ theorem claim : original := by
   have square_1 : 0 ≤ v1 ^ 2 := sq_nonneg v1
   have square_2 : 0 ≤ v2 ^ 2 := sq_nonneg v2
   have square_3 : 0 ≤ v3 ^ 2 := sq_nonneg v3
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 #check claim
 #print axioms claim

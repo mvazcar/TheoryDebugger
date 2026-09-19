@@ -14,6 +14,10 @@ theorem feasible : ∃ (_v0 : ℝ), True := by
   refine ⟨(0 : ℝ), ?_⟩
   norm_num
 
+theorem refuting : ∃ (_v0 : ℝ), (True ∧ ¬ (_v0 > (0 : ℝ))) := by
+  refine ⟨(0 : ℝ), ?_⟩
+  norm_num
+
 theorem sample_not_goal : ¬ ((0 : ℝ) > (0 : ℝ)) := by
   norm_num
 
@@ -24,6 +28,8 @@ theorem refutation : ¬ original := by
 
 #check feasible
 #print axioms feasible
+#check refuting
+#print axioms refuting
 #check sample_not_goal
 #print axioms sample_not_goal
 #check refutation

@@ -35,11 +35,13 @@ to explore a false conjecture.
 | Interface | Behavior |
 | --- | --- |
 | `theory` | Proves exactly the current goal if a checked proof is found; otherwise fails |
-| `theory?` | Reports validity and feasibility; leaves every goal unchanged |
+| `theory?` | Reports four-way diagnosis, validity and feasibility; leaves every goal unchanged |
 | `theory? +assumptions` | Also checks removal of each assumption individually |
 | `#theory (∀ ..., ...)` | Explores a proposition without asserting it |
 | `#theory_assumptions (...)` | Explores a proposition with individual-removal checks |
 | `#theory_json (...)` | Emits structured native evidence and separately labeled solver output |
+| `#theory_repair (...) with (fun ... => ...)` | Checks a supplied additional assumption for validity and feasibility |
+| `#theory_repair_json (...) with (fun ... => ...)` | Emits the original claim, candidate and checked repair result |
 
 The native frontend checks recognized operations against fixed real arithmetic,
 including their instances. Native proofs, contradictions, and witness substitutions
@@ -98,7 +100,7 @@ python scripts/run_demo.py
 
 The default Python tests exercise parsing, solver semantics, release isolation,
 and trust boundaries.
-Set `THEORYDEBUGGER_TEST_LEAN=1` to include four more tests that actually invoke
+Set `THEORYDEBUGGER_TEST_LEAN=1` to include seven more tests that actually invoke
 Lean, including a rejected false proof and a valid solver result whose proof
 reconstruction remains incomplete. Native tests additionally check the original
 goal, overloaded operations, poisoned evidence, state preservation, and actual
@@ -138,6 +140,23 @@ or unsupported syntax returns `unsupported`; an unresolved query remains
 `unknown`. Proof reconstruction failure leaves the solver diagnosis visible
 with `solver_only` evidence and the failed certificate marked `unknown`.
 
+Schema 2 adds a checked classification: `true`, `mixed`, `false`, or
+`inconsistent`, with `unknown` when either side lacks Lean evidence. Both
+satisfying and refuting assignments remain visible. A single counterexample
+does not establish universal failure. See [the evidence and repair contract](docs/evidence-v2.md).
+
+To check the paper's proposed supply-sign repair while preserving its original claim:
+
+```sh
+python -m theorydebugger examples/tax_incidence.json --repair examples/repairs/nonnegative_supply.json
+lake env lean examples/Repairs.lean
+python scripts/run_repairs.py
+```
+
+A repair is accepted only when Lean proves the revised implication and a
+feasible assignment. Making the assumptions contradictory is reported as a
+rejected repair. Candidate generation and minimality are not claimed.
+
 Read [the LLM integration contract](docs/llm-contract.md) before interpreting
 these outputs. No model API, credentials, or hosted service is needed.
 
@@ -161,9 +180,9 @@ definitions, arbitrary casts, and unsupported hypotheses are rejected explicitly
 
 ## Next milestone
 
-Build and evaluate a researcher/LLM revision loop on about 20 independently
-written conjectures. Add a repair-checking operation that checks both validity
-and feasibility of each candidate assumption set. The
+Build and evaluate the implemented researcher/LLM revision loop on about 20
+independently written conjectures. Four-way diagnosis and explicit repair
+checking now provide the evidence needed to assess each proposed change. The
 [roadmap](docs/roadmap.md) separates this experiment from later parameter
 projection and general nonlinear certificate work.
 
@@ -183,7 +202,7 @@ This project is developed in a private repository and structured for a future
 public release. The [MIT license](LICENSE) applies only to original files in this
 directory; dependencies retain their own licenses.
 
-`python scripts/build_release.py /path/to/TheoryDebugger-0.2.0.zip` creates a
+`python scripts/build_release.py /path/to/TheoryDebugger-0.3.0.zip` creates a
 standalone source archive from an explicit allowlist, with file hashes and no
 Git history. Use a fresh output filename. It excludes the private reference
 archive, handoff, local tools, and build caches. The repository's GitHub Actions

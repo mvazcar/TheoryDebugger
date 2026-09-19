@@ -1,0 +1,2 @@
+TheoryDebugger.Generated.no_satisfying (v0 v1 v2 v3 : ℝ) : v0 < 0 → v1 ≥ 0 → v1 * v2 - 1 = v3 → v0 * v2 = v3 → ¬v3 > 0
+'TheoryDebugger.Generated.no_satisfying' depends on axioms: [propext, Classical.choice, Quot.sound]

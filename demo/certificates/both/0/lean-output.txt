@@ -4,3 +4,5 @@ TheoryDebugger.Generated.sample_h1 : 2 ≥ 2
 'TheoryDebugger.Generated.sample_h1' depends on axioms: [propext, Classical.choice, Quot.sound]
 TheoryDebugger.Generated.feasible : ∃ _v0 ≥ 1, _v0 ≥ 2
 'TheoryDebugger.Generated.feasible' depends on axioms: [propext, Classical.choice, Quot.sound]
+TheoryDebugger.Generated.satisfying : ∃ _v0, (_v0 ≥ 1 ∧ _v0 ≥ 2) ∧ _v0 > 0
+'TheoryDebugger.Generated.satisfying' depends on axioms: [propext, Classical.choice, Quot.sound]

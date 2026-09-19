@@ -1,32 +1,42 @@
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: valid (Lean checked against the original goal)
-Checked witness: x = 1, y = 1
+Classification: true
+Checked satisfying assignment: x = 1, y = 1
 'positive_square' depends on axioms: [propext, Classical.choice, Quot.sound]
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: valid (Lean checked against the original goal)
-Checked witness: x = 2
+Classification: true
+Checked satisfying assignment: x = 2
 Individually dispensable (Lean checked): _h₁, h₂
 This does not authorize removing these assumptions together.
 'redundant_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: refuted (Lean checked against the original goal)
-Checked witness: x = 1, y = 1, z = -1
+Classification: mixed
+Checked satisfying assignment: x = 1, y = 1, z = 1
+Checked refuting assignment: x = 1, y = 1, z = -1
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: refuted (Lean checked against the original goal)
-Checked witness: x = 1/4, y = 2, z = 1
+Classification: mixed
+Checked satisfying assignment: x = 1, y = 1, z = 1
+Checked refuting assignment: x = 1/4, y = 2, z = 1
 TheoryDebugger
 Assumptions: contradictory (Lean checked); validity is vacuous
 Goal: valid (Lean checked against the original goal)
+Classification: inconsistent
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: refuted (Lean checked against the original goal)
-Checked witness: x = 0
+Classification: mixed
+Checked satisfying assignment: x = 1
+Checked refuting assignment: x = 0
 TheoryDebugger
 Assumptions: unknown to Lean; consult solver-only diagnostics
 Goal: unknown to Lean; no proof or checked refutation
-Solver only: refuted. 
-{"contradiction":{"status":"unknown"},"feasible_assignment":{"axioms":["propext","Classical.choice","Quot.sound"],"status":"lean_kernel","type":"TheoryDebugger.realDiv (TheoryDebugger.realNeg (TheoryDebugger.realNat 1)) (TheoryDebugger.realNat 2) ^ 2 +\n        TheoryDebugger.realDiv (TheoryDebugger.realNat 5) (TheoryDebugger.realNat 2) *\n          TheoryDebugger.realDiv (TheoryDebugger.realNeg (TheoryDebugger.realNat 1)) (TheoryDebugger.realNat 2) +\n      1 =\n    0 ∧\n  True"},"individually_dispensable":[{"certificate":{"axioms":["propext","Classical.choice","Quot.sound"],"status":"lean_kernel","type":"∀ (a x : ℝ), True"},"index":0,"name":"a"}],"input":{"assumptions":[["=",["+",["+",["^","v1",2],["*","v0","v1"]],"1"],"0"]],"goal":true,"variables":["v0","v1"]},"original_goal":"∀ (a x : ℝ), x ^ 2 + a * x + 1 = 0 → True","refutation":{"status":"unknown"},"schema_version":1,"solver_only":{"certificates":[],"classification":"valid","consistency":{"evidence":"exact_evaluation","status":"consistent"},"explanation":"Consult the separate evidence labels. Solver diagnoses are not Lean certificates.","name":"claim","problem":{"assumptions":[["=",["+",["+",["^","v1",2],["*","v0","v1"]],"1"],"0"]],"goal":true,"variables":["v0","v1"]},"problem_sha256":"97772b75670b3795f86bba5ff42d9a8717b2f22c1a42dc2e91fb82acd2b874d3","schema_version":1,"solver":{"assumptions":{"detail":"","raw_model":{"v0":"(/ 5 2)","v1":"(/ (- 1) 2)"},"status":"sat","witness":{"v0":"5/2","v1":"-1/2"}},"counterexample_query":{"detail":"","raw_model":{},"status":"unsat","witness":null}},"validity":{"evidence":"solver_only","status":"valid"},"warnings":[],"witness":{"v0":"5/2","v1":"-1/2"}},"validity":{"axioms":["propext","Classical.choice","Quot.sound"],"status":"lean_kernel","type":"∀ (a x : ℝ), x ^ 2 + a * x + 1 = 0 → True"},"witness":["a = 5/2","x = -1/2"]}
+Classification: unknown
+Solver only: false.
+{"cases":{"refuting":{"certificate":{"axioms":["propext","Classical.choice","Quot.sound"],"evidence":"lean_kernel","status":"lean_verified","type":"∀ (a x : ℝ), x ^ 2 + a * x + 1 = 0 → True"},"evidence":"lean_kernel","status":"absent","witness":null},"satisfying":{"certificate":{"axioms":["propext","Classical.choice","Quot.sound"],"evidence":"lean_kernel","status":"lean_verified","type":"∃ a x, (x ^ 2 + a * x + 1 = 0 ∧ True) ∧ True"},"evidence":"lean_kernel","status":"present","witness":{"v0":"5/2","v1":"-1/2"}}},"classification":"true","classification_evidence":"lean_kernel","consistency":{"evidence":"lean_kernel","status":"consistent"},"contradiction":{"evidence":"none","status":"unknown"},"feasible_assignment":{"axioms":["propext","Classical.choice","Quot.sound"],"evidence":"lean_kernel","status":"lean_verified","type":"∃ a x, x ^ 2 + a * x + 1 = 0 ∧ True"},"individually_dispensable":[{"certificate":{"axioms":["propext","Classical.choice","Quot.sound"],"evidence":"lean_kernel","status":"lean_verified","type":"∀ (a x : ℝ), True"},"index":0,"name":"a"}],"original_goal":"∀ (a x : ℝ), x ^ 2 + a * x + 1 = 0 → True","problem":{"assumptions":[["=",["+",["+",["^","v1",2],["*","v0","v1"]],"1"],"0"]],"goal":true,"variables":["v0","v1"]},"problem_id":"{\"assumptions\":[[\"=\",[\"+\",[\"+\",[\"^\",\"v1\",2],[\"*\",\"v0\",\"v1\"]],\"1\"],\"0\"]],\"goal\":true,\"variables\":[\"v0\",\"v1\"]}","refutation":{"evidence":"none","status":"unknown"},"schema_version":2,"solver_only":{"cases":{"refuting":{"evidence":"solver_only","status":"absent"},"satisfying":{"evidence":"exact_evaluation","status":"present","witness":{"v0":"5/2","v1":"-1/2"}}},"certificates":[],"classification":"unknown","classification_evidence":"none","consistency":{"evidence":"exact_evaluation","status":"consistent"},"explanation":"Lean has not established both sides. Inspect the partial results and their evidence labels.","name":"claim","problem":{"assumptions":[["=",["+",["+",["^","v1",2],["*","v0","v1"]],"1"],"0"]],"goal":true,"variables":["v0","v1"]},"problem_sha256":"97772b75670b3795f86bba5ff42d9a8717b2f22c1a42dc2e91fb82acd2b874d3","schema_version":2,"solver":{"assumptions":{"detail":"","raw_model":{"v0":"(/ 5 2)","v1":"(/ (- 1) 2)"},"status":"sat","witness":{"v0":"5/2","v1":"-1/2"}},"classification":"true","counterexample_query":{"detail":"","raw_model":{},"status":"unsat","witness":null},"satisfying_query":{"detail":"","raw_model":{"v0":"(/ 5 2)","v1":"(/ (- 1) 2)"},"status":"sat","witness":{"v0":"5/2","v1":"-1/2"}}},"validity":{"evidence":"solver_only","status":"valid"},"warnings":[],"witness":{"v0":"5/2","v1":"-1/2"}},"validity":{"evidence":"lean_kernel","status":"valid"},"validity_certificate":{"axioms":["propext","Classical.choice","Quot.sound"],"evidence":"lean_kernel","status":"lean_verified","type":"∀ (a x : ℝ), x ^ 2 + a * x + 1 = 0 → True"},"witness":["a = 5/2","x = -1/2"]}

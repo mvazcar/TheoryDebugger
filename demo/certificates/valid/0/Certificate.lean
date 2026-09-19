@@ -20,10 +20,16 @@ theorem feasible : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ((_v0 > (0 : ℝ)) ∧ (_v1
   refine ⟨(1 : ℝ), (1 : ℝ), ?_⟩
   norm_num
 
+theorem satisfying : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), (((_v0 > (0 : ℝ)) ∧ (_v1 ≥ (_v0 ^ 2))) ∧ (_v1 > (0 : ℝ))) := by
+  refine ⟨(1 : ℝ), (1 : ℝ), ?_⟩
+  norm_num
+
 #check sample_h0
 #print axioms sample_h0
 #check sample_h1
 #print axioms sample_h1
 #check feasible
 #print axioms feasible
+#check satisfying
+#print axioms satisfying
 end TheoryDebugger.Generated

@@ -1,0 +1,15 @@
+{
+  "checked_at_utc": "2026-09-19T22:26:54.301368+00:00",
+  "input_sha256": {
+    "examples/tax_incidence.json": "aee2bd4a5dd6ac4c7e3ebc89f7bcdc04e347bc585521b8468736598e033dc16b",
+    "examples/repairs/nonnegative_supply.json": "281f60f06eac06651d94d1889be96180d7426a6f574c518551b33b3194e71cac",
+    "examples/repairs/contradictory_demand.json": "8bcd45bb4f05f3c737f253cf670f66f38070e4ee307324d94e6d3d6b675a551e",
+    "examples/false_conjecture.json": "f9b4304dcb11f86c1b0eb67fb99e6e724e6cbc42a2857f54d6c9a31d9242222d",
+    "examples/repairs/nonnegative_z.json": "3a1699587b9bd4582a56b2c8bf22d12cf0d65de94657b40ba3cf65677caebaf9",
+    "examples/Repairs.lean": "20b4dac5a998c617b68d01b263c7ba287d0b0300b10f49dc5b94103149b3d789",
+    "lean-tests/Structured.lean": "c47471d43239a96243d97cbbcc9da372791ffecba54c3443d3c82619910f85c5"
+  },
+  "repair_cases": 3,
+  "native_json_cases": 5,
+  "certificates": 11
+}

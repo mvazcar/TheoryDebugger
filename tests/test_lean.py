@@ -8,6 +8,7 @@ from theorydebugger.backend import CVC5Backend
 from theorydebugger.certificates import LeanVerifier
 from theorydebugger.diagnose import diagnose
 from theorydebugger.ir import parse
+from theorydebugger.repair import check_repair
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,6 +48,37 @@ class LeanBoundaryTests(unittest.TestCase):
             ["=", ["*", "x", 3], -1], ["=", ["^", "x", 0], 1]], "goal": [">", "x", 0]})
         r = diagnose(p, CVC5Backend(), self.verifier)
         self.assertEqual(r["validity"], {"status": "refuted", "evidence": "lean_kernel"})
+
+    def test_four_way_classification_with_real_certificates(self):
+        for goal, extra, expected in [([">", "x", 0], [], "true"),
+                                     (["<", "x", 1], [], "mixed"),
+                                     (["<", "x", 0], [], "false"),
+                                     (["<", "x", 0], [["<=", "x", 0]], "inconsistent")]:
+            with self.subTest(expected=expected):
+                p = parse({"variables": ["x"], "assumptions": [[">", "x", 0], *extra], "goal": goal})
+                r = diagnose(p, CVC5Backend(), self.verifier)
+                self.assertEqual(r["classification"], expected)
+                self.assertEqual(r["classification_evidence"], "lean_kernel")
+                for c in r["cases"].values():
+                    self.assertEqual(c["evidence"], "lean_kernel")
+
+    def test_repair_requires_both_validity_and_feasibility(self):
+        p = parse({"variables": ["x"], "assumptions": [[">", "x", 0]], "goal": [">", "x", 1]})
+        for assumption, expected in [([">", "x", 2], "valid"),
+                                     (["<=", "x", 0], "inconsistent"), ([">", "x", 0], "refuted")]:
+            with self.subTest(expected=expected):
+                r = check_repair(p, {"assumptions": [assumption]}, CVC5Backend(), self.verifier)
+                self.assertEqual(r["status"], expected)
+                self.assertEqual(r["accepted"], expected == "valid")
+                self.assertEqual(r["original"]["classification"], "mixed")
+
+    def test_algebraic_feasibility_cannot_certify_repair(self):
+        p = parse({"variables": ["x"], "assumptions": [["=", ["^", "x", 2], 2], [">", "x", 0]], "goal": True})
+        r = check_repair(p, {"assumptions": []}, CVC5Backend(), self.verifier)
+        self.assertEqual(r["repaired"]["validity"]["evidence"], "lean_kernel")
+        self.assertEqual(r["repaired"]["classification"], "unknown")
+        self.assertEqual(r["status"], "unknown")
+        self.assertFalse(r["accepted"])
 
 
 if __name__ == "__main__": unittest.main()

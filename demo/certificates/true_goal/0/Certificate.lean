@@ -10,15 +10,21 @@ namespace TheoryDebugger.Generated
 def original : Prop :=
   ∀ (v0 : ℝ), ∀ (v1 : ℝ), ((((v1 ^ 2) + (v0 * v1)) + (1 : ℝ)) = (0 : ℝ)) → True
 
-theorem sample_h0 : ((((((-1 : ℝ) / 2) ^ 2) + (((5 : ℝ) / 2) * ((-1 : ℝ) / 2))) + (1 : ℝ)) = (0 : ℝ)) := by
+theorem sample_h0 : (((((1 : ℝ) ^ 2) + ((-2 : ℝ) * (1 : ℝ))) + (1 : ℝ)) = (0 : ℝ)) := by
   norm_num
 
 theorem feasible : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), (((((_v1 ^ 2) + (_v0 * _v1)) + (1 : ℝ)) = (0 : ℝ))) := by
-  refine ⟨((5 : ℝ) / 2), ((-1 : ℝ) / 2), ?_⟩
+  refine ⟨(-2 : ℝ), (1 : ℝ), ?_⟩
+  norm_num
+
+theorem satisfying : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ((((((_v1 ^ 2) + (_v0 * _v1)) + (1 : ℝ)) = (0 : ℝ))) ∧ True) := by
+  refine ⟨(-2 : ℝ), (1 : ℝ), ?_⟩
   norm_num
 
 #check sample_h0
 #print axioms sample_h0
 #check feasible
 #print axioms feasible
+#check satisfying
+#print axioms satisfying
 end TheoryDebugger.Generated

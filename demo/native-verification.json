@@ -1,8 +1,8 @@
 {
-  "checked_at_utc": "2026-09-19T21:00:20.617334+00:00",
+  "checked_at_utc": "2026-09-19T22:34:34.458702+00:00",
   "platform": "Windows-11-10.0.26200-SP0",
   "python": "3.12.14",
-  "native_cases": 26,
+  "native_cases": 36,
   "runs": [
     {
       "command": [
@@ -34,15 +34,17 @@
     }
   ],
   "source_sha256": {
-    "TheoryDebugger.lean": "adf1cbb29fa467a60b59517294960e0defe2349675c2134d43fa5e5df1857f62",
+    "TheoryDebugger.lean": "9f4376cfa8f0879564e54f5156b60166b803cfbc3389d276207ecf2f81c2a5c6",
     "TheoryDebugger/Frontend.lean": "c87f6d4f53a30f14483443b3c1c7c305f63eb2380e07f57706193785449de84b",
-    "TheoryDebugger/Tactic.lean": "74cbb35d9716a767ca75ba949219d761cefa9acaa2949c0551a312fa29200df2",
-    "lean-tests/Native.lean": "6e9af8b1d4d7252ef78486b6108ee62fc5f5a3de9667d85b880ba0cecbac8a86",
+    "TheoryDebugger/Tactic.lean": "c3a6c6dfe48a30e4e821c39cbd0951f302f76b5c0d15d00b532d81d68a76500d",
+    "TheoryDebugger/Classification.lean": "b2dccd9e0f481e3ce2d214efe314bb7f0ed04350c5543c58ce354eeefd47052d",
+    "TheoryDebugger/Repair.lean": "236dffeeefdfd9fabadf02709cbb6f457a9a88db04877516a6bf9766df45979a",
+    "lean-tests/Native.lean": "7979b51d961c6fbedf27c5b860c219f8769ded7bac5daab7b0d0cdb7c5299cff",
     "examples/Native.lean": "6fff7fb103f74c89cd1b60fdaade4848adf839e7acaa91945b17bad4664a2105",
     "src/theorydebugger/bridge.py": "3018846da47ca2a130beed58e1b113defa725a5f60d2c72e26cd1b39d271336e",
     "src/theorydebugger/ir.py": "65f93d747fc6aabe25f4fb681383b123b96cd73be10a469ac30ab26ba355cb40",
     "src/theorydebugger/backend.py": "ef7fab88a09d545189f8c89ab995f80b104e989ad3ba40375cc5a17c446a3ce1",
-    "src/theorydebugger/diagnose.py": "d5ec3a833e13da9871af8d8f2d95f0f39c6679814acc34cc79e7f6242a2e6cdb",
+    "src/theorydebugger/diagnose.py": "53bff89666c860092bb5a7ef8af0b7653a6d52e423ee900f2cee784c351aeb4c",
     "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632",
     "lake-manifest.json": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb"
   },
@@ -51,6 +53,5 @@
     "Classical.choice",
     "Quot.sound"
   ],
-  "github_ci": "provided, not run on GitHub",
-  "linux": "not tested in this environment"
+  "scope": "This record covers local execution; GitHub Actions records Linux CI separately."
 }

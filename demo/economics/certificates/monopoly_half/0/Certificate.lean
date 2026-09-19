@@ -26,6 +26,10 @@ theorem feasible : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ∃ (_v2 : ℝ), ∃ (_v3 :
   refine ⟨(1 : ℝ), (2 : ℝ), (-1 : ℝ), (1 : ℝ), ?_⟩
   norm_num
 
+theorem satisfying : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ∃ (_v2 : ℝ), ∃ (_v3 : ℝ), (((_v0 > (0 : ℝ)) ∧ (_v1 > (0 : ℝ)) ∧ ((((2 : ℝ) * _v0) * _v2) = (- _v1)) ∧ (_v3 = (- (_v0 * _v2)))) ∧ (((2 : ℝ) * _v3) = _v1)) := by
+  refine ⟨(1 : ℝ), (2 : ℝ), (-1 : ℝ), (1 : ℝ), ?_⟩
+  norm_num
+
 #check sample_h0
 #print axioms sample_h0
 #check sample_h1
@@ -36,4 +40,6 @@ theorem feasible : ∃ (_v0 : ℝ), ∃ (_v1 : ℝ), ∃ (_v2 : ℝ), ∃ (_v3 :
 #print axioms sample_h3
 #check feasible
 #print axioms feasible
+#check satisfying
+#print axioms satisfying
 end TheoryDebugger.Generated

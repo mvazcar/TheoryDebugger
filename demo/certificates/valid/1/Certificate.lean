@@ -16,7 +16,7 @@ theorem claim : original := by
   have square_0 : 0 ≤ v0 ^ 2 := sq_nonneg v0
   have square_1 : 0 ≤ v1 ^ 2 := sq_nonneg v1
   have positive_square_0 : 0 < v0 ^ 2 := by positivity
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 #check claim
 #print axioms claim

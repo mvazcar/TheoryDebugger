@@ -52,6 +52,8 @@ def base_source(p):
 
 
 def build_source(p, kind, witness=None):
+    if kind not in {"valid", "inconsistent", "false_throughout", "feasible", "satisfying", "counterexample"}:
+        raise ValueError("Unknown certificate kind: " + kind)
     source = base_source(p)
     steps = []
     declarations = []
@@ -64,7 +66,7 @@ def build_source(p, kind, witness=None):
         steps.append({"declaration": f"TheoryDebugger.Generated.{name}", "line": line,
                       "statement": statement, "explanation": explanation})
 
-    if kind in {"valid", "inconsistent"}:
+    if kind in {"valid", "inconsistent", "false_throughout"}:
         variables = list(symbols(p).values())
         intro = variables + [f"h{i}" for i in range(len(p.assumptions))]
         proof = "  unfold original\n" if kind == "valid" else ""
@@ -81,11 +83,18 @@ def build_source(p, kind, witness=None):
                 steps.append({"local_lemma": f"positive_square_{i}",
                               "explanation": f"Assumption {i + 1} says {name} is positive, so its square is strictly positive.",
                               "statement": f"0 < {v} ^ 2", "line": len(source.splitlines()) + 1 + len(proof.splitlines())})
-        proof += "  exact True.intro" if kind == "valid" and p.goal.op == "true" else "  nlinarith"
-        add("claim" if kind == "valid" else "contradiction",
-            "original" if kind == "valid" else formal_goal(p, "False"), proof,
+        if kind == "false_throughout":
+            proof += "  intro h_goal\n"
+        proof += "  exact True.intro" if kind == "valid" and p.goal.op == "true" else \
+            "  first | (solve | norm_num at *) | nlinarith"
+        statement = "original" if kind == "valid" else formal_goal(p, "False")
+        if kind == "false_throughout":
+            statement = formal_goal(p, f"¬ {render(p.goal, symbols(p))}")
+        add({"valid": "claim", "inconsistent": "contradiction", "false_throughout": "no_satisfying"}[kind],
+            statement, proof,
             "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
-            if kind == "valid" else "The listed assumptions imply False; there is no feasible real assignment.")
+            if kind == "valid" else "The goal fails under every feasible assignment."
+            if kind == "false_throughout" else "The listed assumptions imply False; there is no feasible real assignment.")
         if kind == "inconsistent":
             call = " ".join(["contradiction", *variables, *[f"h{i}" for i in range(len(p.assumptions))]])
             proof = "  unfold original\n"
@@ -100,6 +109,8 @@ def build_source(p, kind, witness=None):
             raise ValueError("Witness does not satisfy every original assumption")
         if kind == "counterexample" and evaluate(p.goal, witness):
             raise ValueError("Witness does not refute the original goal")
+        if kind == "satisfying" and not evaluate(p.goal, witness):
+            raise ValueError("Witness does not satisfy the original goal")
         values = {v: lean_rat(witness[v]) for v in p.variables}
         for i, a in enumerate(p.assumptions):
             add(f"sample_h{i}", render(a, values), "  norm_num",
@@ -110,6 +121,14 @@ def build_source(p, kind, witness=None):
         if values: proof += "  refine ⟨" + ", ".join(values.values()) + ", ?_⟩\n"
         proof += "  norm_num"
         add("feasible", existential, proof, "This exact real assignment satisfies all original assumptions together.")
+        if kind in {"satisfying", "counterexample"}:
+            target = render(p.goal, existence_names)
+            if kind == "counterexample":
+                target = f"¬ {target}"
+            side_exists = "".join(f"∃ ({v} : ℝ), " for v in existence_names.values()) + \
+                f"({render(p.antecedent, existence_names)} ∧ {target})"
+            add("satisfying" if kind == "satisfying" else "refuting", side_exists, proof,
+                "This assignment jointly satisfies the assumptions and the stated side of the goal.")
         if kind == "counterexample":
             add("sample_not_goal", f"¬ {render(p.goal, values)}", "  norm_num",
                 "At the same assignment the original conclusion is false.")
@@ -162,7 +181,7 @@ class LeanVerifier:
                                  cwd=self.project, capture_output=True, text=True, encoding="utf-8",
                                  errors="replace", timeout=self.timeout)
             output = run.stdout + run.stderr
-            (folder / "lean-output.txt").write_text(output, encoding="utf-8")
+            (folder / "lean-output.txt").write_text(output, encoding="utf-8", newline="\n")
             result["compiler_exit_code"] = run.returncode
             result["compiler_log"] = str(folder / "lean-output.txt")
             if run.returncode != 0:

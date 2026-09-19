@@ -44,7 +44,7 @@ def main():
                 cert[field] = target.relative_to(ROOT).as_posix()
         results.append(result)
         print(label, result["classification"], result["validity"]["evidence"], flush=True)
-    (output / "results.json").write_text(json.dumps(results, indent=2, default=str, ensure_ascii=False) + "\n", encoding="utf-8")
+    (output / "results.json").write_text(json.dumps(results, indent=2, default=str, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     import cvc5
     environment = {"checked_at_utc": datetime.now(timezone.utc).isoformat(),
                    "platform": platform.platform(), "python": platform.python_version(),
@@ -54,7 +54,7 @@ def main():
                    "mathlib_revision": json.loads((ROOT / "lake-manifest.json").read_text())["packages"][0]["rev"],
                    "manifest_sha256": hashlib.sha256((ROOT / "lake-manifest.json").read_bytes()).hexdigest(),
                    "cases": len(results)}
-    (output / "environment.json").write_text(json.dumps(environment, indent=2) + "\n", encoding="utf-8")
+    (output / "environment.json").write_text(json.dumps(environment, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Passed {len(results)} end-to-end cases with checked feasibility/contradiction and axiom audits.")
 
 

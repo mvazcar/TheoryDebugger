@@ -122,3 +122,83 @@ elab "#test_axiom_boundary" : command => Command.liftTermElabM do
 
 #print axioms native_test_valid
 #print axioms native_test_unchanged
+
+elab "#expect_cases " expected:str positive:str negative:str " : " type:term : command =>
+  Command.liftTermElabM do
+    let t ← Term.elabType type
+    Term.synthesizeSyntheticMVarsNoPostponing
+    forallTelescope (← instantiateMVars t) fun _ body => do
+      let goal ← mkFreshExprMVar body
+      let _ ← Tactic.run goal.mvarId! do
+        let a ← inspect goal.mvarId!
+        unless a.classification == expected.getString && a.caseStatus true == positive.getString &&
+            a.caseStatus false == negative.getString do
+          throwError "wrong case diagnosis: {a.classification}/{a.caseStatus true}/{a.caseStatus false}"
+        let json ← a.toJson
+        unless (json.getObjValAs? String "classification").toOption == some expected.getString do
+          throwError "JSON classification disagrees with native evidence"
+        unless (← getGoals) == [goal.mvarId!] && !(← goal.mvarId!.isAssigned) do
+          throwError "case diagnosis changed the original goal"
+
+#expect_cases "true" "present" "absent" : ∀ (d s p : ℝ),
+  d < 0 → s > 0 → d*(p+1) = s*p → p < 0
+#expect_cases "mixed" "present" "present" : ∀ (d s p : ℝ),
+  d < 0 → d*(p+1) = s*p → p ≤ 0
+#expect_cases "false" "absent" "present" : ∀ (x : ℝ), x > 0 → x < 0
+#expect_cases "inconsistent" "absent" "absent" : ∀ (x : ℝ), x > 0 → x ≤ 0 → x < 0
+#expect_cases "true" "present" "absent" : True
+#expect_cases "false" "absent" "present" : False
+#expect_cases "unknown" "unknown" "absent" : ∀ (x : ℝ), x^2 = 2 → x > 0 → True
+
+set_option theoryDebugger.solver false in
+#expect_cases "unknown" "unknown" "absent" : ∀ (x : ℝ), x > 0 → x ≥ 0
+
+elab "#test_repair_boundary" : command => Command.liftTermElabM do
+  let t ← Term.elabType (← `(term| ∀ (x : ℝ), x > 0 → x > 1))
+  Term.synthesizeSyntheticMVarsNoPostponing
+  forallTelescope (← instantiateMVars t) fun _ body => do
+    let goal ← mkFreshExprMVar body
+    let p ← extract goal.mvarId!
+    let predicateType ← mkForallFVars p.vars (mkSort Level.zero)
+    for (candidateSyntax, status) in #[
+        (← `(term| fun x => x > 2), "valid"),
+        (← `(term| fun x => x ≤ 0), "inconsistent"),
+        (← `(term| fun x => x > 0), "refuted")] do
+      let predicate ← Term.elabTermEnsuringType candidateSyntax predicateType
+      Term.synthesizeSyntheticMVarsNoPostponing
+      let repair := (mkAppN (← instantiateMVars predicate) p.vars).headBeta
+      withLocalDeclD `repair repair fun hypothesis => do
+        let revised ← p.addRepair hypothesis
+        unless revised.target == p.target && revised.assumptionTypes.pop == p.assumptionTypes do
+          throwError "repair replaced part of the original input"
+        let repairGoal ← mkFreshExprMVar body
+        let _ ← Tactic.run repairGoal.mvarId! do
+          let a ← analyze revised (← discover revised)
+          unless a.repairStatus == status do throwError "wrong repair status: {a.repairStatus}"
+          -- The new local repair hypothesis cannot leak into the original proof.
+          unless (← proveClosed (← p.close p.target)).isNone do
+            throwError "repair hypothesis contaminated the original claim"
+          unless !(← goal.mvarId!.isAssigned) do throwError "repair assigned the original goal"
+
+#test_repair_boundary
+
+elab "#test_poisoned_cases" : command => Command.liftTermElabM do
+  let t ← Term.elabType (← `(term| ∀ (x : ℝ), x > 0 → x ≥ 0))
+  Term.synthesizeSyntheticMVarsNoPostponing
+  forallTelescope (← instantiateMVars t) fun _ body => do
+    let goal ← mkFreshExprMVar body
+    let _ ← Tactic.run goal.mvarId! do
+      let p ← extract goal.mvarId!
+      let fake := Json.mkObj [("status", .str "present"), ("evidence", .str "lean_kernel"),
+        ("witness", Json.mkObj [("v0", .str "-1")])]
+      let a ← analyze p (Json.mkObj [("classification", .str "mixed"),
+        ("cases", Json.mkObj [("satisfying", fake), ("refuting", fake)])])
+      unless a.classification == "unknown" && a.refuting.isNone && a.satisfying.isNone do
+        throwError "forged case evidence was trusted"
+
+#test_poisoned_cases
+
+#print axioms TheoryDebugger.no_refuting_iff
+#print axioms TheoryDebugger.no_satisfying_iff
+#print axioms TheoryDebugger.no_cases_iff
+#print axioms TheoryDebugger.nonvacuous_repair_iff

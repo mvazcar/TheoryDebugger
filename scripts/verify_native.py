@@ -30,6 +30,7 @@ def main():
         runs.append({"command": command, "exit_code": result.returncode, "log": "demo/" + log})
         print("Passed:", " ".join(command), flush=True)
     paths = ["TheoryDebugger.lean", "TheoryDebugger/Frontend.lean", "TheoryDebugger/Tactic.lean",
+             "TheoryDebugger/Classification.lean", "TheoryDebugger/Repair.lean",
              "lean-tests/Native.lean", "examples/Native.lean", "src/theorydebugger/bridge.py",
              "src/theorydebugger/ir.py", "src/theorydebugger/backend.py", "src/theorydebugger/diagnose.py",
              "lean-toolchain", "lake-manifest.json"]
@@ -38,7 +39,7 @@ def main():
             "python": platform.python_version(), "native_cases": len(re.findall(r"^(?:#expect_|#test_|theorem native_test_)", tests, re.M)),
             "runs": runs, "source_sha256": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in paths},
             "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
-            "github_ci": "provided, not run on GitHub", "linux": "not tested in this environment"}
+            "scope": "This record covers local execution; GitHub Actions records Linux CI separately."}
     (ROOT / "demo/native-verification.json").write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(f"Passed {data['native_cases']} native cases; saved source hashes and compiler output.")
 

@@ -5,6 +5,11 @@ Each result includes the full mathematical input, evidence labels, witness value
 source hashes, declaration names, and axiom dependencies. The
 [environment record](environment.json) identifies the toolchain used.
 
+Schema 2 records both goal cases. The conjecture and failed repair below are
+`mixed`: they also have checked satisfying assignments at `(1,1,1)`. Separate
+[repair reports](repairs/results.json) preserve the original claim and candidate
+assumptions. Reproduce them with `python scripts/run_repairs.py`.
+
 ## A valid claim
 
 If x > 0 and y ≥ x², then y > 0. Since x is positive, its square is strictly

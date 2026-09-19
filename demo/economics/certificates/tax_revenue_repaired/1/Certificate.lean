@@ -20,7 +20,7 @@ theorem claim : original := by
   have positive_square_0 : 0 < v0 ^ 2 := by positivity
   have positive_square_3 : 0 < v2 ^ 2 := by positivity
   have positive_square_4 : 0 < v3 ^ 2 := by positivity
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 #check claim
 #print axioms claim

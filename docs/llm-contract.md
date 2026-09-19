@@ -7,9 +7,12 @@ output outside the proof trust boundary.
 
 For a statement already in Lean, prefer `theory?`, `theory? +assumptions`, or
 `#theory_json (...)`. The native frontend checks evidence against the actual
-Lean expressions. In native JSON, `validity`, `refutation`, `contradiction`, and
-`feasible_assignment` are separate certificate fields; each successful native
-check has status `lean_kernel`. Solver reports are nested under `solver_only`,
+Lean expressions. In schema 2, `validity` and `consistency` carry mathematical
+statuses and separate evidence labels. `cases` distinguishes satisfying and
+refuting assignments; native proof metadata is attached to each case and to
+`validity_certificate`, `refutation`, `contradiction`, and `feasible_assignment`.
+Completed certificate objects have status `lean_verified` and evidence
+`lean_kernel`. Solver reports are nested under `solver_only`,
 even if that backend labels its own substitution `exact_evaluation`.
 
 1. Translate the intended claim into the documented exact input language. Show
@@ -20,10 +23,13 @@ even if that backend labels its own substitution `exact_evaluation`.
    code, a solver's UNSAT alone, or an empty certificate list.
 3. Explain a counterexample by substituting its exact values into every
    assumption and the conclusion. Link the corresponding checked declarations.
-4. Treat any proposed repair as a new conjecture. Submit the full augmented
-   problem, preserving the target. Require both a proof of the implication and
+4. Treat any proposed repair as a new conjecture. Use `--repair candidate.json`
+   or `#theory_repair_json` to append assumptions while preserving the target.
+   Require `accepted: true`, backed by both a proof of the implication and
    a feasibility witness before describing a repair as nonvacuously sufficient.
    Blocking one known counterexample is not enough.
+   See [the schema and repair contract](evidence-v2.md) for precise fields and
+   the distinction between `mixed`, `false`, and a partial refutation.
 5. When removing assumptions, check the actual remaining set. Individual
    leave-one-out results do not license removing all flagged assumptions together.
 6. Report `unsupported`, `unknown`, failed reconstruction, and unverified

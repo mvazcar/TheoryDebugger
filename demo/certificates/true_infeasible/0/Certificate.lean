@@ -13,7 +13,7 @@ def original : Prop :=
 theorem contradiction : ∀ (v0 : ℝ), (((v0 ^ 2) + (1 : ℝ)) = (0 : ℝ)) → False := by
   intro v0 h0
   have square_0 : 0 ≤ v0 ^ 2 := sq_nonneg v0
-  nlinarith
+  first | (solve | norm_num at *) | nlinarith
 
 theorem claim : original := by
   unfold original

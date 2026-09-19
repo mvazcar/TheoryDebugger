@@ -1,14 +1,19 @@
 {
-  "checked_at_utc": "2026-09-19T21:16:02.095934+00:00",
-  "platform": "Windows-11-10.0.26200-SP0",
+  "checked_at_utc": "2026-09-19T22:30:53.559940+00:00",
   "source": "examples/Paper2018Tax.lean",
   "source_sha256": "9f9e50523d34d1f305efba94cb2d3ebbeef22d7e58462ce81d0c77356aaecc61",
   "compiler_log": "demo/paper-2018-tax-output.txt",
-  "compiler_log_sha256": "a73f99416b62165f752ae7718268abe0ba6a458af4717268f71062cbfd1b0da4",
+  "compiler_log_sha256": "08d5db67b141dbc5fe785811872095c618f203de611923bde80869f8b9a7dc31",
   "exit_code": 0,
   "universal_theorems": 3,
   "ground_witness_theorems": 2,
   "checked_diagnostic_refutations": 1,
+  "classifications": [
+    "true",
+    "true",
+    "mixed",
+    "true"
+  ],
   "axioms": {
     "seller_price_falls": [
       "propext",

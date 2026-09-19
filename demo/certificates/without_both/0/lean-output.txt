@@ -1,5 +1,7 @@
 TheoryDebugger.Generated.feasible : ∃ _v0, True
 'TheoryDebugger.Generated.feasible' depends on axioms: [propext, Classical.choice, Quot.sound]
+TheoryDebugger.Generated.refuting : ∃ _v0, True ∧ ¬_v0 > 0
+'TheoryDebugger.Generated.refuting' depends on axioms: [propext, Classical.choice, Quot.sound]
 TheoryDebugger.Generated.sample_not_goal : ¬0 > 0
 'TheoryDebugger.Generated.sample_not_goal' depends on axioms: [propext, Classical.choice, Quot.sound]
 TheoryDebugger.Generated.refutation : ¬original

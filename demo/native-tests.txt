@@ -1,14 +1,21 @@
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: valid (Lean checked against the original goal)
-Checked witness: x = 1, y = 1
+Classification: true
+Checked satisfying assignment: x = 1, y = 1
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: valid (Lean checked against the original goal)
-Checked witness: x = 1
+Classification: true
+Checked satisfying assignment: x = 1
 TheoryDebugger
 Assumptions: feasible assignment checked by Lean
 Goal: valid (Lean checked against the original goal)
-Checked witness: x = 1
+Classification: true
+Checked satisfying assignment: x = 1
 'native_test_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
 'native_test_unchanged' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TheoryDebugger.no_refuting_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TheoryDebugger.no_satisfying_iff' does not depend on any axioms
+'TheoryDebugger.no_cases_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TheoryDebugger.nonvacuous_repair_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

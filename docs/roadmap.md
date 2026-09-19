@@ -38,10 +38,11 @@ new assumption. Measure: was the error found, was the witness useful, did the
 explanation match a checked step, and how much manual formalization was needed?
 These observations are more useful at this stage than a headline solver speed.
 
-A small repair-checking API should accept candidate assumptions and require both
-a checked implication and a feasibility certificate before labeling a candidate
-nonvacuously sufficient. It should not claim minimality or infer sufficiency from
-eliminating one known counterexample.
+The [repair-checking API](evidence-v2.md) now accepts candidate assumptions and
+requires both a checked implication and a feasibility certificate before
+acceptance. Both native and JSON interfaces preserve the original claim. The
+four-way diagnosis distinguishes mixed from universal failure; missing checked
+evidence remains unknown. Minimality and automatic repair discovery remain open.
 
 ## Later: stronger mathematical diagnosis
 

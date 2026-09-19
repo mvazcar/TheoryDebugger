@@ -1,0 +1,51 @@
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Classification: mixed
+Checked satisfying assignment: d = -1, s = 0, p = -1
+Checked refuting assignment: d = -1, s = -3, p = 1/2
+Original claim
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Classification: mixed
+Checked satisfying assignment: d = -1, s = 0, p = -1
+Checked refuting assignment: d = -1, s = -3, p = 1/2
+Candidate assumption: s ≥ 0
+Repaired claim
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Classification: true
+Checked satisfying assignment: d = -1, s = 0, p = -1
+Repair: valid
+Original claim
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Classification: mixed
+Checked satisfying assignment: d = -1, s = 0, p = -1
+Checked refuting assignment: d = -1, s = -3, p = 1/2
+Candidate assumption: d ≥ 0
+Repaired claim
+TheoryDebugger
+Assumptions: contradictory (Lean checked); validity is vacuous
+Goal: valid (Lean checked against the original goal)
+Classification: inconsistent
+Repair: inconsistent
+Original claim
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Classification: mixed
+Checked satisfying assignment: x = 1, y = 1, z = 1
+Checked refuting assignment: x = 1, y = 1, z = -1
+Candidate assumption: z ≥ 0
+Repaired claim
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Classification: mixed
+Checked satisfying assignment: x = 1, y = 1, z = 1
+Checked refuting assignment: x = 1/4, y = 2, z = 1
+Repair: refuted
