@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-09-19T19:51:17.497644+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "cvc5": "1.4.0",
+  "lean": "Lean (version 4.34.0, x86_64-w64-windows-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)",
+  "toolchain": "leanprover/lean4:v4.34.0",
+  "mathlib_revision": "5ed2965256430c3649e86755f9576b54eca72435",
+  "manifest_sha256": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb",
+  "cases": 10
+}

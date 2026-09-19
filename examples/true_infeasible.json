@@ -1,0 +1,6 @@
+{
+  "name": "true_goal_at_infeasible_parameter_zero",
+  "variables": ["x"],
+  "assumptions": [["=", ["+", ["^", "x", 2], 1], 0]],
+  "goal": true
+}

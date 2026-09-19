@@ -1,0 +1,1826 @@
+[
+  {
+    "schema_version": 1,
+    "name": "market_quantity",
+    "problem": {
+      "variables": [
+        "d",
+        "s",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          "<",
+          "d",
+          "0"
+        ],
+        [
+          ">=",
+          "s",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "-",
+            [
+              "*",
+              "s",
+              "dq"
+            ],
+            "1"
+          ],
+          "dp"
+        ],
+        [
+          "=",
+          [
+            "*",
+            "d",
+            "dq"
+          ],
+          "dp"
+        ]
+      ],
+      "goal": [
+        ">",
+        "dq",
+        "0"
+      ]
+    },
+    "problem_sha256": "2bbf1f53aafa2efe06515f81582c16db9146690de1b23cfe6ee2eeb44f7b4d14",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "d": "-1/2",
+          "s": "1/2",
+          "dq": "1",
+          "dp": "-1/2"
+        },
+        "detail": "",
+        "raw_model": {
+          "d": "(/ (- 1) 2)",
+          "s": "(/ 1 2)",
+          "dq": "1.0",
+          "dp": "(/ (- 1) 2)"
+        }
+      },
+      "counterexample_query": {
+        "status": "unsat",
+        "witness": null,
+        "detail": "",
+        "raw_model": {}
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "valid",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/market_quantity/0/Certificate.lean",
+        "source_sha256": "c392d843041e0f4f044945984d5e743055594faa47270b187b35393e6fcca038",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 < (0 : \u211d)) \u2192 (v1 \u2265 (0 : \u211d)) \u2192 (((v1 * v2) - (1 : \u211d)) = v3) \u2192 ((v0 * v2) = v3) \u2192 (v2 > (0 : \u211d))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "(((-1 : \u211d) / 2) < (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "(((1 : \u211d) / 2) \u2265 (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "(((((1 : \u211d) / 2) * (1 : \u211d)) - (1 : \u211d)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((((-1 : \u211d) / 2) * (1 : \u211d)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 < (0 : \u211d)) \u2227 (_v1 \u2265 (0 : \u211d)) \u2227 (((_v1 * _v2) - (1 : \u211d)) = _v3) \u2227 ((_v0 * _v2) = _v3))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/market_quantity/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible"
+        ],
+        "kind": "feasible"
+      },
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/market_quantity/1/Certificate.lean",
+        "source_sha256": "b589240d1af3d2baa87171d07dc9563fcb0a1f49f045b7efdaacabfced1bbf78",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 < (0 : \u211d)) \u2192 (v1 \u2265 (0 : \u211d)) \u2192 (((v1 * v2) - (1 : \u211d)) = v3) \u2192 ((v0 * v2) = v3) \u2192 (v2 > (0 : \u211d))",
+        "steps": [
+          {
+            "local_lemma": "square_0",
+            "explanation": "The square of d is nonnegative.",
+            "statement": "0 \u2264 v0 ^ 2",
+            "line": 16
+          },
+          {
+            "local_lemma": "square_1",
+            "explanation": "The square of s is nonnegative.",
+            "statement": "0 \u2264 v1 ^ 2",
+            "line": 17
+          },
+          {
+            "local_lemma": "square_2",
+            "explanation": "The square of dq is nonnegative.",
+            "statement": "0 \u2264 v2 ^ 2",
+            "line": 18
+          },
+          {
+            "local_lemma": "square_3",
+            "explanation": "The square of dp is nonnegative.",
+            "statement": "0 \u2264 v3 ^ 2",
+            "line": 19
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.claim",
+            "line": 13,
+            "statement": "original",
+            "explanation": "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.claim": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/market_quantity/1/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.claim"
+        ],
+        "kind": "valid"
+      }
+    ],
+    "witness": {
+      "d": "-1/2",
+      "s": "1/2",
+      "dq": "1",
+      "dp": "-1/2"
+    },
+    "warnings": [],
+    "classification": "valid",
+    "explanation": "The original implication was proved. Feasibility is reported separately."
+  },
+  {
+    "schema_version": 1,
+    "name": "market_price",
+    "problem": {
+      "variables": [
+        "d",
+        "s",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          "<",
+          "d",
+          "0"
+        ],
+        [
+          ">=",
+          "s",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "-",
+            [
+              "*",
+              "s",
+              "dq"
+            ],
+            "1"
+          ],
+          "dp"
+        ],
+        [
+          "=",
+          [
+            "*",
+            "d",
+            "dq"
+          ],
+          "dp"
+        ]
+      ],
+      "goal": [
+        "<",
+        "dp",
+        "0"
+      ]
+    },
+    "problem_sha256": "f1a777efb322870494544d284ee5391ea7ac1a18c04deff92e1e430b7bbcc692",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "d": "-1/2",
+          "s": "1/2",
+          "dq": "1",
+          "dp": "-1/2"
+        },
+        "detail": "",
+        "raw_model": {
+          "d": "(/ (- 1) 2)",
+          "s": "(/ 1 2)",
+          "dq": "1.0",
+          "dp": "(/ (- 1) 2)"
+        }
+      },
+      "counterexample_query": {
+        "status": "unsat",
+        "witness": null,
+        "detail": "",
+        "raw_model": {}
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "valid",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/market_price/0/Certificate.lean",
+        "source_sha256": "59776830c1c7ae631e50be11a29d9776ea5c1e870790c2101e6aa3c6b2d6eeb0",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 < (0 : \u211d)) \u2192 (v1 \u2265 (0 : \u211d)) \u2192 (((v1 * v2) - (1 : \u211d)) = v3) \u2192 ((v0 * v2) = v3) \u2192 (v3 < (0 : \u211d))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "(((-1 : \u211d) / 2) < (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "(((1 : \u211d) / 2) \u2265 (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "(((((1 : \u211d) / 2) * (1 : \u211d)) - (1 : \u211d)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((((-1 : \u211d) / 2) * (1 : \u211d)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 < (0 : \u211d)) \u2227 (_v1 \u2265 (0 : \u211d)) \u2227 (((_v1 * _v2) - (1 : \u211d)) = _v3) \u2227 ((_v0 * _v2) = _v3))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/market_price/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible"
+        ],
+        "kind": "feasible"
+      },
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/market_price/1/Certificate.lean",
+        "source_sha256": "b10385f08e25cb81de3d2399dd7527454127e959ca1981d67ebfd439d917911e",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 < (0 : \u211d)) \u2192 (v1 \u2265 (0 : \u211d)) \u2192 (((v1 * v2) - (1 : \u211d)) = v3) \u2192 ((v0 * v2) = v3) \u2192 (v3 < (0 : \u211d))",
+        "steps": [
+          {
+            "local_lemma": "square_0",
+            "explanation": "The square of d is nonnegative.",
+            "statement": "0 \u2264 v0 ^ 2",
+            "line": 16
+          },
+          {
+            "local_lemma": "square_1",
+            "explanation": "The square of s is nonnegative.",
+            "statement": "0 \u2264 v1 ^ 2",
+            "line": 17
+          },
+          {
+            "local_lemma": "square_2",
+            "explanation": "The square of dq is nonnegative.",
+            "statement": "0 \u2264 v2 ^ 2",
+            "line": 18
+          },
+          {
+            "local_lemma": "square_3",
+            "explanation": "The square of dp is nonnegative.",
+            "statement": "0 \u2264 v3 ^ 2",
+            "line": 19
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.claim",
+            "line": 13,
+            "statement": "original",
+            "explanation": "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.claim": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/market_price/1/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.claim"
+        ],
+        "kind": "valid"
+      }
+    ],
+    "witness": {
+      "d": "-1/2",
+      "s": "1/2",
+      "dq": "1",
+      "dp": "-1/2"
+    },
+    "warnings": [],
+    "classification": "valid",
+    "explanation": "The original implication was proved. Feasibility is reported separately."
+  },
+  {
+    "schema_version": 1,
+    "name": "market_price_rises",
+    "problem": {
+      "variables": [
+        "d",
+        "s",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          "<",
+          "d",
+          "0"
+        ],
+        [
+          ">=",
+          "s",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "-",
+            [
+              "*",
+              "s",
+              "dq"
+            ],
+            "1"
+          ],
+          "dp"
+        ],
+        [
+          "=",
+          [
+            "*",
+            "d",
+            "dq"
+          ],
+          "dp"
+        ]
+      ],
+      "goal": [
+        ">",
+        "dp",
+        "0"
+      ]
+    },
+    "problem_sha256": "50d510fea8fdcee535bcadfb25b13fd0dbba40a66329222dc36767d807472d90",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "d": "-1/2",
+          "s": "1/2",
+          "dq": "1",
+          "dp": "-1/2"
+        },
+        "detail": "",
+        "raw_model": {
+          "d": "(/ (- 1) 2)",
+          "s": "(/ 1 2)",
+          "dq": "1.0",
+          "dp": "(/ (- 1) 2)"
+        }
+      },
+      "counterexample_query": {
+        "status": "sat",
+        "witness": {
+          "d": "-1/2",
+          "s": "1/2",
+          "dq": "1",
+          "dp": "-1/2"
+        },
+        "detail": "",
+        "raw_model": {
+          "d": "(/ (- 1) 2)",
+          "s": "(/ 1 2)",
+          "dq": "1.0",
+          "dp": "(/ (- 1) 2)"
+        }
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "refuted",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/market_price_rises/0/Certificate.lean",
+        "source_sha256": "90333c1609623b7bc3b821408c09c6f4d9e5d612a9e43cfdc983981cbca38f75",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 < (0 : \u211d)) \u2192 (v1 \u2265 (0 : \u211d)) \u2192 (((v1 * v2) - (1 : \u211d)) = v3) \u2192 ((v0 * v2) = v3) \u2192 (v3 > (0 : \u211d))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "((-1 : \u211d) < (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "((1 : \u211d) \u2265 (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "((((1 : \u211d) * ((1 : \u211d) / 2)) - (1 : \u211d)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "(((-1 : \u211d) * ((1 : \u211d) / 2)) = ((-1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 < (0 : \u211d)) \u2227 (_v1 \u2265 (0 : \u211d)) \u2227 (((_v1 * _v2) - (1 : \u211d)) = _v3) \u2227 ((_v0 * _v2) = _v3))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_not_goal",
+            "line": 29,
+            "statement": "\u00ac (((-1 : \u211d) / 2) > (0 : \u211d))",
+            "explanation": "At the same assignment the original conclusion is false."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.refutation",
+            "line": 32,
+            "statement": "\u00ac original",
+            "explanation": "Applying the original universal claim to this witness contradicts the checked failed conclusion."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_not_goal": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.refutation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/market_price_rises/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible",
+          "TheoryDebugger.Generated.sample_not_goal",
+          "TheoryDebugger.Generated.refutation"
+        ],
+        "kind": "counterexample"
+      }
+    ],
+    "witness": {
+      "d": "-1",
+      "s": "1",
+      "dq": "1/2",
+      "dp": "-1/2"
+    },
+    "warnings": [],
+    "classification": "refuted",
+    "explanation": "The displayed assignment satisfies every assumption and violates the conclusion."
+  },
+  {
+    "schema_version": 1,
+    "name": "tax_revenue",
+    "problem": {
+      "variables": [
+        "t0",
+        "t1",
+        "b0",
+        "b1"
+      ],
+      "assumptions": [
+        [
+          ">",
+          "t0",
+          "0"
+        ],
+        [
+          "<",
+          "t0",
+          "t1"
+        ],
+        [
+          "<",
+          "t1",
+          "1"
+        ],
+        [
+          ">",
+          "b0",
+          "0"
+        ],
+        [
+          ">",
+          "b1",
+          "0"
+        ]
+      ],
+      "goal": [
+        ">",
+        [
+          "*",
+          "t1",
+          "b1"
+        ],
+        [
+          "*",
+          "t0",
+          "b0"
+        ]
+      ]
+    },
+    "problem_sha256": "3efa986c45fc22b1aaf230b8b2702584a1abad3fd8dc22e6bfffe3f6516806cf",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "t0": "1/6",
+          "t1": "1/3",
+          "b0": "1/6",
+          "b1": "1/6"
+        },
+        "detail": "",
+        "raw_model": {
+          "t0": "(/ 1 6)",
+          "t1": "(/ 1 3)",
+          "b0": "(/ 1 6)",
+          "b1": "(/ 1 6)"
+        }
+      },
+      "counterexample_query": {
+        "status": "sat",
+        "witness": {
+          "t0": "1/4",
+          "t1": "1/2",
+          "b0": "1",
+          "b1": "1/4"
+        },
+        "detail": "",
+        "raw_model": {
+          "t0": "(/ 1 4)",
+          "t1": "(/ 1 2)",
+          "b0": "1.0",
+          "b1": "(/ 1 4)"
+        }
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "refuted",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/tax_revenue/0/Certificate.lean",
+        "source_sha256": "1ac6e52d9dec25ddb62fabcf0ad12bd7a8fe4c7118ed2cc0aef55c8d1db44bad",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v0 < v1) \u2192 (v1 < (1 : \u211d)) \u2192 (v2 > (0 : \u211d)) \u2192 (v3 > (0 : \u211d)) \u2192 ((v1 * v3) > (v0 * v2))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "(((1 : \u211d) / 4) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "(((1 : \u211d) / 4) < ((1 : \u211d) / 2))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "(((1 : \u211d) / 2) < (1 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((100 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h4",
+            "line": 25,
+            "statement": "((40 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 5 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 28,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 > (0 : \u211d)) \u2227 (_v0 < _v1) \u2227 (_v1 < (1 : \u211d)) \u2227 (_v2 > (0 : \u211d)) \u2227 (_v3 > (0 : \u211d)))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_not_goal",
+            "line": 32,
+            "statement": "\u00ac ((((1 : \u211d) / 2) * (40 : \u211d)) > (((1 : \u211d) / 4) * (100 : \u211d)))",
+            "explanation": "At the same assignment the original conclusion is false."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.refutation",
+            "line": 35,
+            "statement": "\u00ac original",
+            "explanation": "Applying the original universal claim to this witness contradicts the checked failed conclusion."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h4": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_not_goal": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.refutation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/tax_revenue/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.sample_h4",
+          "TheoryDebugger.Generated.feasible",
+          "TheoryDebugger.Generated.sample_not_goal",
+          "TheoryDebugger.Generated.refutation"
+        ],
+        "kind": "counterexample"
+      }
+    ],
+    "witness": {
+      "t0": "1/4",
+      "t1": "1/2",
+      "b0": "100",
+      "b1": "40"
+    },
+    "warnings": [],
+    "classification": "refuted",
+    "explanation": "The displayed assignment satisfies every assumption and violates the conclusion."
+  },
+  {
+    "schema_version": 1,
+    "name": "tax_revenue_repaired",
+    "problem": {
+      "variables": [
+        "t0",
+        "t1",
+        "b0",
+        "b1"
+      ],
+      "assumptions": [
+        [
+          ">",
+          "t0",
+          "0"
+        ],
+        [
+          "<",
+          "t0",
+          "t1"
+        ],
+        [
+          "<",
+          "t1",
+          "1"
+        ],
+        [
+          ">",
+          "b0",
+          "0"
+        ],
+        [
+          ">",
+          "b1",
+          "0"
+        ],
+        [
+          ">=",
+          "b1",
+          "b0"
+        ]
+      ],
+      "goal": [
+        ">",
+        [
+          "*",
+          "t1",
+          "b1"
+        ],
+        [
+          "*",
+          "t0",
+          "b0"
+        ]
+      ]
+    },
+    "problem_sha256": "1682000c25d59415721fb0c45885ec90fb46381e93f1b48e8974b99ffe612b54",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "t0": "1/6",
+          "t1": "1/3",
+          "b0": "1/6",
+          "b1": "1/6"
+        },
+        "detail": "",
+        "raw_model": {
+          "t0": "(/ 1 6)",
+          "t1": "(/ 1 3)",
+          "b0": "(/ 1 6)",
+          "b1": "(/ 1 6)"
+        }
+      },
+      "counterexample_query": {
+        "status": "unsat",
+        "witness": null,
+        "detail": "",
+        "raw_model": {}
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "valid",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/tax_revenue_repaired/0/Certificate.lean",
+        "source_sha256": "7743098372f2af341180f5ac09260dcb77d9a29b37ce8162741430ccbf3e0143",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v0 < v1) \u2192 (v1 < (1 : \u211d)) \u2192 (v2 > (0 : \u211d)) \u2192 (v3 > (0 : \u211d)) \u2192 (v3 \u2265 v2) \u2192 ((v1 * v3) > (v0 * v2))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "(((1 : \u211d) / 6) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "(((1 : \u211d) / 6) < ((1 : \u211d) / 3))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "(((1 : \u211d) / 3) < (1 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "(((1 : \u211d) / 6) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h4",
+            "line": 25,
+            "statement": "(((1 : \u211d) / 6) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 5 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h5",
+            "line": 28,
+            "statement": "(((1 : \u211d) / 6) \u2265 ((1 : \u211d) / 6))",
+            "explanation": "Exact substitution verifies assumption 6 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 31,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 > (0 : \u211d)) \u2227 (_v0 < _v1) \u2227 (_v1 < (1 : \u211d)) \u2227 (_v2 > (0 : \u211d)) \u2227 (_v3 > (0 : \u211d)) \u2227 (_v3 \u2265 _v2))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h4": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h5": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/tax_revenue_repaired/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.sample_h4",
+          "TheoryDebugger.Generated.sample_h5",
+          "TheoryDebugger.Generated.feasible"
+        ],
+        "kind": "feasible"
+      },
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/tax_revenue_repaired/1/Certificate.lean",
+        "source_sha256": "266895bba5e3945cea95951fd7ebf88348816c0c9c7aed6dd381f1dce1eeb7f1",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v0 < v1) \u2192 (v1 < (1 : \u211d)) \u2192 (v2 > (0 : \u211d)) \u2192 (v3 > (0 : \u211d)) \u2192 (v3 \u2265 v2) \u2192 ((v1 * v3) > (v0 * v2))",
+        "steps": [
+          {
+            "local_lemma": "square_0",
+            "explanation": "The square of t0 is nonnegative.",
+            "statement": "0 \u2264 v0 ^ 2",
+            "line": 16
+          },
+          {
+            "local_lemma": "square_1",
+            "explanation": "The square of t1 is nonnegative.",
+            "statement": "0 \u2264 v1 ^ 2",
+            "line": 17
+          },
+          {
+            "local_lemma": "square_2",
+            "explanation": "The square of b0 is nonnegative.",
+            "statement": "0 \u2264 v2 ^ 2",
+            "line": 18
+          },
+          {
+            "local_lemma": "square_3",
+            "explanation": "The square of b1 is nonnegative.",
+            "statement": "0 \u2264 v3 ^ 2",
+            "line": 19
+          },
+          {
+            "local_lemma": "positive_square_0",
+            "explanation": "Assumption 1 says t0 is positive, so its square is strictly positive.",
+            "statement": "0 < v0 ^ 2",
+            "line": 20
+          },
+          {
+            "local_lemma": "positive_square_3",
+            "explanation": "Assumption 4 says b0 is positive, so its square is strictly positive.",
+            "statement": "0 < v2 ^ 2",
+            "line": 21
+          },
+          {
+            "local_lemma": "positive_square_4",
+            "explanation": "Assumption 5 says b1 is positive, so its square is strictly positive.",
+            "statement": "0 < v3 ^ 2",
+            "line": 22
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.claim",
+            "line": 13,
+            "statement": "original",
+            "explanation": "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.claim": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/tax_revenue_repaired/1/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.claim"
+        ],
+        "kind": "valid"
+      }
+    ],
+    "witness": {
+      "t0": "1/6",
+      "t1": "1/3",
+      "b0": "1/6",
+      "b1": "1/6"
+    },
+    "warnings": [],
+    "classification": "valid",
+    "explanation": "The original implication was proved. Feasibility is reported separately."
+  },
+  {
+    "schema_version": 1,
+    "name": "monopoly_half",
+    "problem": {
+      "variables": [
+        "b",
+        "dc",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          ">",
+          "b",
+          "0"
+        ],
+        [
+          ">",
+          "dc",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "*",
+            [
+              "*",
+              "2",
+              "b"
+            ],
+            "dq"
+          ],
+          [
+            "neg",
+            "dc"
+          ]
+        ],
+        [
+          "=",
+          "dp",
+          [
+            "neg",
+            [
+              "*",
+              "b",
+              "dq"
+            ]
+          ]
+        ]
+      ],
+      "goal": [
+        "=",
+        [
+          "*",
+          "2",
+          "dp"
+        ],
+        "dc"
+      ]
+    },
+    "problem_sha256": "e39267de08745e311295cb9c9bcfa946a336887a3c11cb26a4a767c3d92ad298",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "b": "1",
+          "dc": "2",
+          "dq": "-1",
+          "dp": "1"
+        },
+        "detail": "",
+        "raw_model": {
+          "b": "1.0",
+          "dc": "2.0",
+          "dq": "(- 1.0)",
+          "dp": "1.0"
+        }
+      },
+      "counterexample_query": {
+        "status": "unsat",
+        "witness": null,
+        "detail": "",
+        "raw_model": {}
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "valid",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/monopoly_half/0/Certificate.lean",
+        "source_sha256": "9c9340a614c96b866f575eef1e295501675e9b50e977231eb483675831eabe7e",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v1 > (0 : \u211d)) \u2192 ((((2 : \u211d) * v0) * v2) = (- v1)) \u2192 (v3 = (- (v0 * v2))) \u2192 (((2 : \u211d) * v3) = v1)",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "((1 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "((2 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "((((2 : \u211d) * (1 : \u211d)) * (-1 : \u211d)) = (- (2 : \u211d)))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((1 : \u211d) = (- ((1 : \u211d) * (-1 : \u211d))))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 > (0 : \u211d)) \u2227 (_v1 > (0 : \u211d)) \u2227 ((((2 : \u211d) * _v0) * _v2) = (- _v1)) \u2227 (_v3 = (- (_v0 * _v2))))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/monopoly_half/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible"
+        ],
+        "kind": "feasible"
+      },
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/monopoly_half/1/Certificate.lean",
+        "source_sha256": "1908182f09e9fc8a4be6de3a86fe744efb5c29d3620f5619355ebafa388bfa56",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v1 > (0 : \u211d)) \u2192 ((((2 : \u211d) * v0) * v2) = (- v1)) \u2192 (v3 = (- (v0 * v2))) \u2192 (((2 : \u211d) * v3) = v1)",
+        "steps": [
+          {
+            "local_lemma": "square_0",
+            "explanation": "The square of b is nonnegative.",
+            "statement": "0 \u2264 v0 ^ 2",
+            "line": 16
+          },
+          {
+            "local_lemma": "square_1",
+            "explanation": "The square of dc is nonnegative.",
+            "statement": "0 \u2264 v1 ^ 2",
+            "line": 17
+          },
+          {
+            "local_lemma": "square_2",
+            "explanation": "The square of dq is nonnegative.",
+            "statement": "0 \u2264 v2 ^ 2",
+            "line": 18
+          },
+          {
+            "local_lemma": "square_3",
+            "explanation": "The square of dp is nonnegative.",
+            "statement": "0 \u2264 v3 ^ 2",
+            "line": 19
+          },
+          {
+            "local_lemma": "positive_square_0",
+            "explanation": "Assumption 1 says b is positive, so its square is strictly positive.",
+            "statement": "0 < v0 ^ 2",
+            "line": 20
+          },
+          {
+            "local_lemma": "positive_square_1",
+            "explanation": "Assumption 2 says dc is positive, so its square is strictly positive.",
+            "statement": "0 < v1 ^ 2",
+            "line": 21
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.claim",
+            "line": 13,
+            "statement": "original",
+            "explanation": "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.claim": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/monopoly_half/1/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.claim"
+        ],
+        "kind": "valid"
+      }
+    ],
+    "witness": {
+      "b": "1",
+      "dc": "2",
+      "dq": "-1",
+      "dp": "1"
+    },
+    "warnings": [],
+    "classification": "valid",
+    "explanation": "The original implication was proved. Feasibility is reported separately."
+  },
+  {
+    "schema_version": 1,
+    "name": "monopoly_quantity",
+    "problem": {
+      "variables": [
+        "b",
+        "dc",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          ">",
+          "b",
+          "0"
+        ],
+        [
+          ">",
+          "dc",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "*",
+            [
+              "*",
+              "2",
+              "b"
+            ],
+            "dq"
+          ],
+          [
+            "neg",
+            "dc"
+          ]
+        ],
+        [
+          "=",
+          "dp",
+          [
+            "neg",
+            [
+              "*",
+              "b",
+              "dq"
+            ]
+          ]
+        ]
+      ],
+      "goal": [
+        "<",
+        "dq",
+        "0"
+      ]
+    },
+    "problem_sha256": "a45c6fc9110d9e1532a3668898dd8d73af378b103e53ea72d34f6df5a2bb3d47",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "b": "1",
+          "dc": "2",
+          "dq": "-1",
+          "dp": "1"
+        },
+        "detail": "",
+        "raw_model": {
+          "b": "1.0",
+          "dc": "2.0",
+          "dq": "(- 1.0)",
+          "dp": "1.0"
+        }
+      },
+      "counterexample_query": {
+        "status": "unsat",
+        "witness": null,
+        "detail": "",
+        "raw_model": {}
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "valid",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/monopoly_quantity/0/Certificate.lean",
+        "source_sha256": "8564238288f5e7f5816c5b53a69b646b6929d5e845f586c9e8510779c872004f",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v1 > (0 : \u211d)) \u2192 ((((2 : \u211d) * v0) * v2) = (- v1)) \u2192 (v3 = (- (v0 * v2))) \u2192 (v2 < (0 : \u211d))",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "((1 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "((2 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "((((2 : \u211d) * (1 : \u211d)) * (-1 : \u211d)) = (- (2 : \u211d)))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((1 : \u211d) = (- ((1 : \u211d) * (-1 : \u211d))))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 > (0 : \u211d)) \u2227 (_v1 > (0 : \u211d)) \u2227 ((((2 : \u211d) * _v0) * _v2) = (- _v1)) \u2227 (_v3 = (- (_v0 * _v2))))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/monopoly_quantity/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible"
+        ],
+        "kind": "feasible"
+      },
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/monopoly_quantity/1/Certificate.lean",
+        "source_sha256": "7000b2cbf4f13ddb73ff222657baa216e6ae3189fb4de474ef22b89c283d2705",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v1 > (0 : \u211d)) \u2192 ((((2 : \u211d) * v0) * v2) = (- v1)) \u2192 (v3 = (- (v0 * v2))) \u2192 (v2 < (0 : \u211d))",
+        "steps": [
+          {
+            "local_lemma": "square_0",
+            "explanation": "The square of b is nonnegative.",
+            "statement": "0 \u2264 v0 ^ 2",
+            "line": 16
+          },
+          {
+            "local_lemma": "square_1",
+            "explanation": "The square of dc is nonnegative.",
+            "statement": "0 \u2264 v1 ^ 2",
+            "line": 17
+          },
+          {
+            "local_lemma": "square_2",
+            "explanation": "The square of dq is nonnegative.",
+            "statement": "0 \u2264 v2 ^ 2",
+            "line": 18
+          },
+          {
+            "local_lemma": "square_3",
+            "explanation": "The square of dp is nonnegative.",
+            "statement": "0 \u2264 v3 ^ 2",
+            "line": 19
+          },
+          {
+            "local_lemma": "positive_square_0",
+            "explanation": "Assumption 1 says b is positive, so its square is strictly positive.",
+            "statement": "0 < v0 ^ 2",
+            "line": 20
+          },
+          {
+            "local_lemma": "positive_square_1",
+            "explanation": "Assumption 2 says dc is positive, so its square is strictly positive.",
+            "statement": "0 < v1 ^ 2",
+            "line": 21
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.claim",
+            "line": 13,
+            "statement": "original",
+            "explanation": "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.claim": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/monopoly_quantity/1/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.claim"
+        ],
+        "kind": "valid"
+      }
+    ],
+    "witness": {
+      "b": "1",
+      "dc": "2",
+      "dq": "-1",
+      "dp": "1"
+    },
+    "warnings": [],
+    "classification": "valid",
+    "explanation": "The original implication was proved. Feasibility is reported separately."
+  },
+  {
+    "schema_version": 1,
+    "name": "monopoly_full",
+    "problem": {
+      "variables": [
+        "b",
+        "dc",
+        "dq",
+        "dp"
+      ],
+      "assumptions": [
+        [
+          ">",
+          "b",
+          "0"
+        ],
+        [
+          ">",
+          "dc",
+          "0"
+        ],
+        [
+          "=",
+          [
+            "*",
+            [
+              "*",
+              "2",
+              "b"
+            ],
+            "dq"
+          ],
+          [
+            "neg",
+            "dc"
+          ]
+        ],
+        [
+          "=",
+          "dp",
+          [
+            "neg",
+            [
+              "*",
+              "b",
+              "dq"
+            ]
+          ]
+        ]
+      ],
+      "goal": [
+        "=",
+        "dp",
+        "dc"
+      ]
+    },
+    "problem_sha256": "b51bc719123ab2485ff26321f94b4c96c774d9aaade32129f1a87b6c18d321fb",
+    "solver": {
+      "assumptions": {
+        "status": "sat",
+        "witness": {
+          "b": "1",
+          "dc": "2",
+          "dq": "-1",
+          "dp": "1"
+        },
+        "detail": "",
+        "raw_model": {
+          "b": "1.0",
+          "dc": "2.0",
+          "dq": "(- 1.0)",
+          "dp": "1.0"
+        }
+      },
+      "counterexample_query": {
+        "status": "sat",
+        "witness": {
+          "b": "1",
+          "dc": "2",
+          "dq": "-1",
+          "dp": "1"
+        },
+        "detail": "",
+        "raw_model": {
+          "b": "1.0",
+          "dc": "2.0",
+          "dq": "(- 1.0)",
+          "dp": "1.0"
+        }
+      }
+    },
+    "consistency": {
+      "status": "consistent",
+      "evidence": "lean_kernel"
+    },
+    "validity": {
+      "status": "refuted",
+      "evidence": "lean_kernel"
+    },
+    "certificates": [
+      {
+        "status": "lean_verified",
+        "source": "demo/economics/certificates/monopoly_full/0/Certificate.lean",
+        "source_sha256": "d5aebfc190e72edcc6b4248d894a03cc0c88ca09cd798d63086f095cef4c6a84",
+        "formal_goal": "\u2200 (v0 : \u211d), \u2200 (v1 : \u211d), \u2200 (v2 : \u211d), \u2200 (v3 : \u211d), (v0 > (0 : \u211d)) \u2192 (v1 > (0 : \u211d)) \u2192 ((((2 : \u211d) * v0) * v2) = (- v1)) \u2192 (v3 = (- (v0 * v2))) \u2192 (v3 = v1)",
+        "steps": [
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h0",
+            "line": 13,
+            "statement": "((1 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 1 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h1",
+            "line": 16,
+            "statement": "((2 : \u211d) > (0 : \u211d))",
+            "explanation": "Exact substitution verifies assumption 2 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h2",
+            "line": 19,
+            "statement": "((((2 : \u211d) * (1 : \u211d)) * (-1 : \u211d)) = (- (2 : \u211d)))",
+            "explanation": "Exact substitution verifies assumption 3 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_h3",
+            "line": 22,
+            "statement": "((1 : \u211d) = (- ((1 : \u211d) * (-1 : \u211d))))",
+            "explanation": "Exact substitution verifies assumption 4 at the displayed witness."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.feasible",
+            "line": 25,
+            "statement": "\u2203 (_v0 : \u211d), \u2203 (_v1 : \u211d), \u2203 (_v2 : \u211d), \u2203 (_v3 : \u211d), ((_v0 > (0 : \u211d)) \u2227 (_v1 > (0 : \u211d)) \u2227 ((((2 : \u211d) * _v0) * _v2) = (- _v1)) \u2227 (_v3 = (- (_v0 * _v2))))",
+            "explanation": "This exact real assignment satisfies all original assumptions together."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.sample_not_goal",
+            "line": 29,
+            "statement": "\u00ac ((1 : \u211d) = (2 : \u211d))",
+            "explanation": "At the same assignment the original conclusion is false."
+          },
+          {
+            "declaration": "TheoryDebugger.Generated.refutation",
+            "line": 32,
+            "statement": "\u00ac original",
+            "explanation": "Applying the original universal claim to this witness contradicts the checked failed conclusion."
+          }
+        ],
+        "axioms": {
+          "TheoryDebugger.Generated.sample_h0": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h1": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h2": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_h3": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.feasible": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.sample_not_goal": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ],
+          "TheoryDebugger.Generated.refutation": [
+            "propext",
+            "Classical.choice",
+            "Quot.sound"
+          ]
+        },
+        "compiler_exit_code": 0,
+        "compiler_log": "demo/economics/certificates/monopoly_full/0/lean-output.txt",
+        "declarations": [
+          "TheoryDebugger.Generated.sample_h0",
+          "TheoryDebugger.Generated.sample_h1",
+          "TheoryDebugger.Generated.sample_h2",
+          "TheoryDebugger.Generated.sample_h3",
+          "TheoryDebugger.Generated.feasible",
+          "TheoryDebugger.Generated.sample_not_goal",
+          "TheoryDebugger.Generated.refutation"
+        ],
+        "kind": "counterexample"
+      }
+    ],
+    "witness": {
+      "b": "1",
+      "dc": "2",
+      "dq": "-1",
+      "dp": "1"
+    },
+    "warnings": [],
+    "classification": "refuted",
+    "explanation": "The displayed assignment satisfies every assumption and violates the conclusion."
+  }
+]

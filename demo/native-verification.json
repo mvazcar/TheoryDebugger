@@ -1,0 +1,56 @@
+{
+  "checked_at_utc": "2026-09-19T21:00:20.617334+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "native_cases": 26,
+  "runs": [
+    {
+      "command": [
+        "lake",
+        "build"
+      ],
+      "exit_code": 0,
+      "log": "demo/native-build.txt"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "lean-tests/Native.lean"
+      ],
+      "exit_code": 0,
+      "log": "demo/native-tests.txt"
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "examples/Native.lean"
+      ],
+      "exit_code": 0,
+      "log": "demo/native-output.txt"
+    }
+  ],
+  "source_sha256": {
+    "TheoryDebugger.lean": "adf1cbb29fa467a60b59517294960e0defe2349675c2134d43fa5e5df1857f62",
+    "TheoryDebugger/Frontend.lean": "c87f6d4f53a30f14483443b3c1c7c305f63eb2380e07f57706193785449de84b",
+    "TheoryDebugger/Tactic.lean": "74cbb35d9716a767ca75ba949219d761cefa9acaa2949c0551a312fa29200df2",
+    "lean-tests/Native.lean": "6e9af8b1d4d7252ef78486b6108ee62fc5f5a3de9667d85b880ba0cecbac8a86",
+    "examples/Native.lean": "6fff7fb103f74c89cd1b60fdaade4848adf839e7acaa91945b17bad4664a2105",
+    "src/theorydebugger/bridge.py": "3018846da47ca2a130beed58e1b113defa725a5f60d2c72e26cd1b39d271336e",
+    "src/theorydebugger/ir.py": "65f93d747fc6aabe25f4fb681383b123b96cd73be10a469ac30ab26ba355cb40",
+    "src/theorydebugger/backend.py": "ef7fab88a09d545189f8c89ab995f80b104e989ad3ba40375cc5a17c446a3ce1",
+    "src/theorydebugger/diagnose.py": "d5ec3a833e13da9871af8d8f2d95f0f39c6679814acc34cc79e7f6242a2e6cdb",
+    "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632",
+    "lake-manifest.json": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb"
+  },
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "github_ci": "provided, not run on GitHub",
+  "linux": "not tested in this environment"
+}

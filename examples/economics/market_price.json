@@ -1,0 +1,6 @@
+{
+  "name": "market_price",
+  "variables": ["d", "s", "dq", "dp"],
+  "assumptions": [["<", "d", 0], [">=", "s", 0], ["=", ["-", ["*", "s", "dq"], 1], "dp"], ["=", ["*", "d", "dq"], "dp"]],
+  "goal": ["<", "dp", 0]
+}

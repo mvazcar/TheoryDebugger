@@ -1,0 +1,6 @@
+{
+  "name": "transcendental_terms_rejected",
+  "variables": ["x"],
+  "assumptions": [],
+  "goal": ["<=", ["sin", "x"], 1]
+}

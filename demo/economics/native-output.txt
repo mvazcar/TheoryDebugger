@@ -1,0 +1,37 @@
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: d = -1/2, s = 1/2, dq = 1, dp = -1/2
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: d = -1/2, s = 1/2, dq = 1, dp = -1/2
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Checked witness: d = -1/2, s = 1/2, dq = 1, dp = -1/2
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Checked witness: t0 = 1/4, t1 = 1/2, b0 = 1, b1 = 1/4
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: t0 = 1/6, t1 = 1/3, b0 = 1/6, b1 = 1/6
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: b = 1, dc = 2, dq = -1, dp = 1
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: b = 1, dc = 2, dq = -1, dp = 1
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: refuted (Lean checked against the original goal)
+Checked witness: b = 1, dc = 2, dq = -1, dp = 1
+'Economics.supply_shift_quantity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Economics.supply_shift_price' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Economics.tax_revenue_with_preserved_base' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Economics.monopoly_half_pass_through' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Economics.monopoly_quantity_falls' depends on axioms: [propext, Classical.choice, Quot.sound]

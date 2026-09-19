@@ -1,0 +1,7 @@
+{
+  "name": "monopoly_full",
+  "variables": ["b", "dc", "dq", "dp"],
+  "assumptions": [[">", "b", 0], [">", "dc", 0], ["=", ["*", ["*", 2, "b"], "dq"], ["neg", "dc"]], ["=", "dp", ["neg", ["*", "b", "dq"]]]],
+  "goal": ["=", "dp", "dc"],
+  "witness": {"b": 1, "dc": 2, "dq": -1, "dp": 1}
+}

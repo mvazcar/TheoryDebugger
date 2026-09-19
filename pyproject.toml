@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools==84.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "theorydebugger"
+version = "0.2.0"
+description = "Exact conjecture diagnostics with Lean-checked evidence"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["cvc5==1.4.0"]
+
+[project.scripts]
+theorydebugger = "theorydebugger.__main__:main"
+
+[tool.setuptools]
+packages = ["theorydebugger"]
+package-dir = {"" = "src"}

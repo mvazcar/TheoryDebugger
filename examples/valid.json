@@ -1,0 +1,7 @@
+{
+  "name": "positive_square",
+  "variables": ["x", "y"],
+  "assumptions": [[">", "x", 0], [">=", "y", ["^", "x", 2]]],
+  "goal": [">", "y", 0],
+  "witness": {"x": "1", "y": "1"}
+}

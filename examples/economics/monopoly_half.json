@@ -1,0 +1,6 @@
+{
+  "name": "monopoly_half",
+  "variables": ["b", "dc", "dq", "dp"],
+  "assumptions": [[">", "b", 0], [">", "dc", 0], ["=", ["*", ["*", 2, "b"], "dq"], ["neg", "dc"]], ["=", "dp", ["neg", ["*", "b", "dq"]]]],
+  "goal": ["=", ["*", 2, "dp"], "dc"]
+}

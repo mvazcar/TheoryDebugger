@@ -1,0 +1,6 @@
+{
+  "name": "algebraic_witness_not_yet_certified",
+  "variables": ["x"],
+  "assumptions": [["=", ["^", "x", 2], 2], [">", "x", 0]],
+  "goal": ["<", "x", 0]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "contradictory_assumptions",
+  "variables": ["x"],
+  "assumptions": [[">", "x", 0], ["<=", "x", 0]],
+  "goal": ["=", "x", 42]
+}

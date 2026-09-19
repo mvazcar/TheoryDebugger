@@ -1,0 +1,7 @@
+{
+  "name": "market_price_rises",
+  "variables": ["d", "s", "dq", "dp"],
+  "assumptions": [["<", "d", 0], [">=", "s", 0], ["=", ["-", ["*", "s", "dq"], 1], "dp"], ["=", ["*", "d", "dq"], "dp"]],
+  "goal": [">", "dp", 0],
+  "witness": {"d": -1, "s": 1, "dq": "1/2", "dp": "-1/2"}
+}

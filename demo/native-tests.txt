@@ -1,0 +1,14 @@
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: x = 1, y = 1
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: x = 1
+TheoryDebugger
+Assumptions: feasible assignment checked by Lean
+Goal: valid (Lean checked against the original goal)
+Checked witness: x = 1
+'native_test_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'native_test_unchanged' depends on axioms: [propext, Classical.choice, Quot.sound]
