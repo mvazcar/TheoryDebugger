@@ -230,6 +230,14 @@ for LeanEconomics, with the model assumptions and current limits documented.
 The [reviewable contribution package](contributions/lean-economics/README.md)
 contains the patch and verification record; it has not been submitted upstream.
 
+The [Uzawa / Jones–Scrimgeour case study](docs/uzawa-jones.md) extends this to
+balanced growth and labor-augmenting technical change. It distinguishes the
+2004 working paper from the published 2008 proof, checks the positive-investment
+condition with TheoryDebugger, and provides a separate Mathlib-only formalization
+of the published on-path representation. Run `python scripts/verify_uzawa.py`
+for the diagnostic example. Its [contribution package](contributions/lean-economics-uzawa/README.md)
+includes the full theorem, the 2004 elasticity lemmas, and a checked positive example.
+
 Next, evaluate that workflow on about 20 independently written arguments and
 conjectures. Use the results to improve the tool and document what we learn about
 TheoryGuru, Lean, and LLM-assisted formalization. The [roadmap](docs/roadmap.md)
@@ -250,8 +258,8 @@ repository is a reference archive; its recovered software, notebooks, paper,
 and historical handoff are outside this directory and are not dependencies.
 This project is developed in a private repository and structured for a future
 public release. The [MIT license](LICENSE) applies to this project's original
-implementation and examples. The separately packaged LeanEconomics contribution
-is Apache 2.0, as identified in its [license](contributions/lean-economics/LICENSE.txt).
+implementation and examples. The separately packaged LeanEconomics contributions
+are Apache 2.0, as identified in each package's license.
 Dependencies retain their own licenses.
 
 `python scripts/build_release.py /path/to/TheoryDebugger-0.3.0.zip` creates a

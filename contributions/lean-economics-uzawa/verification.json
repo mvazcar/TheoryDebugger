@@ -1,0 +1,146 @@
+{
+  "checked_at_utc": "2026-09-20T08:59:12.337822+00:00",
+  "base_commit": "8e7d5172e253cb20af2aea27e53f384d7ef18a25",
+  "upstream": "https://github.com/LeanEconomics/LeanEconomics",
+  "branch": "codex/uzawa-jones",
+  "theorems": 25,
+  "axioms": {
+    "LeanEconomics.Uzawa.trajectory_start": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.trajectory_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.hasDerivAt_trajectory": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.trajectory_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.trajectory_two": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.rate_eq_of_weighted_moments": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.outputGrowth_eq_investmentGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.investmentGrowth_eq_capitalGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.technology_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.technology_start": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.hasDerivAt_technology": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.technology_growthRate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.technology_mul_labor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.output_per_worker": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.outputGrowth_eq_capitalGrowth": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.BalancedGrowthData.labor_augmenting_representation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.UzawaElasticity.hasDerivAt_capitalOutputRatio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.UzawaElasticity.capitalOutputRatio_derivative_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.UzawaElasticity.output_capitalOutput_elasticity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.resource": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.accumulation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.production_on_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.constant_returns": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.labor_augmenting": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.Uzawa.Examples.levels_positive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "full_build": "passed",
+  "new_module_warnings": 0,
+  "source_sha256": {
+    "LeanEconomics/Growth/Uzawa.lean": "ad74b1b258a5fdf3eb122ee59d7cb61024c9c1ff1d71d68fadb70947e7bf77db",
+    "LeanEconomics/Growth/UzawaElasticity.lean": "b32a4db969a5daca640beeb7e35d4c98433b87ae8b76ac1af2bc7b175caaab72",
+    "LeanEconomics/Growth/UzawaExamples.lean": "8d5fa9fd62fb7dc949afc3efcde9d85181063c193b1b929a557c2a10df5c15e8",
+    "LeanEconomics.lean": "bc898f2a58b225b99130d0492a60a56db0ada620c746e31d447a71bb7b12bcb3",
+    "README.md": "d9f0aa5630ca0be4efbbbec43f4e8f9ef9bdc72e4c4d1d47f3906ea130db93ef",
+    "lean-toolchain": "b563246bde88bad741a3fe1c6b126ad8dab470340d55ac3e97cca9b3f200878b",
+    "lake-manifest.json": "5a6566e47858daf2b4712e251034fba617cbc4edc62c5b53becabd44feed1cf3"
+  },
+  "scope": "Local Windows full build. Separate TheoryDebugger CI does not build these modules."
+}

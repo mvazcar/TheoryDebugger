@@ -1,0 +1,71 @@
+{
+  "checked_at_utc": "2026-09-20T08:59:00.101468+00:00",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.14",
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "examples/UzawaJones.lean"
+  ],
+  "exit_code": 0,
+  "diagnostics": [
+    "mixed",
+    "positive investment repair accepted",
+    "negative investment repair rejected as inconsistent"
+  ],
+  "theorems": 7,
+  "axioms": {
+    "UzawaJonesExample.investment_cancellation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.accumulation_rate_bridge": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.zero_investment_accumulation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.zero_investment_production": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.zero_investment_resource": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.zero_investment_constant_returns": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaJonesExample.zero_investment_representation_fails": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256": {
+    "examples/UzawaJones.lean": "e0f880c0eb8b06bb3d1fae8931f504432b1baa7c5e5b728d2bda60b4a24525ad",
+    "scripts/verify_uzawa.py": "30f073d2d5a134cd8c7e50fe4cc6659bad19d0e230fb56beb2ff10f3057dca14",
+    "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632",
+    "lake-manifest.json": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb",
+    "TheoryDebugger.lean": "9f4376cfa8f0879564e54f5156b60166b803cfbc3389d276207ecf2f81c2a5c6",
+    "TheoryDebugger/Frontend.lean": "c87f6d4f53a30f14483443b3c1c7c305f63eb2380e07f57706193785449de84b",
+    "TheoryDebugger/Tactic.lean": "c3a6c6dfe48a30e4e821c39cbd0951f302f76b5c0d15d00b532d81d68a76500d",
+    "TheoryDebugger/Classification.lean": "b2dccd9e0f481e3ce2d214efe314bb7f0ed04350c5543c58ce354eeefd47052d",
+    "TheoryDebugger/Repair.lean": "236dffeeefdfd9fabadf02709cbb6f457a9a88db04877516a6bf9766df45979a",
+    "src/theorydebugger/bridge.py": "3018846da47ca2a130beed58e1b113defa725a5f60d2c72e26cd1b39d271336e",
+    "src/theorydebugger/backend.py": "ef7fab88a09d545189f8c89ab995f80b104e989ad3ba40375cc5a17c446a3ce1",
+    "src/theorydebugger/ir.py": "65f93d747fc6aabe25f4fb681383b123b96cd73be10a469ac30ab26ba355cb40",
+    "src/theorydebugger/diagnose.py": "53bff89666c860092bb5a7ef8af0b7653a6d52e423ee900f2cee784c351aeb4c"
+  },
+  "scope": "This checks the diagnostic example, not the separate LeanEconomics modules."
+}

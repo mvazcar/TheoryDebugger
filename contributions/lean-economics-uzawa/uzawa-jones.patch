@@ -1,0 +1,452 @@
+From d9fd8f365ab42e795d7c4aa2f00c46cfa91fcb91 Mon Sep 17 00:00:00 2001
+From: mvazcar <269912966+mvazcar@users.noreply.github.com>
+Date: Sun, 20 Sep 2026 11:02:17 +0200
+Subject: [PATCH] Formalize Uzawa growth representation and Jones-Scrimgeour
+ elasticity
+
+---
+ LeanEconomics.lean                        |   3 +
+ LeanEconomics/Growth/Uzawa.lean           | 229 ++++++++++++++++++++++
+ LeanEconomics/Growth/UzawaElasticity.lean |  73 +++++++
+ LeanEconomics/Growth/UzawaExamples.lean   |  89 +++++++++
+ README.md                                 |   1 +
+ 5 files changed, 395 insertions(+)
+ create mode 100644 LeanEconomics/Growth/Uzawa.lean
+ create mode 100644 LeanEconomics/Growth/UzawaElasticity.lean
+ create mode 100644 LeanEconomics/Growth/UzawaExamples.lean
+
+diff --git a/LeanEconomics.lean b/LeanEconomics.lean
+index 5ccab4b..4b5af20 100644
+--- a/LeanEconomics.lean
++++ b/LeanEconomics.lean
+@@ -113,3 +113,6 @@ import LeanEconomics.Equilibrium.LasryLions
+ import LeanEconomics.Equilibrium.Bisection
+ import LeanEconomics.Equilibrium.SlackEuler
+ import LeanEconomics.Equilibrium.SavingPropensity
++import LeanEconomics.Growth.Uzawa
++import LeanEconomics.Growth.UzawaElasticity
++import LeanEconomics.Growth.UzawaExamples
+diff --git a/LeanEconomics/Growth/Uzawa.lean b/LeanEconomics/Growth/Uzawa.lean
+new file mode 100644
+index 0000000..94a10c7
+--- /dev/null
++++ b/LeanEconomics/Growth/Uzawa.lean
+@@ -0,0 +1,229 @@
++/-
++Copyright (c) 2026 TheoryDebugger contributors. All rights reserved.
++Released under Apache 2.0 license as described in the file LICENSE.
++Authors: TheoryDebugger contributors
++-/
++import Mathlib.Analysis.SpecialFunctions.ExpDeriv
++import Mathlib.Analysis.Calculus.Deriv.Inv
++import Mathlib.Tactic.FieldSimp
++import Mathlib.Tactic.Linarith
++import Mathlib.Tactic.Positivity
++import Mathlib.Tactic.Ring
++
++/-!
++# Uzawa's steady-state growth theorem, Jones–Scrimgeour / Schlicht version
++
++Jones and Scrimgeour (2008), *A New Proof of Uzawa's Steady-State Growth
++Theorem*, Review of Economics and Statistics 90(1), 180–182, Theorem 2.1.
++The published argument is credited to Schlicht (2006). It differs from the
++elasticity/inverse-function argument in the 2004 NBER working paper 10921.
++
++Positive investment and nonnegative consumption force output, investment,
++and capital to grow at the same rate. Constant returns then gives the
++labor-augmenting representation using the original production function at
++the starting date. The representation is asserted along the given path,
++not for all counterfactual capital/labor inputs at every date.
++
++We encode constant-rate paths explicitly with exponentials. Only the resource,
++production, and accumulation equations on/after `start` are assumed. Their
++extension before `start` is immaterial. To identify the growth rates, we use
++the resource equation at three dates and a weighted-square identity; this
++avoids the paper's second differentiation while proving the same implication.
++
++Only constant returns is needed of production. Consequently the theorem also
++applies to the paper's smaller class of neoclassical production functions;
++their other properties are retained by reusing the same function at `start`.
++-/
++
++namespace LeanEconomics.Uzawa
++
++/-- A level at date `start` growing at a constant exponential rate. -/
++noncomputable def trajectory (initial rate start t : ℝ) : ℝ :=
++  initial * Real.exp (rate * (t - start))
++
++@[simp] theorem trajectory_start (initial rate start : ℝ) :
++    trajectory initial rate start start = initial := by simp [trajectory]
++
++theorem trajectory_pos {initial : ℝ} (h : 0 < initial) (rate start t : ℝ) :
++    0 < trajectory initial rate start t := mul_pos h (Real.exp_pos _)
++
++theorem hasDerivAt_trajectory (initial rate start t : ℝ) :
++    HasDerivAt (trajectory initial rate start)
++      (rate * trajectory initial rate start t) t := by
++  have h := (((hasDerivAt_id t).sub_const start).const_mul rate).exp.const_mul initial
++  convert! h using 1
++  dsimp [trajectory]
++  ring
++
++theorem trajectory_one (initial rate start : ℝ) :
++    trajectory initial rate start (start + 1) = initial * Real.exp rate := by
++  simp [trajectory]
++
++theorem trajectory_two (initial rate start : ℝ) :
++    trajectory initial rate start (start + 2) = initial * (Real.exp rate) ^ 2 := by
++  simp only [trajectory, add_sub_cancel_left]
++  rw [show rate * 2 = rate + rate by ring, Real.exp_add, pow_two]
++
++/-- If an aggregate and its two nonnegative components have matching first
++and second moments, a positive component has the aggregate's rate. -/
++theorem rate_eq_of_weighted_moments {Y C I a b d : ℝ}
++    (hC : 0 ≤ C) (hI : 0 < I) (h₀ : Y = C + I)
++    (h₁ : Y * a = C * b + I * d)
++    (h₂ : Y * a ^ 2 = C * b ^ 2 + I * d ^ 2) : a = d := by
++  have hvariance : C * (b - a) ^ 2 + I * (d - a) ^ 2 = 0 := by
++    calc
++      _ = (C * b ^ 2 + I * d ^ 2) - 2 * a * (C * b + I * d) +
++          a ^ 2 * (C + I) := by ring
++      _ = 0 := by rw [← h₀, ← h₁, ← h₂]; ring
++  have hCvar := mul_nonneg hC (sq_nonneg (b - a))
++  have hIvar : I * (d - a) ^ 2 = 0 :=
++    le_antisymm (by linarith) (mul_nonneg hI.le (sq_nonneg _))
++  have hsq : (d - a) ^ 2 = 0 := (mul_eq_zero.mp hIvar).resolve_left (ne_of_gt hI)
++  nlinarith [sq_nonneg (d - a)]
++
++/-- The resource identity on a balanced path makes investment and output
++grow at the same rate. Consumption may be identically zero. -/
++theorem outputGrowth_eq_investmentGrowth {Y C I gY gC gI start : ℝ}
++    (hC : 0 ≤ C) (hI : 0 < I)
++    (hresource : ∀ t, start ≤ t → trajectory Y gY start t =
++      trajectory C gC start t + trajectory I gI start t) : gY = gI := by
++  have h₀ := hresource start le_rfl
++  have h₁ := hresource (start + 1) (by linarith)
++  have h₂ := hresource (start + 2) (by linarith)
++  simp only [trajectory_start] at h₀
++  simp only [trajectory_one] at h₁
++  simp only [trajectory_two] at h₂
++  exact Real.exp_injective (rate_eq_of_weighted_moments hC hI h₀ h₁ h₂)
++
++/-- The accumulation equation identifies investment's rate with capital's.
++The positive-investment assumption prevents cancellation of a zero level. -/
++theorem investmentGrowth_eq_capitalGrowth {I K gI gK δ start : ℝ}
++    (hI : 0 < I)
++    (haccum : ∀ t, start ≤ t → HasDerivAt (trajectory K gK start)
++      (trajectory I gI start t - δ * trajectory K gK start t) t) : gI = gK := by
++  have hlevels (t : ℝ) (ht : start ≤ t) :
++      trajectory I gI start t = (gK + δ) * trajectory K gK start t := by
++    have h := (hasDerivAt_trajectory K gK start t).unique (haccum t ht)
++    linarith
++  have h₀ := hlevels start le_rfl
++  have h₁ := hlevels (start + 1) (by linarith)
++  simp only [trajectory_start] at h₀
++  simp only [trajectory_one] at h₁
++  have hprod : I * Real.exp gI = I * Real.exp gK := by
++    calc
++      _ = (gK + δ) * (K * Real.exp gK) := h₁
++      _ = ((gK + δ) * K) * Real.exp gK := by ring
++      _ = _ := by rw [← h₀]
++  exact Real.exp_injective (mul_left_cancel₀ (ne_of_gt hI) hprod)
++
++/-- Initial levels and growth rates of the five quantities in Definition 2.2.
++Sign and equilibrium restrictions are explicit hypotheses of the theorem. -/
++structure BalancedGrowthData where
++  start : ℝ
++  outputInitial : ℝ
++  consumptionInitial : ℝ
++  investmentInitial : ℝ
++  capitalInitial : ℝ
++  laborInitial : ℝ
++  outputGrowth : ℝ
++  consumptionGrowth : ℝ
++  investmentGrowth : ℝ
++  capitalGrowth : ℝ
++  laborGrowth : ℝ
++  depreciation : ℝ
++
++namespace BalancedGrowthData
++
++noncomputable def output (p : BalancedGrowthData) : ℝ → ℝ :=
++  trajectory p.outputInitial p.outputGrowth p.start
++noncomputable def consumption (p : BalancedGrowthData) : ℝ → ℝ :=
++  trajectory p.consumptionInitial p.consumptionGrowth p.start
++noncomputable def investment (p : BalancedGrowthData) : ℝ → ℝ :=
++  trajectory p.investmentInitial p.investmentGrowth p.start
++noncomputable def capital (p : BalancedGrowthData) : ℝ → ℝ :=
++  trajectory p.capitalInitial p.capitalGrowth p.start
++noncomputable def labor (p : BalancedGrowthData) : ℝ → ℝ :=
++  trajectory p.laborInitial p.laborGrowth p.start
++
++/-- The labor-augmenting index, normalized to one at the starting date. -/
++noncomputable def technology (p : BalancedGrowthData) (t : ℝ) : ℝ :=
++  Real.exp ((p.outputGrowth - p.laborGrowth) * (t - p.start))
++
++theorem technology_pos (p : BalancedGrowthData) (t : ℝ) : 0 < p.technology t :=
++  Real.exp_pos _
++
++@[simp] theorem technology_start (p : BalancedGrowthData) : p.technology p.start = 1 := by
++  simp [technology]
++
++theorem hasDerivAt_technology (p : BalancedGrowthData) (t : ℝ) :
++    HasDerivAt p.technology
++      ((p.outputGrowth - p.laborGrowth) * p.technology t) t := by
++  have h := (((hasDerivAt_id t).sub_const p.start).const_mul
++    (p.outputGrowth - p.laborGrowth)).exp
++  convert! h using 1
++  dsimp [technology]
++  ring
++
++theorem technology_growthRate (p : BalancedGrowthData) (t : ℝ) :
++    deriv p.technology t / p.technology t = p.outputGrowth - p.laborGrowth := by
++  rw [(p.hasDerivAt_technology t).deriv]
++  exact mul_div_cancel_right₀ _ (ne_of_gt (p.technology_pos t))
++
++/-- Effective labor and output share the same exponential factor. -/
++theorem technology_mul_labor (p : BalancedGrowthData) (t : ℝ) :
++    p.technology t * p.labor t =
++      Real.exp (p.outputGrowth * (t - p.start)) * p.laborInitial := by
++  unfold technology labor trajectory
++  calc
++    _ = (Real.exp ((p.outputGrowth - p.laborGrowth) * (t - p.start)) *
++        Real.exp (p.laborGrowth * (t - p.start))) * p.laborInitial := by ring
++    _ = _ := by rw [← Real.exp_add]; congr 2; ring
++
++theorem output_per_worker (p : BalancedGrowthData) (t : ℝ) :
++    p.output t / p.labor t =
++      trajectory (p.outputInitial / p.laborInitial)
++        (p.outputGrowth - p.laborGrowth) p.start t := by
++  unfold output labor trajectory
++  rw [mul_div_mul_comm, ← Real.exp_sub]
++  congr 2
++  ring
++
++/-- No equality of growth rates is built into the definition of balanced growth:
++it follows from resource feasibility and accumulation with positive investment. -/
++theorem outputGrowth_eq_capitalGrowth (p : BalancedGrowthData)
++    (hC : 0 ≤ p.consumptionInitial) (hI : 0 < p.investmentInitial)
++    (hresource : ∀ t, p.start ≤ t → p.output t = p.consumption t + p.investment t)
++    (haccum : ∀ t, p.start ≤ t → HasDerivAt p.capital
++      (p.investment t - p.depreciation * p.capital t) t) :
++    p.outputGrowth = p.capitalGrowth :=
++  (Uzawa.outputGrowth_eq_investmentGrowth hC hI hresource).trans
++    (investmentGrowth_eq_capitalGrowth hI haccum)
++
++/-- **Uzawa's on-path labor-augmenting representation.** This is the production
++identity of Jones–Scrimgeour (2008), equation (5), proved by Schlicht's scaling
++argument. Positive marginal products, concavity, nonnegative depreciation, and
++nonnegative labor growth are unnecessary for this identity and are not assumed.
++`technology_growthRate` supplies its stated rate `g = gY - n`. -/
++theorem labor_augmenting_representation (p : BalancedGrowthData) {F : ℝ → ℝ → ℝ → ℝ}
++    (hK : 0 < p.capitalInitial) (hL : 0 < p.laborInitial)
++    (hC : 0 ≤ p.consumptionInitial) (hI : 0 < p.investmentInitial)
++    (hresource : ∀ t, p.start ≤ t → p.output t = p.consumption t + p.investment t)
++    (haccum : ∀ t, p.start ≤ t → HasDerivAt p.capital
++      (p.investment t - p.depreciation * p.capital t) t)
++    (hproduction : ∀ t, p.start ≤ t → p.output t = F (p.capital t) (p.labor t) t)
++    (hCRS : ∀ K L a, 0 < K → 0 < L → 0 < a →
++      F (a * K) (a * L) p.start = a * F K L p.start) :
++    ∀ t, p.start ≤ t → p.output t = F (p.capital t) (p.technology t * p.labor t) p.start := by
++  have hrates := p.outputGrowth_eq_capitalGrowth hC hI hresource haccum
++  have h₀ := hproduction p.start le_rfl
++  simp only [output, capital, labor, trajectory_start] at h₀
++  intro t _
++  rw [p.technology_mul_labor]
++  change p.outputInitial * Real.exp (p.outputGrowth * (t - p.start)) =
++    F (p.capitalInitial * Real.exp (p.capitalGrowth * (t - p.start)))
++      (Real.exp (p.outputGrowth * (t - p.start)) * p.laborInitial) p.start
++  rw [← hrates, mul_comm p.capitalInitial, hCRS _ _ _ hK hL (Real.exp_pos _), ← h₀]
++  ring
++
++end BalancedGrowthData
++end LeanEconomics.Uzawa
+diff --git a/LeanEconomics/Growth/UzawaElasticity.lean b/LeanEconomics/Growth/UzawaElasticity.lean
+new file mode 100644
+index 0000000..172083e
+--- /dev/null
++++ b/LeanEconomics/Growth/UzawaElasticity.lean
+@@ -0,0 +1,73 @@
++/-
++Copyright (c) 2026 TheoryDebugger contributors. All rights reserved.
++Released under Apache 2.0 license as described in the file LICENSE.
++Authors: TheoryDebugger contributors
++-/
++import Mathlib.Analysis.Calculus.Deriv.Inv
++import Mathlib.Tactic.FieldSimp
++import Mathlib.Tactic.Linarith
++import Mathlib.Tactic.Ring
++
++/-!
++# The elasticity identity in Jones–Scrimgeour (2004)
++
++NBER working paper 10921, equation (4) and footnotes 4–5, printed pp. 5–6.
++For output per worker `f(k)`, capital/output is `h(k) = k/f(k)` and the capital
++share is `α = f'(k) k / f(k)`. This file proves `h' = (1-α)/f(k)` and derives
++the output-versus-capital/output elasticity `α/(1-α)` along a differentiable
++local inverse parameterization. Its existence is an explicit hypothesis;
++we do not assume that pointwise nonzero derivatives prove global surjectivity.
++
++These are local calculus statements from the 2004 argument. They are not a
++proof of its later separation-of-variables step. The independent `Uzawa`
++module proves the published 2008 on-path theorem via the Schlicht argument.
++-/
++
++namespace LeanEconomics.UzawaElasticity
++
++open Filter
++open scoped Topology
++
++/-- Differentiate the capital/output ratio without assuming an inverse exists. -/
++theorem hasDerivAt_capitalOutputRatio {f : ℝ → ℝ} {k m : ℝ}
++    (hf : HasDerivAt f m k) (hy : f k ≠ 0) :
++    HasDerivAt (fun u => u / f u) ((1 - m * k / f k) / f k) k := by
++  have h := (hasDerivAt_id k).fun_div hf hy
++  convert! h using 1
++  dsimp
++  field_simp
++
++/-- A positive labor share makes the capital/output derivative strictly positive. -/
++theorem capitalOutputRatio_derivative_pos {f : ℝ → ℝ} {k m : ℝ}
++    (hy : 0 < f k) (hshare : m * k / f k < 1) :
++    0 < (1 - m * k / f k) / f k :=
++  div_pos (sub_pos.mpr hshare) hy
++
++/-- Equation (4): the output elasticity with respect to capital/output is
++the capital share divided by the labor share. The identity `k(x)=x f(k(x))`
++is required in a neighborhood, so it can legitimately be differentiated. -/
++theorem output_capitalOutput_elasticity {f k : ℝ → ℝ} {x m k' : ℝ}
++    (hk : HasDerivAt k k' x) (hf : HasDerivAt f m (k x))
++    (hy : 0 < f (k x))
++    (hshare : m * k x / f (k x) < 1)
++    (hidentity : ∀ᶠ u in 𝓝 x, k u = u * f (k u)) :
++    (m * k') * x / f (k x) =
++      (m * k x / f (k x)) / (1 - m * k x / f (k x)) := by
++  have hid : k x = x * f (k x) :=
++    Filter.EventuallyEq.eq_of_nhds (show k =ᶠ[𝓝 x] (fun u => u * f (k u)) from hidentity)
++  have hcomp := hf.comp x hk
++  have hproduct := (hasDerivAt_id x).mul hcomp
++  have hder : k' = f (k x) + x * (m * k') := by
++    simpa using hk.unique (hproduct.congr_of_eventuallyEq hidentity)
++  have halpha : m * k x / f (k x) = m * x := by
++    calc
++      _ = m * (x * f (k x)) / f (k x) := congrArg (fun v => m * v / f (k x)) hid
++      _ = _ := by field_simp
++  have hden : 1 - m * x ≠ 0 := by rw [halpha] at hshare; linarith
++  have hkprime : k' = f (k x) / (1 - m * x) := by
++    apply (eq_div_iff hden).mpr
++    nlinarith [hder]
++  rw [halpha, hkprime]
++  field_simp
++
++end LeanEconomics.UzawaElasticity
+diff --git a/LeanEconomics/Growth/UzawaExamples.lean b/LeanEconomics/Growth/UzawaExamples.lean
+new file mode 100644
+index 0000000..61dbc60
+--- /dev/null
++++ b/LeanEconomics/Growth/UzawaExamples.lean
+@@ -0,0 +1,89 @@
++/-
++Copyright (c) 2026 TheoryDebugger contributors. All rights reserved.
++Released under Apache 2.0 license as described in the file LICENSE.
++Authors: TheoryDebugger contributors
++-/
++import LeanEconomics.Growth.Uzawa
++import Mathlib.Analysis.Real.Sqrt
++import Mathlib.Tactic.NormNum
++
++/-!
++# A nonvacuous Cobb–Douglas instance of Uzawa's theorem
++
++`K(t)=exp(2t)`, `L(t)=1`, `Y(t)=4 exp(2t)`, `C(t)=I(t)=2 exp(2t)`, and `δ=0`,
++with `F(K,L,t)=4 exp(t) sqrt(K L)`. All economic levels are strictly positive.
++The final proof applies the general theorem after checking its actual premises.
++Positive and diminishing marginal products and Inada limits of this familiar
++Cobb–Douglas technology are not asserted as additional formal results here.
++-/
++
++namespace LeanEconomics.Uzawa.Examples
++
++def growingEconomy : BalancedGrowthData where
++  start := 0
++  outputInitial := 4
++  consumptionInitial := 2
++  investmentInitial := 2
++  capitalInitial := 1
++  laborInitial := 1
++  outputGrowth := 2
++  consumptionGrowth := 2
++  investmentGrowth := 2
++  capitalGrowth := 2
++  laborGrowth := 0
++  depreciation := 0
++
++noncomputable def production (K L t : ℝ) : ℝ :=
++  4 * Real.exp t * Real.sqrt (K * L)
++
++theorem resource (t : ℝ) : growingEconomy.output t =
++    growingEconomy.consumption t + growingEconomy.investment t := by
++  simp only [BalancedGrowthData.output, BalancedGrowthData.consumption,
++    BalancedGrowthData.investment, growingEconomy, trajectory]
++  ring
++
++theorem accumulation (t : ℝ) : HasDerivAt growingEconomy.capital
++    (growingEconomy.investment t - growingEconomy.depreciation * growingEconomy.capital t) t := by
++  convert! hasDerivAt_trajectory 1 2 0 t using 1
++  simp [BalancedGrowthData.investment, BalancedGrowthData.capital, growingEconomy, trajectory]
++
++theorem production_on_path (t : ℝ) : growingEconomy.output t =
++    production (growingEconomy.capital t) (growingEconomy.labor t) t := by
++  have hsqrt : Real.sqrt (Real.exp (2 * t)) = Real.exp t := by
++    have he : Real.exp (2 * t) = (Real.exp t) ^ 2 := by
++      rw [pow_two, ← Real.exp_add]
++      congr 1
++      ring
++    rw [he, Real.sqrt_sq (Real.exp_pos _).le]
++  simp only [BalancedGrowthData.output, BalancedGrowthData.capital,
++    BalancedGrowthData.labor, growingEconomy, trajectory, sub_zero, zero_mul,
++    Real.exp_zero, one_mul, mul_one, production]
++  rw [hsqrt]
++  rw [mul_assoc, ← Real.exp_add]
++  congr 2
++  ring
++
++theorem constant_returns (K L : ℝ) {a : ℝ} (ha : 0 < a) :
++    production (a * K) (a * L) 0 = a * production K L 0 := by
++  have h : (a * K) * (a * L) = a ^ 2 * (K * L) := by ring
++  simp only [production, Real.exp_zero, mul_one, h,
++    Real.sqrt_mul (sq_nonneg a), Real.sqrt_sq ha.le]
++  ring
++
++/-- All the substantive hypotheses of the general theorem are realized here. -/
++theorem labor_augmenting (t : ℝ) (ht : 0 ≤ t) :
++    growingEconomy.output t = production (growingEconomy.capital t)
++      (growingEconomy.technology t * growingEconomy.labor t) 0 := by
++  exact growingEconomy.labor_augmenting_representation (by norm_num [growingEconomy])
++    (by norm_num [growingEconomy]) (by norm_num [growingEconomy])
++    (by norm_num [growingEconomy]) (fun u _ => resource u)
++    (fun u _ => accumulation u) (fun u _ => production_on_path u)
++    (fun K L _ _ _ ha => constant_returns K L ha) t ht
++
++theorem levels_positive (t : ℝ) : 0 < growingEconomy.output t ∧
++    0 < growingEconomy.consumption t ∧ 0 < growingEconomy.investment t ∧
++    0 < growingEconomy.capital t ∧ 0 < growingEconomy.labor t := by
++  repeat' constructor
++  all_goals apply trajectory_pos; norm_num [growingEconomy]
++
++end LeanEconomics.Uzawa.Examples
+diff --git a/README.md b/README.md
+index 2aa3179..1e87890 100644
+--- a/README.md
++++ b/README.md
+@@ -65,6 +65,7 @@ These live in `DynamicProgramming/`, `Models/ColemanReffett.lean`,
+ | `Distribution/` | Stationary distributions on the compact state space: existence, Doeblin uniqueness, convergence |
+ | `Equilibrium/` | Capital supply and demand, Light's theorems, the Aiyagari and Huggett theorems, reductions for higher risk aversion, multiplicity, Lasry–Lions and mean-field uniqueness |
+ | `Analysis/` | Real-analysis lemmas the above need |
++| `Growth/` | Uzawa's on-path labor-augmenting representation, balanced-growth rate equalities, the Jones–Scrimgeour elasticity identity, and a Cobb–Douglas example |
+ | `WriteUpResults/` | The paper on the first target |
+ 
+ Two conventions run through everything. Borrowing limits and asset caps are type
+-- 
+2.53.0.windows.3
+
