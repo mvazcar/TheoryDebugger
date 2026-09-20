@@ -1,15 +1,56 @@
 # TheoryDebugger
 
-A small conjecture debugger for people working with LLMs and Lean. It checks a
-precise real polynomial claim, returns structured diagnoses, and checks Lean
-proofs against the original goal. Both a native Lean interface and a JSON CLI
-work today. This is a research prototype, not a general
-theorem prover or an automatic translator of informal mathematics.
+TheoryDebugger aims to build an **open-source successor to TheoryGuru, extended
+with Lean capabilities**, so researchers using LLMs can improve their mathematical
+research workflows. The central idea is to give an LLM a claim and an informal
+proof, let it use automated reasoning tools to examine the logic, and obtain a
+Lean formalization with checked proof evidence.
 
-The useful product is the feedback loop: **state a claim → find what breaks →
-revise it → check the revised claim**. Its value beyond an arithmetic tactic is
-keeping feasibility, counterexamples, and proposed repairs visible. A confident
-LLM explanation is not evidence that a repair works.
+This is also a learning project. We want to understand both **TheoryGuru and
+Lean** by studying TheoryGuru's reasoning workflow, implementing its ideas in
+original open-source code, and learning how Lean and Mathlib express and verify
+the corresponding mathematics. Small economic examples let us compare behavior,
+explain what we learn, and build toward more useful research tools. See the
+[TheoryGuru comparison](docs/theoryguru-comparison.md) and
+[guided economics examples](docs/economics.md).
+
+## Intended research workflow
+
+**Your informal argument → LLM-assisted formalization → diagnostic feedback →
+revised formalization → Lean-checked proof and certificate.**
+
+1. **The researcher supplies a claim and an informal proof**, together with the
+   definitions, assumptions, and economic interpretation.
+2. **The LLM translates the argument into explicit mathematical statements**,
+   breaking it into steps and mapping them to Lean definitions and lemmas.
+3. **The LLM uses TheoryDebugger to check supported steps**, search for
+   counterexamples, diagnose contradictory assumptions, and test proposed repairs.
+4. **The LLM revises the formalization using that feedback**, preserving the
+   original claim and making any proposed change to the claim or assumptions
+   explicit for the researcher to review.
+5. **When verification succeeds, the researcher receives a compiling Lean
+   proof**, reproducible verification evidence, and a readable correspondence
+   between the original argument and the checked statements. Unresolved steps
+   remain visible as incomplete work.
+
+Two questions matter throughout: does the formal statement faithfully express
+the researcher's argument, and does its proof check? Lean checks the formal
+proof. Faithfulness to the intended mathematics requires an inspectable
+translation, including any modeling assumptions. An LLM's explanation alone
+does not settle either question.
+
+## What works today
+
+The current prototype provides the **checking component** for explicit real
+polynomial claims. It has native Lean commands and a JSON CLI, four-way
+diagnosis, checked witnesses, and explicit repair checks requiring both validity
+and feasibility. It can produce Lean proofs and exported certificate files for
+supported claims when proof reconstruction succeeds.
+
+The complete informal-proof-to-Lean assistant described above is the intended
+workflow. Automated translation of informal arguments and orchestration of an
+LLM through that workflow are still to be built and evaluated. The current tools
+provide a foundation for this work and can already be called by an external LLM.
 
 ## Explore directly in Lean
 
@@ -180,11 +221,16 @@ definitions, arbitrary casts, and unsupported hypotheses are rejected explicitly
 
 ## Next milestone
 
-Build and evaluate the implemented researcher/LLM revision loop on about 20
-independently written conjectures. Four-way diagnosis and explicit repair
-checking now provide the evidence needed to assess each proposed change. The
-[roadmap](docs/roadmap.md) separates this experiment from later parameter
-projection and general nonlinear certificate work.
+Complete one example that starts with a written economic proof and ends with an
+annotated Lean formalization and reproducible verification evidence. Record the
+translation choices, diagnostic feedback, and any changes to assumptions, so the
+researcher can inspect how the final proof relates to the original argument.
+
+Then evaluate that workflow on about 20 independently written arguments and
+conjectures. Use the results to improve the tool and document what we learn about
+TheoryGuru, Lean, and LLM-assisted formalization. The [roadmap](docs/roadmap.md)
+places this evaluation alongside later parameter projection and more general
+nonlinear proof certificates.
 
 ## Provenance and release boundary
 
