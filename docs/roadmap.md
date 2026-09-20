@@ -46,6 +46,11 @@ evidence remains unknown. Minimality and automatic repair discovery remain open.
 
 ## Later: stronger mathematical diagnosis
 
+The Solow–Swan and Uzawa case studies now supply a concrete
+[record of proof-development lessons](growth-proof-lessons.md): checked
+analytic bridges, explicit domains, boundary counterexamples, and fresh source
+audits. The next review should use those cases to prioritize core improvements.
+
 Add contradiction cores, checked sequential hypothesis minimization, and exact
 parameter feasibility/validity projections as distinct operations. REDLOG is a
 candidate discovery backend for projection. Its output remains solver-only until

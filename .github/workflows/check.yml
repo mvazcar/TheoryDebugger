@@ -31,6 +31,7 @@ jobs:
           lake env lean examples/Native.lean
           python scripts/verify_paper.py
           python scripts/verify_solow.py
+          python scripts/verify_solow_dynamics.py
           python scripts/verify_uzawa.py
           python scripts/verify_uzawa_separation.py
       - name: Check Python boundaries and regenerate certificates

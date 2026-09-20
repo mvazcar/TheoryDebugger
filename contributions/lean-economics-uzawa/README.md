@@ -33,3 +33,14 @@ No upstream CI run or maintainer acceptance is claimed.
 LLM assistance was used in the development. Kernel checking establishes the
 formal propositions; the documented economic correspondence remains reviewable
 by a researcher. Downloaded papers are not redistributed with this code.
+
+## AI development credit
+
+These proposed additions were developed with **OpenAI Codex**, under the
+direction of the TheoryDebugger project maintainer, who sets the research
+questions and reviews their economic interpretation. Codex assisted with
+source comparison, proof development, implementation, documentation, and tests.
+This follows LeanEconomics' approach to crediting Claude while preserving
+that upstream attribution. Lean checks the stated propositions; the source
+correspondence and adequacy of economic assumptions require researcher review.
+Reasoning settings are not proof certificates.

@@ -58,3 +58,14 @@ This package is prepared for review and has not been submitted to public
 upstream. LLM assistance was used. Kernel checking verifies the formal
 statements; the economic interpretation remains open to researcher review.
 Downloaded papers are excluded from the source release.
+
+## AI development credit
+
+These proposed additions were developed with **OpenAI Codex**, under the
+direction of the TheoryDebugger project maintainer, who sets the research
+questions and reviews their economic interpretation. Codex assisted with
+source comparison, proof development, implementation, documentation, and tests.
+This follows LeanEconomics' approach to crediting Claude while preserving
+that upstream attribution. Lean checks the stated propositions; the source
+correspondence and adequacy of economic assumptions require researcher review.
+Reasoning settings are not proof certificates.

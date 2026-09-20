@@ -1,5 +1,9 @@
 # Solow–Swan: from an informal argument to checked Lean
 
+**Historical first contribution.** The [general Cobb–Douglas dynamics extension](solow-swan-dynamics.md)
+now supplies the trajectory, uniqueness, and convergence results identified as
+next steps below, with a detailed statement, proof, source map, and 55-theorem audit.
+
 This is a first, deliberately narrow contribution toward formalizing the
 Solow–Swan model in [LeanEconomics](https://github.com/LeanEconomics/LeanEconomics).
 TheoryDebugger supplies diagnostic feedback during development. The proposed

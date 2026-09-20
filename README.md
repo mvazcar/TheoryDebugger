@@ -227,8 +227,14 @@ an explicit repair, and connects the resulting theorem to square-root
 production in Lean. Run `python scripts/verify_solow.py` to reproduce the
 diagnostics and theorem checks. A separate Mathlib-only contribution is prepared
 for LeanEconomics, with the model assumptions and current limits documented.
-The [reviewable contribution package](contributions/lean-economics/README.md)
-contains the patch and verification record; it has not been submitted upstream.
+The original [square-root contribution](contributions/lean-economics/README.md)
+is preserved. The [detailed general-exponent proof](docs/solow-swan-dynamics.md)
+and [complete Solow contribution](contributions/lean-economics-solow-dynamics/README.md)
+adds arbitrary exponents `0 < α < 1`, positive trajectories, uniqueness,
+monotone adjustment and convergence, with source correspondence and a fresh
+55-theorem audit. Run `python scripts/verify_solow_dynamics.py` for six new
+diagnostics and checked bridges to actual exponential functions and derivatives.
+These contributions have not been submitted upstream.
 
 The [Uzawa / Jones–Scrimgeour case study](docs/uzawa-jones.md) extends this to
 balanced growth and labor-augmenting technical change. It distinguishes the
@@ -253,6 +259,32 @@ places this evaluation alongside later parameter projection and more general
 nonlinear proof certificates.
 
 ## Provenance and release boundary
+
+The development is written mostly with **OpenAI Codex**, an AI coding agent,
+working under the direction of the project maintainer, who sets the research
+questions, chooses the scope, and reviews the economic interpretation. Codex
+assists with source comparison, proof development, implementation, documentation,
+and tests. This attribution follows the transparent approach used in
+[LeanEconomics](https://github.com/LeanEconomics/LeanEconomics#provenance).
+
+Lean's kernel checks the formal proof terms; it does not establish that the
+chosen definitions and assumptions faithfully express the intended economics.
+TheoryDebugger distinguishes kernel-checked evidence from solver suggestions
+and unknown results. AI assistance and reasoning settings are development
+provenance, not proof certificates. The separately packaged growth contributions
+carry the same Codex attribution and retain their upstream licenses and credits.
+
+Suggested software citation:
+
+```bibtex
+@misc{TheoryDebugger,
+  author = {{TheoryDebugger contributors [with OpenAI Codex]}},
+  title = {TheoryDebugger: Automated Reasoning with Lean Certificates},
+  year = {2026},
+  howpublished = {\url{https://github.com/mvazcar/TheoryDebugger}},
+  note = {Research prototype; developed with OpenAI Codex under researcher direction}
+}
+```
 
 This project is inspired by **TheoryGuru**, developed by Casey B. Mulligan,
 James H. Davenport, and Matthew England. Their

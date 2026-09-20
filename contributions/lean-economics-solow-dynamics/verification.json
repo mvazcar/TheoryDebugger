@@ -1,0 +1,318 @@
+{
+  "checked_at_utc": "2026-09-20T11:46:38.559114+00:00",
+  "base_commit": "4a66c420b920250bbdfc95e16cf0db358c4d7830",
+  "upstream_base_commit": "8e7d5172e253cb20af2aea27e53f384d7ef18a25",
+  "branch": "codex/solow-swan-dynamics",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "fresh_source_compilation": "passed",
+  "full_build": "passed",
+  "new_module_warnings": 0,
+  "theorems": 55,
+  "new_theorems": 39,
+  "module_theorems": {
+    "SolowSwan": 16,
+    "SolowSwanDynamics": 33,
+    "SolowSwanExamples": 6
+  },
+  "axioms": {
+    "LeanEconomics.SolowSwan.hasDerivAt_capitalPerWorker": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.intensiveForm_of_homogeneous": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.sqrt_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_factor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.eq_steadyState_of_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.existsUnique_positive_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_pos_of_lt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_neg_of_gt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_saving": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_productivity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictAnti_population": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_capital_output_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.hasDerivAt_capitalPerEffectiveWorker": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_factor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_power": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.eq_steadyState_of_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.existsUnique_positive_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.transformedPath_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.transformedPath_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_transformedPath": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_power": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.eq_transformedPath_of_hasDerivAt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.solution_eq_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.tendsto_transformedPath": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.tendsto_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_power_gap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.positive_dynamics": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_pos_of_lt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.rate_neg_of_gt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictMono_investment": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictAnti_dilution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictMono_saving": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.steadyState_capital_output_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_lt_steadyState_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.tendsto_of_isPositiveSolution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_monotoneOn_of_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.path_antitoneOn_of_le": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.tendsto_output": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.example_positive_path": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.normalized_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.zero_solution": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.zero_solution_not_positive": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.no_positive_stationary_at_exponent_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_effectiveLabour": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "source_sha256": {
+    "LeanEconomics/Growth/SolowSwan.lean": "77574965715ece6e4193a51c91a0c917d0643b3963eaa5df6d107c92226582e6",
+    "LeanEconomics/Growth/SolowSwanDynamics.lean": "ed081d0c8a2f17802949fe43b97e91e2d7963c257d7bdf90b14becf586680fcf",
+    "LeanEconomics/Growth/SolowSwanExamples.lean": "b5609e3202c68076f349c44469af75bac960eab2f300bcb2ffb8fb8ddc14e798",
+    "LeanEconomics.lean": "5461fd6ad70a2a3337cbbb7f715d3f65854e79f25e57d4ddc64abe6c4ff8deba",
+    "README.md": "2966ee1e3e1dbb6b94032eedc2e50cca78095d7c37da87307744026de97dcca9",
+    "lean-toolchain": "b563246bde88bad741a3fe1c6b126ad8dab470340d55ac3e97cca9b3f200878b",
+    "lake-manifest.json": "5a6566e47858daf2b4712e251034fba617cbc4edc62c5b53becabd44feed1cf3"
+  },
+  "fresh_audit_sha256": "8e7e5bbeba3845566e09f68a8a1e9376448fba678ab2b7becd1a2a2a6e3c0811",
+  "scope": "Positive Cobb-Douglas trajectories, arbitrary 0 < alpha < 1, existence, uniqueness within positive differentiable solutions on future time, monotone adjustment and convergence. Not a general-production-function ODE theorem.",
+  "assumptions": [
+    "b > 0",
+    "m > 0",
+    "0 < alpha < 1",
+    "initial capital > 0"
+  ],
+  "normalization": "b = saving * productivity; m = population growth in net-output model, n+g+delta in explicit effective-labour extension",
+  "ai_assistance": "OpenAI Codex, under the direction of the TheoryDebugger project maintainer",
+  "commit": "2a66abe0ecdf6c448fb8c9024e0e94691bf0ac98",
+  "patch_sha256": "bb9cd33fd08aeffbc857a279b51b50cdab2116704a5c27b989ba479028d145cf",
+  "patch_applies_to_upstream_base": true,
+  "patch_tree_matches_commit": "3081d6f28735825edde5a28a0e112e3ac57ec3e8",
+  "patch_reverse_check": true
+}
