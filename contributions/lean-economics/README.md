@@ -34,11 +34,13 @@ the economic interpretation still requires human review.
 
 ## AI development credit
 
-These proposed additions were developed with **OpenAI Codex**, under the
-direction of the TheoryDebugger project maintainer, who sets the research
-questions and reviews their economic interpretation. Codex assisted with
-source comparison, proof development, implementation, documentation, and tests.
-This follows LeanEconomics' approach to crediting Claude while preserving
-that upstream attribution. Lean checks the stated propositions; the source
-correspondence and adequacy of economic assumptions require researcher review.
-Reasoning settings are not proof certificates.
+These proposed additions were developed with **OpenAI Codex**, under the direction of
+[@mvazcar](https://github.com/mvazcar), who sets the research questions and reviews
+their economic interpretation. Codex assisted with source comparison, proof development,
+implementation, documentation, and tests. This follows LeanEconomics' approach to
+crediting Claude while preserving that upstream attribution. Lean checks the stated
+propositions; the source correspondence and adequacy of economic assumptions require
+researcher review. Reasoning settings are not proof certificates.
+
+Development and review used **Astra 6** with **Ultra** and **Extra High**
+reasoning settings.

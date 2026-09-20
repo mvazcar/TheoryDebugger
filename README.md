@@ -264,12 +264,15 @@ nonlinear proof certificates.
 
 ## Provenance and release boundary
 
-The development is written mostly with **OpenAI Codex**, an AI coding agent,
-working under the direction of the project maintainer, who sets the research
-questions, chooses the scope, and reviews the economic interpretation. Codex
-assists with source comparison, proof development, implementation, documentation,
-and tests. This attribution follows the transparent approach used in
+The development is written mostly with **OpenAI Codex**, an AI coding agent, working
+under the direction of [@mvazcar](https://github.com/mvazcar), who sets the research
+questions, chooses the scope, and reviews the economic interpretation. Codex assists
+with source comparison, proof development, implementation, documentation, and tests.
+This attribution follows the transparent approach used in
 [LeanEconomics](https://github.com/LeanEconomics/LeanEconomics#provenance).
+
+Development and review used **Astra 6** with **Ultra** and **Extra High**
+reasoning settings.
 
 Lean's kernel checks the formal proof terms; it does not establish that the
 chosen definitions and assumptions faithfully express the intended economics.
@@ -286,7 +289,7 @@ Suggested software citation:
   title = {TheoryDebugger: Automated Reasoning with Lean Certificates},
   year = {2026},
   howpublished = {\url{https://github.com/mvazcar/TheoryDebugger}},
-  note = {Research prototype; developed with OpenAI Codex under researcher direction}
+  note = {Research prototype; developed with OpenAI Codex under the direction of @mvazcar}
 }
 ```
 

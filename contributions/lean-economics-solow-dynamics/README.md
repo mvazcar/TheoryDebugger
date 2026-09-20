@@ -52,13 +52,16 @@ checked primary source; Swan's original presentation has not yet been inspected.
 
 ## Development credit and license
 
-The additions were developed with **OpenAI Codex**, under the direction of the
-TheoryDebugger project maintainer, who sets the research questions and reviews
+The additions were developed with **OpenAI Codex**, under the direction of
+[@mvazcar](https://github.com/mvazcar), who sets the research questions and reviews
 their economic interpretation. Codex assists with sources, proofs, implementation,
-documentation, and tests. This follows LeanEconomics' approach to crediting
-Claude and preserves the upstream attribution in the proposed README.
-Lean verifies formal statements; economic correspondence requires researcher
-review. Reasoning settings are not proof certificates.
+documentation, and tests. This follows LeanEconomics' approach to crediting Claude and
+preserves the upstream attribution in the proposed README. Lean verifies formal
+statements; economic correspondence requires researcher review. Reasoning settings are
+not proof certificates.
+
+Development and review used **Astra 6** with **Ultra** and **Extra High**
+reasoning settings.
 
 Apache 2.0, matching upstream. This package is prepared for review and has not
 been submitted publicly. Downloaded papers are excluded from the release.
