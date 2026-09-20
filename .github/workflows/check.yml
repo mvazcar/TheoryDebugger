@@ -23,7 +23,7 @@ jobs:
           MATHLIB_NO_CACHE_ON_UPDATE: '1'
         run: |
           lake update
-          lake exe cache get Mathlib.Basic.Real.Basic Mathlib.Tactic.Linarith Mathlib.Tactic.NormNum Mathlib.Tactic.Positivity Mathlib.Analysis.Real.Sqrt Mathlib.Tactic.Ring Mathlib.Analysis.SpecialFunctions.ExpDeriv
+          lake exe cache get Mathlib.Basic.Real.Basic Mathlib.Tactic.Linarith Mathlib.Tactic.NormNum Mathlib.Tactic.Positivity Mathlib.Analysis.Real.Sqrt Mathlib.Tactic.Ring Mathlib.Analysis.SpecialFunctions.ExpDeriv Mathlib.Analysis.Calculus.Deriv.Inv
       - name: Build and run native Lean checks
         run: |
           lake build
@@ -32,6 +32,7 @@ jobs:
           python scripts/verify_paper.py
           python scripts/verify_solow.py
           python scripts/verify_uzawa.py
+          python scripts/verify_uzawa_separation.py
       - name: Check Python boundaries and regenerate certificates
         env:
           THEORYDEBUGGER_TEST_LEAN: '1'

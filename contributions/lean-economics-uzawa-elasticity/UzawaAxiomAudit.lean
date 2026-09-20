@@ -1,0 +1,69 @@
+import LeanEconomics.Growth.Uzawa
+import LeanEconomics.Growth.UzawaElasticity
+import LeanEconomics.Growth.UzawaExamples
+import LeanEconomics.Growth.UzawaSeparation
+import LeanEconomics.Growth.UzawaSeparationExamples
+
+#print axioms LeanEconomics.Uzawa.trajectory_start
+#print axioms LeanEconomics.Uzawa.trajectory_pos
+#print axioms LeanEconomics.Uzawa.hasDerivAt_trajectory
+#print axioms LeanEconomics.Uzawa.trajectory_one
+#print axioms LeanEconomics.Uzawa.trajectory_two
+#print axioms LeanEconomics.Uzawa.rate_eq_of_weighted_moments
+#print axioms LeanEconomics.Uzawa.outputGrowth_eq_investmentGrowth
+#print axioms LeanEconomics.Uzawa.investmentGrowth_eq_capitalGrowth
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.technology_pos
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.technology_start
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.hasDerivAt_technology
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.technology_growthRate
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.technology_mul_labor
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.output_per_worker
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.outputGrowth_eq_capitalGrowth
+#print axioms LeanEconomics.Uzawa.BalancedGrowthData.labor_augmenting_representation
+#print axioms LeanEconomics.UzawaElasticity.hasDerivAt_capitalOutputRatio
+#print axioms LeanEconomics.UzawaElasticity.capitalOutputRatio_derivative_pos
+#print axioms LeanEconomics.UzawaElasticity.output_capitalOutput_elasticity
+#print axioms LeanEconomics.Uzawa.Examples.resource
+#print axioms LeanEconomics.Uzawa.Examples.accumulation
+#print axioms LeanEconomics.Uzawa.Examples.production_on_path
+#print axioms LeanEconomics.Uzawa.Examples.constant_returns
+#print axioms LeanEconomics.Uzawa.Examples.labor_augmenting
+#print axioms LeanEconomics.Uzawa.Examples.levels_positive
+#print axioms LeanEconomics.UzawaSeparation.Technology.ratio_pos
+#print axioms LeanEconomics.UzawaSeparation.Technology.hasDerivAt_ratio
+#print axioms LeanEconomics.UzawaSeparation.Technology.ratio_derivative_pos
+#print axioms LeanEconomics.UzawaSeparation.Technology.ratio_strictMonoOn
+#print axioms LeanEconomics.UzawaSeparation.Technology.capital_pos
+#print axioms LeanEconomics.UzawaSeparation.Technology.ratio_capital
+#print axioms LeanEconomics.UzawaSeparation.Technology.capital_ratio
+#print axioms LeanEconomics.UzawaSeparation.Technology.capital_strictMonoOn
+#print axioms LeanEconomics.UzawaSeparation.Technology.capital_image
+#print axioms LeanEconomics.UzawaSeparation.Technology.continuousAt_capital
+#print axioms LeanEconomics.UzawaSeparation.Technology.hasDerivAt_capital
+#print axioms LeanEconomics.UzawaSeparation.Technology.phi_pos
+#print axioms LeanEconomics.UzawaSeparation.Technology.hasDerivAt_phi
+#print axioms LeanEconomics.UzawaSeparation.Technology.capital_eq_ratio_mul_phi
+#print axioms LeanEconomics.UzawaSeparation.Technology.elasticity
+#print axioms LeanEconomics.UzawaSeparation.Technology.technology_pos
+#print axioms LeanEconomics.UzawaSeparation.Technology.technology_reference
+#print axioms LeanEconomics.UzawaSeparation.Technology.hasDerivAt_phi_ratio_zero
+#print axioms LeanEconomics.UzawaSeparation.Technology.separation
+#print axioms LeanEconomics.UzawaSeparation.Technology.intensive_representation
+#print axioms LeanEconomics.UzawaSeparation.Technology.production_eq_original
+#print axioms LeanEconomics.UzawaSeparation.Technology.production_representation
+#print axioms LeanEconomics.UzawaSeparation.Technology.original_production_representation
+#print axioms LeanEconomics.UzawaSeparation.Technology.technology_eq_phi_ratio
+#print axioms LeanEconomics.UzawaSeparation.Technology.phi_of_production
+#print axioms LeanEconomics.UzawaSeparation.Technology.technology_eq_balanced_growth
+#print axioms LeanEconomics.UzawaSeparation.Technology.repaired_labor_augmenting_representation
+#print axioms LeanEconomics.UzawaSeparation.Technology.hasDerivWithinAt_technology_of_balanced_growth
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_share
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_ratio_square
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_capital
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_phi
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_shares_invariant
+#print axioms LeanEconomics.UzawaSeparation.Examples.sqrt_technology
+#print axioms LeanEconomics.UzawaSeparation.Examples.growing_shares_invariant
+#print axioms LeanEconomics.UzawaSeparation.Examples.growing_production
+#print axioms LeanEconomics.UzawaSeparation.Examples.growing_labor_augmenting
+#print axioms LeanEconomics.UzawaSeparation.Examples.growing_technology

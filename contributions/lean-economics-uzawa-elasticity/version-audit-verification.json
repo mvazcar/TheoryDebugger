@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-09-20T10:55:29.466245+00:00",
+  "result": "passed",
+  "source": "UzawaVersionAudit.lean",
+  "source_sha256": "96b757e6814669b8d8d8d5129603f08caa4b5da124d307b75a63d9362cf009e5",
+  "lean_toolchain": "leanprover/lean4:v4.34.0-rc2",
+  "axioms": {
+    "UzawaVersionAudit.zero_investment_positive_capital": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaVersionAudit.no_strict_capital_representation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "UzawaVersionAudit.zero_investment_no_neoclassical_representation": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scope": "Three independent audit lemmas; not an end-to-end encoding of the 2004 neoclassical model.",
+  "not_formalized_here": [
+    "curvature and Inada properties of the example",
+    "general ODE characterization A(t)=a*exp(t)",
+    "2004 inverse existence and separation argument"
+  ]
+}

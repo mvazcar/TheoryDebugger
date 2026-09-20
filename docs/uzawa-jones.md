@@ -13,6 +13,17 @@ investment and represents output using the original technology at the starting
 date. Our full formal result follows this published statement. Three additional
 lemmas check the local elasticity calculation from the attached 2004 version.
 
+The [detailed version comparison](uzawa-versions-comparison.md) reconstructs
+both arguments, identifies Schlicht's original omission, and analyzes a
+zero-investment counterexample admitted by the supplied 2004 assumptions.
+It distinguishes repairs to the statement from unfinished proof code.
+
+The subsequent [repaired elasticity development](uzawa-elasticity-repaired.md)
+now constructs the inverse and completes a strengthened separation theorem.
+It uses explicit global range and domain-wide share assumptions. The original
+25-declaration package below is preserved; the combined package adds 38
+theorems. The literal November 2004 statement remains distinct from this repair.
+
 ## Economic statement and assumptions
 
 Let the five quantities `Y, C, I, K, L` follow constant exponential paths after
@@ -113,8 +124,10 @@ We prove its derivative is `(1-α)/f(k)`, positive when output is positive and
 `α/(1-α)`. The neighborhood identity is essential for legitimate differentiation;
 equality at a single point is insufficient.
 
-We have **not** formalized the existence of that inverse, the later integration
-in the capital/output coordinate, or the entire 2004 proof. In particular, a
+The original three-lemma module does **not** prove inverse existence or the
+later separation step. The separate repaired development now proves those
+steps under additional explicit hypotheses; it is not the literal 2004 proof.
+In particular, a
 literal formalization of its separation step must specify the domain on which
 share invariance holds. Constancy along one observed path must not silently be
 strengthened to constancy over counterfactual input values. The completed 2008

@@ -238,6 +238,14 @@ of the published on-path representation. Run `python scripts/verify_uzawa.py`
 for the diagnostic example. Its [contribution package](contributions/lean-economics-uzawa/README.md)
 includes the full theorem, the 2004 elasticity lemmas, and a checked positive example.
 
+A second [repaired elasticity proof](docs/uzawa-elasticity-repaired.md) now
+constructs the capital/output inverse and proves separation with explicit
+global range and share-invariance assumptions. It shares the accounting
+foundation with the published proof and uses a different representation
+argument. Run `python scripts/verify_uzawa_separation.py` for the new
+diagnostics and calculus bridges. The [combined contribution](contributions/lean-economics-uzawa-elasticity/README.md)
+contains both proof routes, their examples, and the 63-declaration audit.
+
 Next, evaluate that workflow on about 20 independently written arguments and
 conjectures. Use the results to improve the tool and document what we learn about
 TheoryGuru, Lean, and LLM-assisted formalization. The [roadmap](docs/roadmap.md)
