@@ -45,10 +45,14 @@ Contradictory restrictions are rejected even though they imply anything.
 
 ## Tool limits observed and next work
 
-The native extractor accepts a limited polynomial language. A nested proof
-obligation in an unresolved analytic context was rejected during the Solow
-example. We used a standalone supported algebraic lemma and a checked analytic
-bridge. The rejection was not relabelled as evidence of falsity or bypassed.
+The native extractor accepts a limited polynomial language. A nested Solow
+proof obligation exposed a bug: already-assigned elaboration variables remained
+in the stored hypothesis types and made the closure check reject a supported
+claim. The review fixed this by substituting existing assignments before
+universal and witness checks. Tests now require a nested lemma to retain both
+validity and feasibility evidence, while genuinely unresolved propositions and
+hidden local dependencies still fail. The tool does not solve away those
+dependencies or treat unsupported inputs as false.
 
 The examples and verification scripts now make these obligations reproducible
 in CI. They do **not** add automatic derivative abstraction, exponential solving,
@@ -56,13 +60,15 @@ or quantifier elimination to the core tool. Useful next improvements are:
 
 - A bridge record linking each abstract variable to a proved analytic identity,
   its domain assumptions, and the concrete theorem that consumes it.
-- Clearer unsupported-context diagnostics that identify the obstructing local
-  declaration, with a supported standalone-obligation example.
+- Further unsupported-context diagnostics that name the obstructing local
+  declaration. Current errors distinguish hidden dependencies from unresolved
+  elaboration and explain the standalone-lemma alternative.
 - Explicit scope metadata for pointwise, on-path, and domain-wide statements.
 - A review checklist that distinguishes a full convergence result from phase-line
   signs and checks feasibility of the entire model, not only one algebraic slice.
 
 These are follow-up implementation targets, not advertised capabilities. The
 proof cases are regression examples for evaluating them. The requested Ultra
-review should challenge the source correspondence and assumptions of both
-growth proofs before selecting any core changes.
+review strengthened Solow's positivity result and supplied the concrete nested
+proof regression and core fix described above; it retained the distinct
+assumptions and scopes of the two Uzawa routes.

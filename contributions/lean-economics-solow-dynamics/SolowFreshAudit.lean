@@ -6,6 +6,7 @@ import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.Positivity
 import Mathlib.Tactic.Ring
 import Mathlib.Analysis.Calculus.Deriv.Add
+import Mathlib.Analysis.Calculus.Deriv.MeanValue
 import Mathlib.Analysis.Calculus.MeanValue
 import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
 import Mathlib.Analysis.SpecialFunctions.ExpDeriv
@@ -576,6 +577,63 @@ theorem tendsto_output {b m α k₀ A : ℝ} (hb : 0 < b) (hm : 0 < m) (hα : α
     (Or.inl (ne_of_gt (steadyState_pos hb hm)))).tendsto.comp
       (tendsto_path hb hm hα)).const_mul A
 
+/-- Investment makes capital multiplied by its dilution factor nondecreasing. -/
+theorem weightedCapital_monotoneOn {k : ℝ → ℝ} {b m α : ℝ} (hb : 0 ≤ b)
+    (hk : ∀ t, 0 ≤ t → 0 ≤ k t)
+    (hd : ∀ t, 0 ≤ t → HasDerivAt k (rate b m α (k t)) t) :
+    MonotoneOn (fun t => k t * Real.exp (m * t)) (Ici 0) := by
+  have hw (t : ℝ) (ht : 0 ≤ t) :
+      HasDerivAt (fun u => k u * Real.exp (m * u))
+        (b * k t ^ α * Real.exp (m * t)) t := by
+    convert! (hd t ht).mul (((hasDerivAt_id t).const_mul m).exp) using 1
+    simp only [rate, id_eq]
+    ring
+  apply monotoneOn_of_deriv_nonneg (convex_Ici 0)
+  · intro t ht
+    exact (hw t ht).continuousAt.continuousWithinAt
+  · intro t ht
+    exact (hw t (interior_subset ht)).differentiableAt.differentiableWithinAt
+  · intro t ht
+    rw [(hw t (interior_subset ht)).deriv]
+    exact mul_nonneg (mul_nonneg hb (Real.rpow_nonneg (hk t (interior_subset ht)) α))
+      (Real.exp_pos _).le
+
+/-- A nonnegative solution starting positively cannot hit the zero boundary in finite time. -/
+theorem positive_of_nonnegative_solution {k : ℝ → ℝ} {b m α : ℝ} (hb : 0 ≤ b)
+    (hk₀ : 0 < k 0) (hk : ∀ t, 0 ≤ t → 0 ≤ k t)
+    (hd : ∀ t, 0 ≤ t → HasDerivAt k (rate b m α (k t)) t)
+    {t : ℝ} (ht : 0 ≤ t) : 0 < k t := by
+  have h := weightedCapital_monotoneOn hb hk hd (show (0 : ℝ) ∈ Ici 0 by simp) ht ht
+  simp only [mul_zero, Real.exp_zero, mul_one] at h
+  have hpos := lt_of_lt_of_le hk₀ h
+  by_contra hn
+  have := mul_nonpos_of_nonpos_of_nonneg (le_of_not_gt hn) (Real.exp_pos (m * t)).le
+  linarith
+
+/-- An economically nonnegative solution; strict future positivity is a conclusion. -/
+def IsNonnegativeSolution (b m α k₀ : ℝ) (k : ℝ → ℝ) : Prop :=
+  k 0 = k₀ ∧ ∀ t, 0 ≤ t → 0 ≤ k t ∧ HasDerivAt k (rate b m α (k t)) t
+
+theorem IsNonnegativeSolution.isPositiveSolution {k : ℝ → ℝ} {b m α k₀ : ℝ}
+    (h : IsNonnegativeSolution b m α k₀ k) (hb : 0 ≤ b) (hk₀ : 0 < k₀) :
+    IsPositiveSolution b m α k₀ k := by
+  refine ⟨h.1, fun t ht => ⟨?_, (h.2 t ht).2⟩⟩
+  exact positive_of_nonnegative_solution hb (h.1.symm ▸ hk₀)
+    (fun u hu => (h.2 u hu).1) (fun u hu => (h.2 u hu).2) ht
+
+/-- Complete future dynamics among nonnegative capital paths with positive initial capital. -/
+theorem nonnegative_dynamics {b m α k₀ : ℝ} (hb : 0 < b) (hm : 0 < m)
+    (hα₀ : 0 < α) (hα₁ : α < 1) (hk₀ : 0 < k₀) :
+    IsNonnegativeSolution b m α k₀ (path b m α k₀) ∧
+    ∀ k, IsNonnegativeSolution b m α k₀ k →
+      (∀ t, 0 ≤ t → 0 < k t) ∧ EqOn k (path b m α k₀) (Ici 0) ∧
+        Tendsto k atTop (𝓝 (steadyState b m α)) := by
+  have h := positive_dynamics hb hm hα₀ hα₁ hk₀
+  refine ⟨⟨h.1.1, fun t ht => ⟨(h.1.2 t ht).1.le, (h.1.2 t ht).2⟩⟩, ?_⟩
+  intro k hnonneg
+  have hp := hnonneg.isPositiveSolution hb.le hk₀
+  exact ⟨fun t ht => (hp.2 t ht).1, h.2.2 k hp, tendsto_of_isPositiveSolution hb hm hα₁ hp⟩
+
 end CobbDouglas
 end LeanEconomics.SolowSwan
 
@@ -676,6 +734,10 @@ end LeanEconomics.SolowSwan.CobbDouglas
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.path_monotoneOn_of_le
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.path_antitoneOn_of_le
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.tendsto_output
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.weightedCapital_monotoneOn
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.positive_of_nonnegative_solution
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.IsNonnegativeSolution.isPositiveSolution
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.nonnegative_dynamics
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.example_positive_path
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.normalized_steadyState
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.zero_solution

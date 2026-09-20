@@ -232,7 +232,7 @@ is preserved. The [detailed general-exponent proof](docs/solow-swan-dynamics.md)
 and [complete Solow contribution](contributions/lean-economics-solow-dynamics/README.md)
 adds arbitrary exponents `0 < α < 1`, positive trajectories, uniqueness,
 monotone adjustment and convergence, with source correspondence and a fresh
-55-theorem audit. Run `python scripts/verify_solow_dynamics.py` for six new
+59-theorem audit. Run `python scripts/verify_solow_dynamics.py` for six new
 diagnostics and checked bridges to actual exponential functions and derivatives.
 These contributions have not been submitted upstream.
 
@@ -251,6 +251,10 @@ foundation with the published proof and uses a different representation
 argument. Run `python scripts/verify_uzawa_separation.py` for the new
 diagnostics and calculus bridges. The [combined contribution](contributions/lean-economics-uzawa-elasticity/README.md)
 contains both proof routes, their examples, and the 63-declaration audit.
+
+The [joint growth-proof review](docs/growth-review.md) records the strengthened
+Solow positivity theorem, the rechecked scopes of both Uzawa routes, and a
+TheoryDebugger fix for nested proof obligations discovered during that work.
 
 Next, evaluate that workflow on about 20 independently written arguments and
 conjectures. Use the results to improve the tool and document what we learn about

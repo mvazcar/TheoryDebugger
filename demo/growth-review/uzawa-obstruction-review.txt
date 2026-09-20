@@ -1,0 +1,5 @@
+'UzawaVersionAudit.zero_investment_positive_capital' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UzawaVersionAudit.no_strict_capital_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'UzawaVersionAudit.zero_investment_no_neoclassical_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

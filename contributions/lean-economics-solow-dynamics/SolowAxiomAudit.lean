@@ -51,6 +51,10 @@ import LeanEconomics.Growth.SolowSwanExamples
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.path_monotoneOn_of_le
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.path_antitoneOn_of_le
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.tendsto_output
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.weightedCapital_monotoneOn
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.positive_of_nonnegative_solution
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.IsNonnegativeSolution.isPositiveSolution
+#print axioms LeanEconomics.SolowSwan.CobbDouglas.nonnegative_dynamics
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.example_positive_path
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.normalized_steadyState
 #print axioms LeanEconomics.SolowSwan.CobbDouglas.zero_solution

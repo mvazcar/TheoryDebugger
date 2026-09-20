@@ -116,8 +116,14 @@ def Problem.close (p : Problem) (target : Expr) (excluded : Option Nat := none) 
   let mut hyps := #[]
   for i in [:p.hypotheses.size] do
     if excluded != some i then hyps := hyps.push p.hypotheses[i]!
-  let result ← mkForallFVars (p.vars ++ hyps) target
-  if result.hasFVar || result.hasMVar then throwError "unsupported dependent or unresolved context"
+  -- Nested `have` statements can retain already-assigned elaboration variables
+  -- in hypothesis types. Resolve those assignments before checking closure;
+  -- genuinely unresolved variables and hidden dependencies must still fail.
+  let result ← instantiateMVars (← mkForallFVars (p.vars ++ hyps) target)
+  if result.hasFVar then
+    throwError "unsupported dependent context: the claim still refers to a local declaration outside the extracted variables and hypotheses; state a standalone algebraic lemma"
+  if result.hasMVar then
+    throwError "unsupported unresolved metavariables: finish elaborating the claim and its hypotheses before using TheoryDebugger"
   return result
 
 def Problem.antecedent (p : Problem) : Expr :=
@@ -150,6 +156,10 @@ def extract (goal : MVarId) : MetaM Problem := goal.withContext do
   let json := Json.mkObj [
     ("variables", .arr (vars.mapIdx fun i _ => .str s!"v{i}")),
     ("assumptions", .arr assumptions), ("goal", targetJson)]
+  -- The same normalized propositions must feed both universal proofs and
+  -- ground/existential witness checks. Reification may resolve instance slots.
+  assumptionTypes ← assumptionTypes.mapM instantiateMVars
+  let target ← instantiateMVars target
   let p : Problem := { vars, hypotheses, assumptionTypes, target, json, variableNames, hypothesisNames }
   let _ ← p.close target
   return p

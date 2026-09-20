@@ -63,9 +63,9 @@ The formalized conclusions are:
 
 1. This path starts at `k₀`, stays strictly positive, and satisfies the
    differential equation at every nonnegative time.
-2. Every other strictly positive differentiable solution with the same initial
-   value equals this path on `[0,∞)`.
-3. The path converges to `k*`. Consequently every solution in that positive
+2. Every nonnegative differentiable solution with the same positive initial
+   value remains strictly positive and equals this path on `[0,∞)`.
+3. The path converges to `k*`. Consequently every solution in that nonnegative
    solution class has this limit.
 4. It is nondecreasing if `k₀≤k*` and nonincreasing if `k*≤k₀`. A path that
    starts strictly below `k*` remains strictly below it.
@@ -73,10 +73,13 @@ The formalized conclusions are:
    `k(t)^q-(k*)^q=(k₀^q-(k*)^q) exp(-λt)`.
 6. Output per worker/effective worker converges to `A(k*)^α`.
 
-The predicate `IsPositiveSolution` contains the initial value, strict positivity,
-and `HasDerivAt` at every `t≥0`. Uniqueness is equality on future time, not
-negative time. It is proved **within this positive solution class**; we do not
-prove here that every nonnegative solution starting positively can never hit zero.
+The predicate `IsNonnegativeSolution` contains the initial value, nonnegative
+capital, and `HasDerivAt` at every `t≥0`. The theorem `nonnegative_dynamics`
+derives strict positivity, equality with the explicit path on future time, and
+convergence. The intermediate predicate `IsPositiveSolution` is used for the
+power transformation. Paths are functions on the reals with ordinary derivatives
+at nonnegative dates, including zero; negative-time behaviour is not constrained
+by the economic equations. No uniqueness claim concerns negative time.
 
 An economically interpreted saving fraction usually satisfies `s≤1`. That
 upper bound is unnecessary for the stated mathematical conclusions, but matters
@@ -102,6 +105,14 @@ stocks as exactly `0` and `k*`. No division silently removes the boundary.
 gives `z'=q k^(q-1)k'`. Substituting the differential equation and using
 `k^α k^(q-1)=1` yields `z'=q(b-mz)`. The theorem concerns derivatives of
 functions; derivatives are not represented by unconstrained algebraic variables.
+
+**Why positive initial capital cannot hit zero.** For any nonnegative solution,
+differentiate `v(t)=k(t)exp(mt)`. The equation gives
+`v'(t)=b k(t)^α exp(mt)≥0`. The mean value theorem therefore makes `v`
+nondecreasing on `[0,∞)`. Since `v(0)=k₀>0`, we have `v(t)>0` and hence
+`k(t)>0` at every finite future date. This proves positivity without assuming
+the solution formula or uniqueness. It justifies applying the power transformation
+to every nonnegative solution with positive initial capital.
 
 **Integrating factor and uniqueness.** For any transformed solution, differentiate
 `w(t)=(z(t)-b/m) exp(qmt)`. Its derivative vanishes. The mean value theorem
@@ -170,7 +181,11 @@ restriction. It proves the derivative of `d exp(-λt)` and that the derivative
 of its squared deviation is `-2λw²≤0`. Algebraic obligations are separate lemmas
 where the surrounding analytic context is outside the native extractor's language.
 Polynomial diagnostics alone do not certify exponential decay or real-power
-calculus; those bridges and the full trajectory are checked in Lean.
+calculus; those bridges and the full trajectory are checked in Lean. The review
+also fixed an extractor bug affecting nested `have` steps: already-assigned
+elaboration variables are now substituted before checking closure. Regression
+tests require both validity and feasibility, while rejecting genuinely unresolved
+propositions and hidden local dependencies.
 
 Reproduce the native checks:
 
@@ -193,9 +208,9 @@ contains the patch, a fresh source audit, and verification metadata.
 | Module | Theorems | Scope |
 | --- | ---: | --- |
 | `SolowSwan` | 16 | Original normalization and square-root results |
-| `SolowSwanDynamics` | 33 | General exponent, trajectories, uniqueness, convergence, comparative statics |
+| `SolowSwanDynamics` | 37 | General exponent, trajectories, uniqueness, convergence, comparative statics |
 | `SolowSwanExamples` | 6 | Positive example, boundary checks, effective-labour product rule |
-| Total | **55** | Fresh compilation and full project build |
+| Total | **59** | Fresh compilation and full project build |
 
 The patch targets upstream commit `8e7d5172e253cb20af2aea27e53f384d7ef18a25`.
 The fresh audit recompiles all contributed proofs without importing contributed
@@ -210,9 +225,9 @@ CI; the separate contribution's full build is recorded as a local Windows check.
 This is the Cobb–Douglas model, not a convergence theorem for every neoclassical
 production function. General-production assumptions, zero-initial-stock
 uniqueness, nonconstant parameters, stochastic dynamics, and the golden rule
-are not formalized here. The broader class of paths allowed to hit zero needs
-a separate argument. Swan's original presentation still needs primary-source
-inspection.
+are not formalized here. For positive initial capital, the new weighted-capital
+argument excludes hitting zero within the nonnegative solution class. Swan's
+original presentation still needs primary-source inspection.
 
 These additions were developed with **OpenAI Codex**, under the direction of
 the TheoryDebugger project maintainer, who chooses the questions and reviews

@@ -1,0 +1,32 @@
+test_boolean_and_zero_power_semantics (test_core.CoreTests.test_boolean_and_zero_power_semantics) ... ok
+test_false_repair_regression (test_core.CoreTests.test_false_repair_regression) ... ok
+test_forged_witness_rejected (test_core.CoreTests.test_forged_witness_rejected) ... ok
+test_individual_removal_is_not_joint_removal (test_core.CoreTests.test_individual_removal_is_not_joint_removal) ... ok
+test_missing_or_unapproved_axioms_fail_closed (test_core.CoreTests.test_missing_or_unapproved_axioms_fail_closed) ... ok
+test_solver_counterexample_without_supplied_hint (test_core.CoreTests.test_solver_counterexample_without_supplied_hint) ... ok
+test_strict_inequality_and_rationals (test_core.CoreTests.test_strict_inequality_and_rationals) ... ok
+test_syntax_cannot_inject_lean (test_core.CoreTests.test_syntax_cannot_inject_lean) ... ok
+test_true_validity_is_separate_from_feasibility (test_core.CoreTests.test_true_validity_is_separate_from_feasibility) ... ok
+test_unknown_is_not_unsat (test_core.CoreTests.test_unknown_is_not_unsat) ... ok
+test_unsupported_does_not_silently_drop_terms (test_core.CoreTests.test_unsupported_does_not_silently_drop_terms) ... ok
+test_untrusted_solver_model_rechecked (test_core.CoreTests.test_untrusted_solver_model_rechecked) ... ok
+test_algebraic_and_incomplete_evidence_stays_partial (test_diagnosis.DiagnosisTests.test_algebraic_and_incomplete_evidence_stays_partial) ... ok
+test_both_witnesses_are_preserved_and_not_promoted (test_diagnosis.DiagnosisTests.test_both_witnesses_are_preserved_and_not_promoted) ... ok
+test_four_cases_and_incomplete_pairs (test_diagnosis.DiagnosisTests.test_four_cases_and_incomplete_pairs) ... ok
+test_repair_preserves_original_and_validates_combined_input (test_diagnosis.DiagnosisTests.test_repair_preserves_original_and_validates_combined_input) ... ok
+test_solver_only_repair_is_never_accepted (test_diagnosis.DiagnosisTests.test_solver_only_repair_is_never_accepted) ... ok
+test_algebraic_feasibility_cannot_certify_repair (test_lean.LeanBoundaryTests.test_algebraic_feasibility_cannot_certify_repair) ... ok
+test_closed_false_goal_has_checked_refutation (test_lean.LeanBoundaryTests.test_closed_false_goal_has_checked_refutation) ... ok
+test_exact_rational_boolean_witness (test_lean.LeanBoundaryTests.test_exact_rational_boolean_witness) ... ok
+test_false_claim_is_not_certified (test_lean.LeanBoundaryTests.test_false_claim_is_not_certified) ... ok
+test_four_way_classification_with_real_certificates (test_lean.LeanBoundaryTests.test_four_way_classification_with_real_certificates) ... ok
+test_repair_requires_both_validity_and_feasibility (test_lean.LeanBoundaryTests.test_repair_requires_both_validity_and_feasibility) ... ok
+test_solver_valid_but_reconstruction_incomplete (test_lean.LeanBoundaryTests.test_solver_valid_but_reconstruction_incomplete) ... ok
+test_case_collisions_rejected_before_archiving (test_release.ReleaseTests.test_case_collisions_rejected_before_archiving) ... ok
+test_private_context_and_history_are_excluded (test_release.ReleaseTests.test_private_context_and_history_are_excluded) ... ok
+test_release_inputs_have_no_reference_or_build_roots (test_release.ReleaseTests.test_release_inputs_have_no_reference_or_build_roots) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 160.885s
+
+OK

@@ -1,0 +1,103 @@
+'LeanEconomics.SolowSwan.hasDerivAt_capitalPerWorker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.intensiveForm_of_homogeneous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.steadyState_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.sqrt_steadyState' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_steadyState' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.eq_steadyState_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_eq_zero_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.existsUnique_positive_steadyState' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_pos_of_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.capitalChange_neg_of_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_saving' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_productivity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.steadyState_strictAnti_population' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.SquareRoot.steadyState_capital_output_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.hasDerivAt_capitalPerEffectiveWorker' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_factor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_steadyState' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.eq_steadyState_of_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.existsUnique_positive_steadyState' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.transformedPath_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.transformedPath_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_transformedPath' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_power' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.eq_transformedPath_of_hasDerivAt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.solution_eq_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.tendsto_transformedPath' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.tendsto_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_power_gap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.positive_dynamics' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_pos_of_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.rate_neg_of_gt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictMono_investment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictAnti_dilution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_strictMono_saving' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.steadyState_capital_output_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_lt_steadyState_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.tendsto_of_isPositiveSolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_monotoneOn_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.path_antitoneOn_of_le' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.tendsto_output' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.weightedCapital_monotoneOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.positive_of_nonnegative_solution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.IsNonnegativeSolution.isPositiveSolution' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.nonnegative_dynamics' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.example_positive_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.normalized_steadyState' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.zero_solution' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.zero_solution_not_positive' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.no_positive_stationary_at_exponent_one' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.SolowSwan.CobbDouglas.hasDerivAt_effectiveLabour' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

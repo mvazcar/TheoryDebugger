@@ -1,0 +1,307 @@
+⚠ [2590/2839] Replayed LeanEconomics.Distribution.Feller
+warning: LeanEconomics/Distribution/Feller.lean:67:100: This line exceeds the 100 character limit, please shorten it!
+
+Note: This linter can be disabled with `set_option linter.style.longLine false`
+⚠ [2790/2839] Replayed LeanEconomics.DynamicProgramming.StochasticOptimality
+warning: LeanEconomics/DynamicProgramming/StochasticOptimality.lean:95:11: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2791/2839] Replayed LeanEconomics.DynamicProgramming.ExtendedStochasticOptimality
+warning: LeanEconomics/DynamicProgramming/ExtendedStochasticOptimality.lean:124:11: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/DynamicProgramming/ExtendedStochasticOptimality.lean:176:8: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/DynamicProgramming/ExtendedStochasticOptimality.lean:314:19: Variable name `n` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _n
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/DynamicProgramming/ExtendedStochasticOptimality.lean:314:21: Variable name `h` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _h
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2802/3225] Replayed LeanEconomics.Models.MinimalMPC
+warning: LeanEconomics/Models/MinimalMPC.lean:78:30: Variable name `hγ0` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hγ0
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Models/MinimalMPC.lean:243:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: LeanEconomics/Models/MinimalMPC.lean:368:8: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: LeanEconomics/Models/MinimalMPC.lean:408:12: Variable name `b` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _b
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Models/MinimalMPC.lean:456:6: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+⚠ [2812/3225] Replayed LeanEconomics.Models.Impatience
+warning: LeanEconomics/Models/Impatience.lean:335:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [2814/3225] Replayed LeanEconomics.Models.IncomeFluctuationRateStep
+warning: LeanEconomics/Models/IncomeFluctuationRateStep.lean:178:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+⚠ [2816/3225] Replayed LeanEconomics.Equilibrium.CESUniqueness
+warning: LeanEconomics/Equilibrium/CESUniqueness.lean:65:9: Variable name `r` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _r
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/CESUniqueness.lean:65:14: Variable name `r'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _r'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2817/3225] Replayed LeanEconomics.Models.IncomeFluctuationHARA
+warning: LeanEconomics/Models/IncomeFluctuationHARA.lean:255:14: Variable name `c` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _c
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Models/IncomeFluctuationHARA.lean:255:16: Variable name `c'` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _c'
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Models/IncomeFluctuationHARA.lean:781:65: Variable name `ha₀` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha₀
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2818/3225] Replayed LeanEconomics.Models.CARA
+warning: LeanEconomics/Models/CARA.lean:114:64: Variable name `hdc` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hdc
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2820/3225] Replayed LeanEconomics.Models.IncomeFluctuationPatience
+warning: LeanEconomics/Models/IncomeFluctuationPatience.lean:60:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.discIncDiff_of_slices`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Models/IncomeFluctuationPatience.lean:74:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.policyOf_le_of_discIncDiff`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Models/IncomeFluctuationPatience.lean:130:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.discIncDiffSlices_zero`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Models/IncomeFluctuationPatience.lean:304:9: Variable name `r` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _r
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+⚠ [2821/3225] Replayed LeanEconomics.Equilibrium.UniquenessClass
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:232:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.Calibrated.concaveSlices_iterate`:
+  h
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit h in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:280:14: Variable name `a` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _a
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:281:11: Variable name `a` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _a
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:306:11: Variable name `b` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _b
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:307:11: Variable name `b` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _b
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:308:11: Variable name `b` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _b
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:309:11: Variable name `b` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _b
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: LeanEconomics/Equilibrium/UniquenessClass.lean:367:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.Calibrated.family_eq`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2828/3225] Replayed LeanEconomics.Models.LargeBetaLight
+warning: LeanEconomics/Models/LargeBetaLight.lean:56:8: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [2831/3225] Replayed LeanEconomics.Equilibrium.AiyagariUniqueness
+warning: LeanEconomics/Equilibrium/AiyagariUniqueness.lean:94:4: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: LeanEconomics/Equilibrium/AiyagariUniqueness.lean:136:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.log_corner_of_top`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2834/3225] Replayed LeanEconomics.Equilibrium.RateRange
+warning: LeanEconomics/Equilibrium/RateRange.lean:128:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.continuous_consumptionState`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/RateRange.lean:208:6: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [2849/3225] Replayed LeanEconomics.Equilibrium.InvariantRegion
+warning: LeanEconomics/Equilibrium/InvariantRegion.lean:81:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.measurableSet_aboveSet`:
+  [DiscreteTopology Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [DiscreteTopology Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+⚠ [2853/3225] Replayed LeanEconomics.Models.AiyagariWitness
+warning: LeanEconomics/Models/AiyagariWitness.lean:117:52: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+⚠ [3262/3272] Replayed LeanEconomics.Equilibrium.HomotheticDistribution
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:83:8: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.scaleState_fst`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:86:8: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.scaleState_snd`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:89:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.continuous_scaleState`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:112:2: The `show` tactic should only be used to indicate intermediate goal states for readability.
+However, this tactic invocation changed the goal. Please use `change` instead for these purposes.
+
+Note: This linter can be disabled with `set_option linter.style.show false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:105:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.scaleState_nextState`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:159:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:161:4: Try this: 
+  haveI̵
+
+The goal is a proposition, so `have` is preferred over `haveI`.
+The difference between `have` and `haveI` is that `haveI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:193:2: Unused tactic linter: `change P.scaleProb hlam (P.pushProb μ) = P.scaleProb hlam μ` does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:208:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.log_scale_law`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+warning: LeanEconomics/Equilibrium/HomotheticDistribution.lean:224:0: automatically included section variable(s) unused in theorem `LeanEconomics.IncomeFluctuation.monotoneTransitions_scale`:
+  [MeasurableSpace Z]
+  [BorelSpace Z]
+consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:
+  omit [MeasurableSpace Z] [BorelSpace Z] in theorem ...
+
+Note: This linter can be disabled with `set_option linter.unusedSectionVars false`
+✔ [3269/3272] Built LeanEconomics.Growth.SolowSwanDynamics (6.3s)
+✔ [3270/3272] Built LeanEconomics.Growth.SolowSwanExamples (5.5s)
+✔ [3271/3272] Built LeanEconomics (5.8s)
+Build completed successfully (3272 jobs).

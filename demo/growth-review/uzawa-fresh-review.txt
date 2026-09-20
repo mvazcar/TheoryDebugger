@@ -1,0 +1,109 @@
+'LeanEconomics.Uzawa.trajectory_start' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.trajectory_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.hasDerivAt_trajectory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.trajectory_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.trajectory_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.rate_eq_of_weighted_moments' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.outputGrowth_eq_investmentGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.investmentGrowth_eq_capitalGrowth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.technology_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.technology_start' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.hasDerivAt_technology' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.technology_growthRate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.technology_mul_labor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.output_per_worker' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.outputGrowth_eq_capitalGrowth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.Uzawa.BalancedGrowthData.labor_augmenting_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaElasticity.hasDerivAt_capitalOutputRatio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaElasticity.capitalOutputRatio_derivative_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaElasticity.output_capitalOutput_elasticity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.Uzawa.Examples.resource' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.Examples.accumulation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.Examples.production_on_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.Examples.constant_returns' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.Examples.labor_augmenting' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.Uzawa.Examples.levels_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.ratio_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.hasDerivAt_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.ratio_derivative_pos' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.ratio_strictMonoOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.capital_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.ratio_capital' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.capital_ratio' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.capital_strictMonoOn' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.capital_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.continuousAt_capital' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.hasDerivAt_capital' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.phi_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.hasDerivAt_phi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.capital_eq_ratio_mul_phi' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.elasticity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.technology_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.technology_reference' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.hasDerivAt_phi_ratio_zero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.separation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.intensive_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.production_eq_original' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.production_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.original_production_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.technology_eq_phi_ratio' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.phi_of_production' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.technology_eq_balanced_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.repaired_labor_augmenting_representation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Technology.hasDerivWithinAt_technology_of_balanced_growth' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_share' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_ratio_square' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_capital' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_phi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_shares_invariant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.sqrt_technology' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.growing_shares_invariant' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.growing_production' depends on axioms: [propext, Classical.choice, Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.growing_labor_augmenting' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'LeanEconomics.UzawaSeparation.Examples.growing_technology' depends on axioms: [propext, Classical.choice, Quot.sound]

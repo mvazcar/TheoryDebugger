@@ -198,6 +198,49 @@ elab "#test_poisoned_cases" : command => Command.liftTermElabM do
 
 #test_poisoned_cases
 
+-- A Solow derivative obligation exposed assigned elaboration variables in a
+-- nested `have`. These are resolved safely before closure is checked.
+elab "checked_nested_theory" : tactic => do
+  let goal ← getMainGoal
+  let before ← getGoals
+  let a ← inspect goal
+  unless a.classification == "true" && a.validity.isSome && a.feasible.isSome do
+    throwError "nested claim lost validity or feasibility evidence"
+  unless (← getGoals) == before && !(← goal.isAssigned) do
+    throwError "nested diagnosis modified the original goal"
+  evalTactic (← `(tactic| theory))
+
+theorem native_test_nested_have (speed : ℝ) (hspeed : 0 < speed) :
+    -2 * speed * 3 ≤ 0 := by
+  have algebra (l v : ℝ) (hl : 0 < l) (hv : 0 ≤ v) : -2 * l * v ≤ 0 := by
+    checked_nested_theory
+  exact algebra speed 3 hspeed (by norm_num)
+
+-- Resolving assigned variables must not admit a genuinely open claim or a
+-- hidden local dependency. These tests inspect rejection, not printed output.
+elab "#test_closure_boundaries" : command => Command.liftTermElabM do
+  let t ← Term.elabType (← `(term| ∀ (x : ℝ), x > 0 → x ≥ 0))
+  Term.synthesizeSyntheticMVarsNoPostponing
+  forallTelescope (← instantiateMVars t) fun _ body => do
+    let goal ← mkFreshExprMVar body
+    let p ← extract goal.mvarId!
+    let unresolved ← mkFreshExprMVar (mkSort Level.zero)
+    let rejectedMeta ← try
+      let _ ← p.close unresolved
+      pure false
+    catch e => pure ((← e.toMessageData.toString).startsWith "unsupported unresolved metavariables")
+    unless rejectedMeta do throwError "unresolved proposition crossed the closure boundary"
+    withLocalDeclD `hidden (mkConst ``Real) fun hidden => do
+      let target := mkApp2 (mkConst ``realLE) hidden (mkApp (mkConst ``realNat) (mkNatLit 0))
+      let rejectedLocal ← try
+        let _ ← p.close target
+        pure false
+      catch e => pure ((← e.toMessageData.toString).startsWith "unsupported dependent context")
+      unless rejectedLocal do throwError "hidden local dependency crossed the closure boundary"
+
+#test_closure_boundaries
+#print axioms native_test_nested_have
+
 #print axioms TheoryDebugger.no_refuting_iff
 #print axioms TheoryDebugger.no_satisfying_iff
 #print axioms TheoryDebugger.no_cases_iff

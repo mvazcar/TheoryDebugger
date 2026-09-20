@@ -1,0 +1,60 @@
+{
+  "checked_at_utc": "2026-09-20T12:11:12.940886+00:00",
+  "requested_reasoning_setting": "ultra",
+  "setting_action": "App accepted same-task thinking override before the follow-up review; no claim about preceding development.",
+  "solow": {
+    "commit": "4bed57534cf4f5562be8b90c481bb3dd54360fe0",
+    "theorems": 59,
+    "fresh_source_compilation": "passed",
+    "full_build": "passed",
+    "scope": "Nonnegative differentiable Cobb-Douglas solutions with b,m,k0>0 and 0<alpha<1. Strict positivity, uniqueness, monotonicity and convergence."
+  },
+  "uzawa": {
+    "commit": "3086d5eece57e5f9f69ebf73e28be5efa0595fcf",
+    "fresh_source_compilation": "passed",
+    "theorems": 63,
+    "separate_obstruction_lemmas": 3,
+    "source_changes_required": false,
+    "scope": "Published on-path representation and explicitly strengthened domain-wide elasticity route, sharing the accounting lemma."
+  },
+  "theorydebugger": {
+    "build": "passed",
+    "native_regressions": "passed",
+    "python_tests": 27,
+    "real_lean_boundary_tests_enabled": true,
+    "all_five_case_study_verifiers": "passed",
+    "fix": "Resolve already-assigned elaboration variables before closure and witness checking; reject genuinely unresolved propositions and hidden dependencies."
+  },
+  "axiom_allowlist": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "source_sha256": {
+    "TheoryDebugger/Frontend.lean": "29cbb0335cace1da5912a53cddcc7f00387e8acce26d58e7dbacabc528d12e58",
+    "lean-tests/Native.lean": "3bf5a9616929ed1663fdd6c68ff6d3bd5996106cec279d71dc8f2bce56cb7488",
+    "docs/growth-review.md": "7422eadb7c91895a07c6360ebdbbc16511d4428d055ed70c02f22bfb96990f32",
+    "contributions/lean-economics-solow-dynamics/SolowFreshAudit.lean": "ce54a95bda8c98c5ff1b2722cda56b7d9e05a67f7973bef5df226945bebbcc0f",
+    "contributions/lean-economics-solow-dynamics/verification.json": "ae9dff7c98d6646d85467ae9b4e22eb5e692875ada305680c7ea76ef6eafac93",
+    "contributions/lean-economics-solow-dynamics/solow-complete.patch": "f035d3dd07d6e4ca7d1bac61aa6e8a0a9fb416e0f79ef4dda9ae799917aa8c29",
+    "contributions/lean-economics-uzawa-elasticity/UzawaFreshAudit.lean": "ad385d5e9cfdad1292c9b5f1d57b0e86c586c15666cd7e6a2f7befacb4f2dfc7",
+    "contributions/lean-economics-uzawa-elasticity/UzawaVersionAudit.lean": "96b757e6814669b8d8d8d5129603f08caa4b5da124d307b75a63d9362cf009e5",
+    "contributions/lean-economics-uzawa-elasticity/verification.json": "1c317d7a6e99301592522390145a4df1f21d7ad089cb53559856971892bd6cd0",
+    "demo/solow/verification.json": "63b5cd585f2da09b9191af8e0c67441f9eab0f032d0611e9e5056fddeb5ae16a",
+    "demo/solow-dynamics/verification.json": "feb35835aa994e141c91d36a652561d128e98e2010ebea3cfc392339dce176e1",
+    "demo/uzawa/verification.json": "fac45b16886bab364690924c3a0518a4a1c253f969f8d2e585a413e19e044847",
+    "demo/uzawa-separation/verification.json": "0bb243602518b7f34bd26260483fb604a2d823ab01cb7c478cbde7814f83eb42",
+    "demo/paper-2018-tax-verification.json": "8c0f4e9cb9d88e1eb42d170be487e948c2bc6ecee2b996e5fd0c3ba8b3b38203",
+    "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632",
+    "lake-manifest.json": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb"
+  },
+  "log_sha256": {
+    "native-regressions.txt": "c76b916336001ab42f4c65b56b79c1728d28c2c1b6ea306a9883f95dafeea317",
+    "python-tests.txt": "f21c3484743bf10cf03a28476f18fcc63f9737b92ed896974edb291a5a62045c",
+    "solow-fresh-review.txt": "53515da7d7854672fe988cd163cf710a817ddbbbd0e79723124f5d9b6f860060",
+    "solow-full-build.txt": "a037aaece607e409d18a4592b7ccd6c574d35345c5fc1e8bc9ee27f14191e879",
+    "uzawa-fresh-review.txt": "59bbe7d77501c4812076d73fe5da57765594e10b9095107b25ed16f00b8318c7",
+    "uzawa-obstruction-review.txt": "1b72a1bcb5ec880600989f0e8381bb20a38872563d2dd95ce5328ae57e6aefbc"
+  },
+  "reviewer": "OpenAI Codex under the project maintainer's direction; human economic interpretation review remains necessary."
+}

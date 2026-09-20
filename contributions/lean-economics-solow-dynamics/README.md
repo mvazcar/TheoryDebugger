@@ -1,8 +1,8 @@
 # Solow–Swan: complete Cobb–Douglas contribution
 
-This package combines the original 16-theorem contribution with 39 additional
+This package combines the original 16-theorem contribution with 43 additional
 theorems. It formalizes positive trajectories for arbitrary `0 < α < 1`,
-their uniqueness within the positive solution class, monotone adjustment,
+their uniqueness within the nonnegative solution class, monotone adjustment,
 convergence, output limits, comparative statics, and normalization with
 depreciation and effective labour. See the [detailed statement, sources and proof](../../docs/solow-swan-dynamics.md).
 
@@ -25,14 +25,14 @@ apply it on top of the older square-root patch. The fresh audit imports only
 Mathlib and re-elaborates every contributed proof, avoiding dependence on
 previously compiled versions of the contributed modules.
 
-The local contribution commit is `2a66abe0ecdf6c448fb8c9024e0e94691bf0ac98`,
+The local contribution commit is `4bed57534cf4f5562be8b90c481bb3dd54360fe0`,
 on `codex/solow-swan-dynamics`. `verification.json` records source and patch
 hashes, successful patch application against the exact upstream base, agreement
 of the resulting tree with that commit, and reverse-patch validation.
 
 ## Checks and scope
 
-The modules contain 55 theorems: 16 in `SolowSwan`, 33 in `SolowSwanDynamics`,
+The modules contain 59 theorems: 16 in `SolowSwan`, 37 in `SolowSwanDynamics`,
 and 6 in `SolowSwanExamples`. Fresh compilation, the full project build, and
 all axiom audits passed locally on Windows. No new-module warnings, proof
 placeholders, or extra axioms are admitted. The allowed standard axioms are
@@ -43,9 +43,10 @@ The native TheoryDebugger diagnostics run under the separate `v4.34.0` pin:
 TheoryDebugger CI checks those examples; it does not compile this external patch.
 
 The main theorem assumes `b>0`, `m>0`, `0<α<1`, `k₀>0` in
-`k'=b k^α-mk`. It proves uniqueness among strictly positive differentiable
-solutions on future time. A broader class permitted to hit zero, arbitrary
-production functions, and the golden rule are outside this package. The exact
+`k'=b k^α-mk`. It proves that every nonnegative differentiable solution with
+positive initial capital remains positive, then establishes uniqueness and
+convergence on future time. Zero initial capital, arbitrary production functions,
+and the golden rule are outside this trajectory theorem. The exact
 exponential convergence rate is for `k^(1-α)`. Solow's original paper is the
 checked primary source; Swan's original presentation has not yet been inspected.
 

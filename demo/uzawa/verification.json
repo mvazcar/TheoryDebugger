@@ -1,9 +1,9 @@
 {
-  "checked_at_utc": "2026-09-20T11:14:48.764631+00:00",
+  "checked_at_utc": "2026-09-20T12:06:58.726785+00:00",
   "platform": "Windows-11-10.0.26200-SP0",
   "python": "3.12.14",
   "command": [
-    "lake",
+    "C:/Users/admin/.codex/worktrees/a161/GURU/.tools/elan/bin/lake.exe",
     "env",
     "lean",
     "examples/UzawaJones.lean"
@@ -58,7 +58,7 @@
     "lean-toolchain": "8733782dc070a99b312039cda424f601b80f3be6f6f512627da5ba25adc27632",
     "lake-manifest.json": "b9024bca5f3cfad85ab8193d6751f153caae434f447a013d9912b1f9b4a473bb",
     "TheoryDebugger.lean": "9f4376cfa8f0879564e54f5156b60166b803cfbc3389d276207ecf2f81c2a5c6",
-    "TheoryDebugger/Frontend.lean": "c87f6d4f53a30f14483443b3c1c7c305f63eb2380e07f57706193785449de84b",
+    "TheoryDebugger/Frontend.lean": "29cbb0335cace1da5912a53cddcc7f00387e8acce26d58e7dbacabc528d12e58",
     "TheoryDebugger/Tactic.lean": "c3a6c6dfe48a30e4e821c39cbd0951f302f76b5c0d15d00b532d81d68a76500d",
     "TheoryDebugger/Classification.lean": "b2dccd9e0f481e3ce2d214efe314bb7f0ed04350c5543c58ce354eeefd47052d",
     "TheoryDebugger/Repair.lean": "236dffeeefdfd9fabadf02709cbb6f457a9a88db04877516a6bf9766df45979a",
