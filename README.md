@@ -219,14 +219,18 @@ joint hypothesis minimization, or derivative abstraction yet. Native extraction
 supports explicit local real variables and polynomial hypotheses; local `let`
 definitions, arbitrary casts, and unsupported hypotheses are rejected explicitly.
 
-## Next milestone
+## First paper-to-Lean case study
 
-Complete one example that starts with a written economic proof and ends with an
-annotated Lean formalization and reproducible verification evidence. Record the
-translation choices, diagnostic feedback, and any changes to assumptions, so the
-researcher can inspect how the final proof relates to the original argument.
+The [Solow–Swan case study](docs/solow-swan.md) starts with an informal
+steady-state argument, detects its missing positive-capital assumption, checks
+an explicit repair, and connects the resulting theorem to square-root
+production in Lean. Run `python scripts/verify_solow.py` to reproduce the
+diagnostics and theorem checks. A separate Mathlib-only contribution is prepared
+for LeanEconomics, with the model assumptions and current limits documented.
+The [reviewable contribution package](contributions/lean-economics/README.md)
+contains the patch and verification record; it has not been submitted upstream.
 
-Then evaluate that workflow on about 20 independently written arguments and
+Next, evaluate that workflow on about 20 independently written arguments and
 conjectures. Use the results to improve the tool and document what we learn about
 TheoryGuru, Lean, and LLM-assisted formalization. The [roadmap](docs/roadmap.md)
 places this evaluation alongside later parameter projection and more general
@@ -245,8 +249,10 @@ All implementation and example code here was newly written. The private parent
 repository is a reference archive; its recovered software, notebooks, paper,
 and historical handoff are outside this directory and are not dependencies.
 This project is developed in a private repository and structured for a future
-public release. The [MIT license](LICENSE) applies only to original files in this
-directory; dependencies retain their own licenses.
+public release. The [MIT license](LICENSE) applies to this project's original
+implementation and examples. The separately packaged LeanEconomics contribution
+is Apache 2.0, as identified in its [license](contributions/lean-economics/LICENSE.txt).
+Dependencies retain their own licenses.
 
 `python scripts/build_release.py /path/to/TheoryDebugger-0.3.0.zip` creates a
 standalone source archive from an explicit allowlist, with file hashes and no

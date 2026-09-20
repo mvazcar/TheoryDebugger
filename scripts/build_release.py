@@ -10,8 +10,8 @@ FILES = {"README.md", "LICENSE", "CONTRIBUTING.md", ".gitignore", "pyproject.tom
          "requirements.txt", "lean-toolchain", "lakefile.toml", "lake-manifest.json",
          "TheoryDebugger.lean"}
 DIRECTORIES = {"TheoryDebugger", "src", "lean-tests", "tests", "examples",
-               "docs", "demo", "scripts", ".github"}
-SUFFIXES = {".lean", ".py", ".md", ".json", ".txt", ".yml"}
+               "docs", "demo", "scripts", ".github", "contributions"}
+SUFFIXES = {".lean", ".py", ".md", ".json", ".txt", ".yml", ".patch"}
 
 
 def source_files(root=ROOT):

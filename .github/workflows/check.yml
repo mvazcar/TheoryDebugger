@@ -23,13 +23,14 @@ jobs:
           MATHLIB_NO_CACHE_ON_UPDATE: '1'
         run: |
           lake update
-          lake exe cache get Mathlib.Basic.Real.Basic Mathlib.Tactic.Linarith Mathlib.Tactic.NormNum Mathlib.Tactic.Positivity
+          lake exe cache get Mathlib.Basic.Real.Basic Mathlib.Tactic.Linarith Mathlib.Tactic.NormNum Mathlib.Tactic.Positivity Mathlib.Analysis.Real.Sqrt Mathlib.Tactic.Ring
       - name: Build and run native Lean checks
         run: |
           lake build
           lake env lean lean-tests/Native.lean
           lake env lean examples/Native.lean
           python scripts/verify_paper.py
+          python scripts/verify_solow.py
       - name: Check Python boundaries and regenerate certificates
         env:
           THEORYDEBUGGER_TEST_LEAN: '1'

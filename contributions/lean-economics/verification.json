@@ -1,0 +1,99 @@
+{
+  "checked_at_utc": "2026-09-20T08:35:31.284490+00:00",
+  "base_commit": "8e7d5172e253cb20af2aea27e53f384d7ef18a25",
+  "upstream": "https://github.com/LeanEconomics/LeanEconomics",
+  "branch": "codex/solow-swan",
+  "theorems": 16,
+  "axioms": {
+    "LeanEconomics.SolowSwan.hasDerivAt_capitalPerWorker": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.intensiveForm_of_homogeneous": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.sqrt_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_zero": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_factor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.eq_steadyState_of_pos": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_eq_zero_iff": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.existsUnique_positive_steadyState": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_pos_of_lt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.capitalChange_neg_of_gt": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_saving": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_productivity": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_strictAnti_population": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "LeanEconomics.SolowSwan.SquareRoot.steadyState_capital_output_ratio": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "full_build": "passed",
+  "new_module_warnings": 0,
+  "source_sha256": {
+    "LeanEconomics/Growth/SolowSwan.lean": "77574965715ece6e4193a51c91a0c917d0643b3963eaa5df6d107c92226582e6",
+    "LeanEconomics.lean": "de22fffb1bf018547c3b54d58ff93fe86988b748dbad86d1ee18aad96efdd727",
+    "README.md": "0352e41f367126ca3f671d3f743bd8301a761fb9cea4c63ed747a7481bbca145",
+    "lean-toolchain": "b563246bde88bad741a3fe1c6b126ad8dab470340d55ac3e97cca9b3f200878b",
+    "lake-manifest.json": "5a6566e47858daf2b4712e251034fba617cbc4edc62c5b53becabd44feed1cf3"
+  },
+  "scope": "Local Windows run; no upstream PR or upstream CI run is claimed."
+}

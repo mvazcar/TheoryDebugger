@@ -1,0 +1,18 @@
+import LeanEconomics.Growth.SolowSwan
+
+#print axioms LeanEconomics.SolowSwan.hasDerivAt_capitalPerWorker
+#print axioms LeanEconomics.SolowSwan.intensiveForm_of_homogeneous
+#print axioms LeanEconomics.SolowSwan.SquareRoot.steadyState_pos
+#print axioms LeanEconomics.SolowSwan.SquareRoot.sqrt_steadyState
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_zero
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_factor
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_steadyState
+#print axioms LeanEconomics.SolowSwan.SquareRoot.eq_steadyState_of_pos
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_eq_zero_iff
+#print axioms LeanEconomics.SolowSwan.SquareRoot.existsUnique_positive_steadyState
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_pos_of_lt
+#print axioms LeanEconomics.SolowSwan.SquareRoot.capitalChange_neg_of_gt
+#print axioms LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_saving
+#print axioms LeanEconomics.SolowSwan.SquareRoot.steadyState_strictMono_productivity
+#print axioms LeanEconomics.SolowSwan.SquareRoot.steadyState_strictAnti_population
+#print axioms LeanEconomics.SolowSwan.SquareRoot.steadyState_capital_output_ratio
