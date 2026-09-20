@@ -13,7 +13,8 @@ The paper establishes substantial prior work on the workflow we want: diagnose
 a conjecture, inspect examples and counterexamples, and improve its assumptions.
 Our current contribution is an independently written, narrower implementation
 that connects this workflow to Lean and preserves evidence checked against the
-original formal claim. It is not yet a replacement for TheoryGuru's full scope.
+original formal claim. Its role is to complement TheoryGuru with Lean verification
+and support for researchers using LLMs.
 
 ## Capability comparison
 

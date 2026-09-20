@@ -1,7 +1,7 @@
 # TheoryDebugger
 
-TheoryDebugger aims to build an **open-source successor to TheoryGuru, extended
-with Lean capabilities**, so researchers using LLMs can improve their mathematical
+TheoryDebugger aims to be an **open-source complement to TheoryGuru, adding
+Lean capabilities**, so researchers using LLMs can improve their mathematical
 research workflows. The central idea is to give an LLM a claim and an informal
 proof, let it use automated reasoning tools to examine the logic, and obtain a
 Lean formalization with checked proof evidence.
