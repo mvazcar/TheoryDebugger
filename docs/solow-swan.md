@@ -94,8 +94,8 @@ The first two statements are in `LeanEconomics.SolowSwan`; the rest are in its
 `SquareRoot` namespace. Supporting lemmas make 16 proved declarations in total.
 Their proofs use ordinary Mathlib tactics, without a TheoryDebugger dependency.
 The contribution is newly written and follows upstream's Apache 2.0 license.
-The TheoryDebugger example is independently written under this project's MIT
-license. Downloaded papers stay in the private research archive.
+The TheoryDebugger example is independently written under this project's Unlicense
+dedication. Downloaded papers stay in the private research archive.
 
 ## Next results and boundaries
 

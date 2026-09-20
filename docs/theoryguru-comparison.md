@@ -128,5 +128,5 @@ drawn from the project handoff, rather than a claim about an unused or exclusive
 name.
 
 The paper and its TeX source are research references kept outside this project's
-original MIT source tree. This document and the scalar Lean example were newly
+original source tree, now offered under The Unlicense. This document and the scalar Lean example were newly
 written; no recovered proprietary implementation is imported.

@@ -1,7 +1,9 @@
 # Contributing
 
-TheoryDebugger is original MIT-licensed code intended for standalone open-source
-development. Please contribute small, reproducible mathematical examples along
+TheoryDebugger's original work is dedicated to the public domain under
+[The Unlicense](UNLICENSE). By contributing original work, you agree to this
+dedication and confirm that you have the right to contribute it. Identify any
+third-party material and preserve its license and notices. Please contribute small, reproducible mathematical examples along
 with expected validity, feasibility, and evidence levels.
 
 Use Python 3.12 and the committed Lean/Mathlib toolchain and manifest. Install the

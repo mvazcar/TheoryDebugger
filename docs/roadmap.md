@@ -13,7 +13,7 @@ intended semantics, diagnoses feasibility and validity, checks rational witnesse
 and reconstructs proofs against the original goal. Leave-one-out analysis can
 establish that particular assumptions are individually dispensable.
 
-The standalone source tree is MIT licensed and has pinned mathematical
+The standalone source tree uses The Unlicense and has pinned mathematical
 dependencies. A release builder packages only original source, examples,
 documentation, and evidence; it includes neither private Git history nor the
 reference archive. The standalone development repository is private. A GitHub

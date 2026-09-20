@@ -300,11 +300,17 @@ example. TheoryDebugger is a working name for this independent prototype.
 All implementation and example code here was newly written. The private parent
 repository is a reference archive; its recovered software, notebooks, paper,
 and historical handoff are outside this directory and are not dependencies.
-This project is developed in a private repository and structured for a future
-public release. The [MIT license](LICENSE) applies to this project's original
-implementation and examples. The separately packaged LeanEconomics contributions
-are Apache 2.0, as identified in each package's license.
-Dependencies retain their own licenses.
+The original implementation, examples, scripts, and documentation are dedicated
+to the public domain under [The Unlicense](UNLICENSE): anyone may use, modify,
+redistribute, or sell them, without payment or a permission request. Our original
+growth formalizations are also offered under The Unlicense in
+[solow1956-lean](https://github.com/mvazcar/solow1956-lean) and
+[uzawa-modern-lean](https://github.com/mvazcar/uzawa-modern-lean).
+
+Earlier MIT and Apache 2.0 grants remain available. Archived contribution
+patches retain their Apache 2.0 files and upstream context; the additional
+Unlicense dedication covers our original contributions, not third-party text.
+Dependencies retain their own licenses. See [third-party notices](THIRD_PARTY_NOTICES.md).
 
 `python scripts/build_release.py /path/to/TheoryDebugger-0.3.0.zip` creates a
 standalone source archive from an explicit allowlist, with file hashes and no

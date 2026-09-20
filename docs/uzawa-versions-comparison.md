@@ -9,6 +9,13 @@ is now completed with explicit global range and domain-wide share assumptions.
 There are two checked representation arguments with a shared accounting
 lemma. The source-version audit below still applies to the literal 2004 text.
 
+## Original source
+
+Uzawa (1961), *Neutral Inventions and the Stability of Growth Equilibrium*,
+Review of Economic Studies 28(2), 117–124, is the original reference.
+See the [source status and proposed original-paper formalization](uzawa-1961-source.md).
+The modern results below do not claim to formalize every result in that paper.
+
 ## Source versions
 
 - **Jones and Scrimgeour, November 2004.** *The Steady-State Growth Theorem:

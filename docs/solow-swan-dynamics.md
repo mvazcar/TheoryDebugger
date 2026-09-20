@@ -236,6 +236,7 @@ documentation, and verification. This follows LeanEconomics' transparent credit
 for Claude. Lean verifies formal statements; their economic faithfulness requires
 researcher review. Reasoning settings are development provenance, not certificates.
 
-TheoryDebugger complements TheoryGuru. Original examples are MIT-licensed;
-the separate LeanEconomics contribution is Apache 2.0. Downloaded papers are
+TheoryDebugger complements TheoryGuru. Original examples use The Unlicense;
+archived LeanEconomics contributions retain Apache 2.0 and our original work
+is additionally offered under The Unlicense. Downloaded papers are
 excluded from the release.

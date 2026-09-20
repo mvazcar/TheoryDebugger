@@ -6,7 +6,7 @@ from pathlib import Path
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-FILES = {"README.md", "LICENSE", "CONTRIBUTING.md", ".gitignore", "pyproject.toml",
+FILES = {"README.md", "LICENSE", "UNLICENSE", "THIRD_PARTY_NOTICES.md", "CONTRIBUTING.md", ".gitignore", "pyproject.toml",
          "requirements.txt", "lean-toolchain", "lakefile.toml", "lake-manifest.json",
          "TheoryDebugger.lean"}
 DIRECTORIES = {"TheoryDebugger", "src", "lean-tests", "tests", "examples",
