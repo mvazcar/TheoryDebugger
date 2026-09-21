@@ -10,6 +10,7 @@ IMPORTS = """import Mathlib.Basic.Real.Basic
 import Mathlib.Tactic.Linarith
 import Mathlib.Tactic.NormNum
 import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Ring
 
 set_option maxHeartbeats 400000
 namespace TheoryDebugger.Generated
@@ -83,16 +84,28 @@ def build_source(p, kind, witness=None):
                 steps.append({"local_lemma": f"positive_square_{i}",
                               "explanation": f"Assumption {i + 1} says {name} is positive, so its square is strictly positive.",
                               "statement": f"0 < {v} ^ 2", "line": len(source.splitlines()) + 1 + len(proof.splitlines())})
+        # Reconstruct low-degree equality consequences explicitly. The kernel
+        # checks each multiplication; no solver assertion is imported as proof.
+        # This covers e.g. c*r=1 -> c*r^2=r, which nlinarith alone can miss.
+        for i, a in enumerate(p.assumptions if kind == "valid" and p.goal.op != "true" else []):
+            if a.op == "=":
+                for j, v in enumerate(variables):
+                    lemma = f"equality_product_{i}_{j}"
+                    proof += f"  have {lemma} := congrArg (fun x : ℝ => x * {v}) h{i}\n"
+                    steps.append({"local_lemma": lemma,
+                                  "explanation": f"Multiply equality assumption {i + 1} by {p.variables[j]}.",
+                                  "statement": f"({render(a.args[0], symbols(p))}) * {v} = ({render(a.args[1], symbols(p))}) * {v}",
+                                  "line": len(source.splitlines()) + 1 + len(proof.splitlines())})
         if kind == "false_throughout":
             proof += "  intro h_goal\n"
         proof += "  exact True.intro" if kind == "valid" and p.goal.op == "true" else \
-            "  first | (solve | norm_num at *) | nlinarith"
+            "  first | (solve | norm_num at *) | positivity | (solve | (subst_vars; ring)) | nlinarith"
         statement = "original" if kind == "valid" else formal_goal(p, "False")
         if kind == "false_throughout":
             statement = formal_goal(p, f"¬ {render(p.goal, symbols(p))}")
         add({"valid": "claim", "inconsistent": "contradiction", "false_throughout": "no_satisfying"}[kind],
             statement, proof,
-            "The original goal follows by checked arithmetic from the listed assumptions and nonnegative squares."
+            "The original goal follows by checked arithmetic or sign reasoning from the listed assumptions and nonnegative squares."
             if kind == "valid" else "The goal fails under every feasible assignment."
             if kind == "false_throughout" else "The listed assumptions imply False; there is no feasible real assignment.")
         if kind == "inconsistent":
