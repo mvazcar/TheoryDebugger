@@ -28,11 +28,59 @@ class LeanBoundaryTests(unittest.TestCase):
         self.assertNotEqual(result["compiler_exit_code"], 0)
         self.assertEqual(hashlib.sha256(Path(result["source"]).read_bytes()).hexdigest(), result["source_sha256"])
 
+    def test_cass_corner_product_reconstruction(self):
+        # A real RCK obligation: nlinarith alone misses this cubic product.
+        # Positivity must reconstruct a kernel proof, not trust the SMT result.
+        p = parse({"variables": ["r", "B"], "assumptions": [
+            [">=", "r", 0], ["<=", "r", 1], [">=", "B", 0]],
+            "goal": [">=", ["*", ["*", "r", ["-", 1, "r"]], "B"], 0],
+            "witness": {"r": "1/2", "B": 1}})
+        r = diagnose(p, CVC5Backend(), self.verifier)
+        self.assertEqual(r["validity"], {"status": "valid", "evidence": "lean_kernel"})
+        self.assertEqual(r["consistency"], {"status": "consistent", "evidence": "lean_kernel"})
+        self.assertTrue(all(c["status"] == "lean_verified" for c in r["certificates"]))
+
+    def test_cass_corner_product_requires_upper_bound(self):
+        p = parse({"variables": ["r", "B"], "assumptions": [
+            [">=", "r", 0], [">=", "B", 0]],
+            "goal": [">=", ["*", ["*", "r", ["-", 1, "r"]], "B"], 0],
+            "witness": {"r": 2, "B": 1}})
+        self.assertEqual(self.verifier.verify(p, "valid")["status"], "unknown")
+        r = diagnose(p, CVC5Backend(), self.verifier)
+        self.assertEqual(r["validity"], {"status": "refuted", "evidence": "lean_kernel"})
+
     def test_solver_valid_but_reconstruction_incomplete(self):
         p = parse({"variables": ["x"], "goal": ["or", ["<", "x", 0], [">=", "x", 0]]})
         r = diagnose(p, CVC5Backend(), self.verifier)
         self.assertEqual(r["validity"], {"status": "valid", "evidence": "solver_only"})
         self.assertEqual(r["certificates"][-1]["status"], "unknown")
+
+    def test_nonlinear_definition_substitution(self):
+        # The Hamiltonian calculation needs an equality substituted inside a
+        # further product, not merely added as a linear arithmetic constraint.
+        p = parse({"variables": ["q", "d", "g", "x", "v"],
+            "assumptions": [["=", "v", ["*", ["-", "d", "g"], "q"]]],
+            "goal": ["=", ["+", ["*", "v", "x"], ["*", ["*", "g", "q"], "x"]],
+                      ["*", ["*", "d", "q"], "x"]],
+            "witness": {"q": 1, "d": 2, "g": 1, "x": 3, "v": 1}})
+        result = diagnose(p, CVC5Backend(), self.verifier)
+        self.assertEqual(result["validity"], {"status": "valid", "evidence": "lean_kernel"})
+        self.assertEqual(result["consistency"], {"status": "consistent", "evidence": "lean_kernel"})
+
+    def test_equality_multiplied_by_variable(self):
+        p = parse({"variables": ["c", "r"],
+            "assumptions": [["=", ["*", "c", "r"], 1]],
+            "goal": ["=", ["*", "c", ["^", "r", 2]], "r"],
+            "witness": {"c": 3, "r": "1/3"}})
+        result = diagnose(p, CVC5Backend(), self.verifier)
+        self.assertEqual(result["validity"], {"status": "valid", "evidence": "lean_kernel"})
+        # Without the defining equation this consequence is false.
+        bad = parse({"variables": ["c", "r"],
+            "goal": ["=", ["*", "c", ["^", "r", 2]], "r"],
+            "witness": {"c": 2, "r": 1}})
+        self.assertEqual(self.verifier.verify(bad, "valid")["status"], "unknown")
+        self.assertEqual(diagnose(bad, CVC5Backend(), self.verifier)["validity"],
+                         {"status": "refuted", "evidence": "lean_kernel"})
 
     def test_closed_false_goal_has_checked_refutation(self):
         p = parse({"variables": [], "goal": False})
